@@ -1,0 +1,1 @@
+{"version":3,"file":"transitions.d.ts","sourceRoot":"","sources":["../../../src/components/menu-item/transitions.tsx"],"names":[],"mappings":"AAKA,eAAO,MAAM,WAAW,+CAqBvB,CAAC;AAEF,QAAA,MAAM,mBAAmB,0CAGtB;IACD,UAAU,EAAE,OAAO,CAAC,GAAG,CAAC,CAAC;IACzB,oBAAoB,EAAE,OAAO,CAAC;CAC/B,4CA8BA,CAAC;AAEF,eAAe,mBAAmB,CAAC"}
