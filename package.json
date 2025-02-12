@@ -7,15 +7,17 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
+  ".": {
+    "types": "./dist/index.d.ts",
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
   },
-  "files": [
-    "dist"
-  ],
+  "./components/*": "./dist/components/*",
+  "./classes/*": "./dist/classes/*",
+  "./shared/*": "./dist/shared/*",
+  "./lib/utils/*": "./dist/lib/utils/*"
+  },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc -p tsconfig.app.json --emitDeclarationOnly --outDir dist",
