@@ -1,0 +1,1 @@
+{"version":3,"file":"canvas-mixin.d.ts","sourceRoot":"","sources":["../../../src/classes/mixins/canvas-mixin.ts"],"names":[],"mappings":"AAGA,qBAAa,WAAW;IACtB,OAAO,CAAC,iBAAiB,CAAsB;IAC/C,OAAO,CAAC,gBAAgB,CAAQ;;IAOhC,mBAAmB,CAAC,IAAI,EAAE,GAAG;IAS7B,oBAAoB,CAAC,IAAI,EAAE,GAAG,GAAG,KAAK,GAAG,SAAS;CAkBnD"}
