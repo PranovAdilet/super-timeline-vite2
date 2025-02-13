@@ -3,6 +3,7 @@ export * from "./event-bus";
 export * from "./event-listeners";
 export * from "./handle-events";
 import useTimelineEvents from "./use-timeline-events";
-export { useTimelineEvents };
+import eventBus from "./event-bus";
+export { useTimelineEvents, eventBus };
 export * from "./store";
 //# sourceMappingURL=index.d.ts.map
