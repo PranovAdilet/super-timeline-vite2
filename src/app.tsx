@@ -9,6 +9,7 @@ import { StateManager } from "@/classes/state";
 import { useEffect, useState } from "react";
 import eventBus from "./classes/timeline/events/event-bus";
 import "./index.css";
+import { Button } from "./shared";
 
 const stateManager = new StateManager();
 
@@ -63,6 +64,7 @@ export const App = () => {
         >
           VISIBLE
         </Button> */}
+        <Button></Button>
         {playerRef && <Timeline stateManager={stateManager} />}
       </div>
     </div>
