@@ -13,7 +13,17 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: [
+        "react",
+        "react-dom",
+        "zustand",
+        "fabric",
+        "remotion",
+        "eslint",
+        "@remotion/cli ",
+        "@remotion/player",
+        "@radix-ui/themes",
+      ],
     },
   },
   plugins: [react()],
