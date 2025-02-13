@@ -8,6 +8,7 @@ import PlayheadComponent from "./components/playhead";
 import RulerComponent from "./components/ruler";
 import NavbarComponent from "./components/navbar";
 import Header from "./components/header";
+import { App as AppComponent } from "./app";
 
 export {
   TimelineComponent,
@@ -15,4 +16,5 @@ export {
   PlayheadComponent,
   RulerComponent,
   Header,
+  AppComponent,
 };

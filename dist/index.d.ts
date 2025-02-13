@@ -7,5 +7,6 @@ import PlayheadComponent from "./components/playhead";
 import RulerComponent from "./components/ruler";
 import NavbarComponent from "./components/navbar";
 import Header from "./components/header";
-export { TimelineComponent, NavbarComponent, PlayheadComponent, RulerComponent, Header, };
+import { App as AppComponent } from "./app";
+export { TimelineComponent, NavbarComponent, PlayheadComponent, RulerComponent, Header, AppComponent, };
 //# sourceMappingURL=index.d.ts.map
