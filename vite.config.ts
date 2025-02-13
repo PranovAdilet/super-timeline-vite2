@@ -13,7 +13,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      // external: ["fabric"],
+      external: ["react", "react-dom"],
     },
   },
   plugins: [react()],
