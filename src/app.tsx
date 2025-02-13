@@ -64,7 +64,6 @@ export const App = () => {
         >
           VISIBLE
         </Button> */}
-        <Button></Button>
         {playerRef && <Timeline stateManager={stateManager} />}
       </div>
     </div>
