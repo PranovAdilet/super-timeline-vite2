@@ -28,6 +28,7 @@ export const Player = () => {
         fps={fps}
         // overflowVisible
         controls
+        numberOfSharedAudioTags={10}
       />
     </Flex>
   );

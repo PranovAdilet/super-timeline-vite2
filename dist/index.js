@@ -11223,7 +11223,8 @@ const tx = () => {
       style: { width: "100%", height: "100%" },
       inputProps: {},
       fps: s,
-      controls: !0
+      controls: !0,
+      numberOfSharedAudioTags: 10
     }
   ) });
 }, nx = ({ scrollLeft: t }) => {
