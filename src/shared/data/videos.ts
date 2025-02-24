@@ -2,6 +2,39 @@ import { IVideo } from "../types";
 
 export const VIDEOS = [
   {
+    id: "11",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\fdcKLDioCK6fNMFSaV9no9.mp4",
+      text: "Video",
+    },
+    type: "video",
+    preview:
+      "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/image/2025/2/20/19\\MjU9BA9oBAcasKPWW89oAq.webp",
+    display: { from: 0 },
+  },
+  {
+    id: "22",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\NarjF5LQKZ3RE8cg5BAEZa.mp4",
+      text: "Video",
+    },
+    type: "video",
+    preview:
+      "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/image/2025/2/20/19\\br3G6fanEMrVZCXAmYpWdL.webp",
+    display: { from: 0 },
+  },
+  {
+    id: "33",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\LUB9JnQSSeVJdzRrq8PnAr.mp4",
+      text: "Video",
+    },
+    type: "video",
+    preview:
+      "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/image/2025/2/20/19\\N8SF2nTVffFxn8fwA7VZZM.webp",
+    display: { from: 0 },
+  },
+  {
     id: "1",
     details: {
       src: "https://cdn.designcombo.dev/videos/demo-video-1.mp4",

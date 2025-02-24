@@ -2,6 +2,32 @@ import { IAudio } from "../types";
 
 export const AUDIOS = [
   {
+    id: "111",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/2/20/18\\KhDhy5qKkppcfCMWV9md5w.mpeg",
+      text: "Voiceover",
+    },
+    name: "Super",
+    type: "audio",
+    metadata: {
+      author: "Adilet",
+    },
+    display: { from: 0 },
+  },
+  {
+    id: "222",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/2/20/18\\SQCTWQnVjRBzbUjCMyZd32.mpeg",
+      text: "Voiceover",
+    },
+    name: "Super",
+    type: "audio",
+    metadata: {
+      author: "Adilet2",
+    },
+    display: { from: 0 },
+  },
+  {
     id: "1",
     details: {
       src: "https://cdn.designcombo.dev/audio/Dawn%20of%20change.mp3",
