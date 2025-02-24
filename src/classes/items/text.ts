@@ -5,6 +5,7 @@ export class Text extends TextBase {
   constructor(props: any) {
     super(props);
     this.fill = "#303030";
+    // this.fill = "#FFAA33";
   }
 
   public _render(ctx: CanvasRenderingContext2D) {

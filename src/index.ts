@@ -8,6 +8,7 @@ import PlayheadComponent from "./components/playhead";
 import RulerComponent from "./components/ruler";
 import NavbarComponent from "./components/navbar";
 import Header from "./components/header";
+import MenuList from "./components/menu-list";
 import { App as AppComponent } from "./app";
 
 export {
@@ -17,4 +18,5 @@ export {
   RulerComponent,
   Header,
   AppComponent,
+  MenuList,
 };

@@ -6,7 +6,7 @@ export class Image extends ImageBase {
   constructor(props: any) {
     super(props);
     this.text = props.text ?? "Image";
-    // this.fill = "#2563eb";
+    // this.fill = "#F43F5E";
   }
 
   public _render(ctx: CanvasRenderingContext2D) {

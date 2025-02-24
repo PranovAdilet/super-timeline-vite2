@@ -8,10 +8,12 @@ export class Audio extends AudioBase {
 
     this.text = props.text ?? "Audio";
     // this.fill = "#2563eb";
+    // this.fill = "#10B981";
   }
 
   public _render(ctx: CanvasRenderingContext2D) {
     super._render(ctx);
+
     this.drawTextIdentity(ctx);
     this.updateSelected(ctx);
   }

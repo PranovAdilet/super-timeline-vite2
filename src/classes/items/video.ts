@@ -6,6 +6,7 @@ export class Video extends VideoBase {
   constructor(props: any) {
     super(props);
     this.text = props.text ?? "Video";
+    // this.fill = "#3B82F6";
   }
 
   public _render(ctx: CanvasRenderingContext2D) {
