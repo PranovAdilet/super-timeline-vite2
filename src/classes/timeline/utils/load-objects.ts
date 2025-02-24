@@ -80,6 +80,7 @@ export const loadVideoObject = (
     display: item.trim,
     trim: item.trim,
     text: item.details.text,
+    duration: item.details.duration,
   });
 };
 

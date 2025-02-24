@@ -2,6 +2,8 @@ import { Control, Rect, classRegistry, controlsUtils } from "fabric";
 import { getOffset, renderControl } from "./text";
 import { IDisplay, IMetadata, ITrim } from "@/shared/types";
 import { defaultColor } from "./helper";
+import { unitsToTimeMs } from "@/shared";
+import { isScalingFromCenter } from "./audio";
 
 export interface VideoProps {
   id: string;
@@ -97,11 +99,11 @@ export const createMediaControls = () => ({
 
 const { wrapWithFireEvent, getLocalPoint } = controlsUtils;
 
-const handleResizeLogic = (
+const handleResize = (
   eventData: any,
   transform: any,
-  pointerX: any,
-  pointerY: any
+  pointerX: number,
+  pointerY: number
 ) => {
   const localPoint = getLocalPoint(
     transform,
@@ -117,9 +119,61 @@ const handleResizeLogic = (
     (getOffset(transform.originX) === getOffset("left") && localPoint.x > 0)
   ) {
     const { target } = transform;
+    const strokeWidth =
+      target.strokeWidth / (target.strokeUniform ? target.scaleX : 1);
+    const scalingFactor = isScalingFromCenter(transform) ? 2 : 1;
+    const originalWidth = target.width;
+    const newWidth = Math.ceil(
+      Math.abs((localPoint.x * scalingFactor) / target.scaleX) - strokeWidth
+    );
 
-    return target.width !== target.width;
+    if (transform.corner === "ml") {
+      const widthChange = newWidth - originalWidth;
+      const timeChange = unitsToTimeMs(widthChange, target.tScale);
+
+      const trimStart = target.trim.from;
+      const newTrimStart = trimStart - timeChange;
+
+      if (newTrimStart < 0) return false;
+      const u = transform.width - newWidth;
+      if (transform.left + u < 0)
+        return transform.set("width", transform.width + transform.left), !0;
+    }
+
+    if (transform.corner === "mr") {
+      const trimEnd = target.trim.to;
+      const widthChange = newWidth - originalWidth;
+      const timeChange = unitsToTimeMs(widthChange, target.tScale);
+      const newTrimEnd = trimEnd + timeChange;
+
+      if (newTrimEnd > target.duration) return false;
+
+      target.set("width", Math.max(newWidth, 0));
+      target.trim.to = newTrimEnd;
+    } else {
+      if (target.left < 0) return false;
+
+      const remainingWidth = originalWidth - newWidth;
+
+      if (target.left + remainingWidth < 0) {
+        target.set("width", target.width + target.left);
+        return true;
+      }
+
+      const widthChange = newWidth - originalWidth;
+      const trimStart = target.trim.from;
+      const timeChange = unitsToTimeMs(widthChange, target.tScale);
+      const newTrimStart = trimStart - timeChange;
+
+      if (newTrimStart < 0) return false;
+
+      target.set("width", Math.max(newWidth, 0));
+      target.trim.from = newTrimStart;
+    }
+
+    return originalWidth !== target.width;
   }
+
   return false;
 };
 
@@ -141,5 +195,5 @@ export function wrapResizeWithAnchorPosition(updateLogic: any) {
 
 const resizeActionHandler = wrapWithFireEvent(
   "resizing",
-  wrapResizeWithAnchorPosition(handleResizeLogic)
+  wrapResizeWithAnchorPosition(handleResize)
 );

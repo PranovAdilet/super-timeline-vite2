@@ -114,7 +114,7 @@ export const createAudioControls = () => ({
 const { wrapWithFireEvent, getLocalPoint } = controlsUtils;
 
 const handleResize = (
-  event: any,
+  eventData: any,
   transform: any,
   pointerX: number,
   pointerY: number
@@ -140,6 +140,19 @@ const handleResize = (
     const newWidth = Math.ceil(
       Math.abs((localPoint.x * scalingFactor) / target.scaleX) - strokeWidth
     );
+
+    if (transform.corner === "ml") {
+      const widthChange = newWidth - originalWidth;
+      const timeChange = unitsToTimeMs(widthChange, target.tScale);
+
+      const trimStart = target.trim.from;
+      const newTrimStart = trimStart - timeChange;
+
+      if (newTrimStart < 0) return false;
+      const u = transform.width - newWidth;
+      if (transform.left + u < 0)
+        return transform.set("width", transform.width + transform.left), !0;
+    }
 
     if (transform.corner === "mr") {
       const trimEnd = target.trim.to;
@@ -174,10 +187,11 @@ const handleResize = (
 
     return originalWidth !== target.width;
   }
+
   return false;
 };
 
-function isScalingFromCenter(transform: any) {
+export function isScalingFromCenter(transform: any) {
   return (
     getOffset(transform.originX) === getOffset("center") &&
     getOffset(transform.originY) === getOffset("center")

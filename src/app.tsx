@@ -6,7 +6,7 @@ import { MenuItem } from "@/components/menu-item";
 import Navbar from "@/components/navbar";
 import { Scene } from "@/components/scene";
 import { StateManager } from "@/classes/state";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./index.css";
 
 const stateManager = new StateManager();
@@ -126,6 +126,7 @@ export const data1 = {
     "eb8c7a4d-bf49-4028-8725-00b4f74e8b02": {
       type: "video",
       details: {
+        duration: 14000,
         width: 1280,
         height: 720,
         src: "https://cdn.designcombo.dev/videos/demo-video-1.mp4",
@@ -182,7 +183,7 @@ export const data1 = {
       id: "eb8c7a4d-bf49-4028-8725-00b4f74e8b02",
       type: "video",
       preview: "https://cdn.designcombo.dev/thumbnails/demo-video-s-1.png",
-      duration: 17000,
+      duration: 14000,
       display: { from: 3000, to: 15000 },
       trim: { from: 0, to: 12000 },
       isMain: false,
