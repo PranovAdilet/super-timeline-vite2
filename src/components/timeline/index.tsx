@@ -76,6 +76,12 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
   };
 
   useEffect(() => {
+    if (playerRef?.current) {
+      canScrollRef.current = playerRef?.current.isPlaying();
+    }
+  }, [playerRef?.current?.isPlaying()]);
+
+  useEffect(() => {
     const position = timeMsToUnits((currentFrame / fps) * 1000, scale.zoom);
     const canvasBoudingX =
       canvasElRef.current?.getBoundingClientRect().x! +
