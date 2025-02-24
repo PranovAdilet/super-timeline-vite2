@@ -174,8 +174,8 @@ export const loadTextItem = async (
     name: "",
     type: "text",
     display: {
-      from: 0,
-      to: defaultTextDuration,
+      from: payload.display.from ?? 0,
+      to: payload.display.to ?? defaultTextDuration,
     },
     details: {
       ...textStyle,

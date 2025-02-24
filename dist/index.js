@@ -12478,8 +12478,8 @@ const Nx = async (t, n) => {
     name: "",
     type: "text",
     display: {
-      from: 0,
-      to: Hx
+      from: t.display.from ?? 0,
+      to: t.display.to ?? Hx
     },
     details: {
       ...s,
