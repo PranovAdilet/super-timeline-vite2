@@ -25,7 +25,7 @@ export declare const calculateDisplayRange: (display: {
 export declare function filterAndCleanTracks(tracks: ITrack[], idsToRemove: string[]): {
     items: string[];
     id: string;
-    type: "text" | "audio" | "image" | "video" | "helper" | "main";
+    type: "text" | "image" | "video" | "audio" | "helper" | "main";
     metadata?: Partial<import("@/shared/types").IMetadata>;
     accepts?: import("@/shared/types").ItemType[];
     index?: number;

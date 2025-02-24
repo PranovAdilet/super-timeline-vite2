@@ -54,4 +54,5 @@ export declare const createAudioControls: () => {
     mr: Control;
     ml: Control;
 };
+export declare function isScalingFromCenter(transform: any): boolean;
 //# sourceMappingURL=audio.d.ts.map

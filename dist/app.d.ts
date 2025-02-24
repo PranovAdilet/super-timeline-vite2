@@ -43,6 +43,7 @@ export declare const data1: {
         "eb8c7a4d-bf49-4028-8725-00b4f74e8b02": {
             type: string;
             details: {
+                duration: number;
                 width: number;
                 height: number;
                 src: string;
