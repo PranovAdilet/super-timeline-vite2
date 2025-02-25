@@ -38,7 +38,7 @@ CanvasTimeline.registerItems({
 });
 
 const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
-  const canScrollRef = useRef(false);
+  // const canScrollRef = useRef(false);
   const [scrollLeft, setScrollLeft] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasElRef = useRef<HTMLCanvasElement>(null);
@@ -74,12 +74,6 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
       setScrollLeft(-v.scrollLeft);
     }
   };
-
-  useEffect(() => {
-    if (playerRef?.current) {
-      canScrollRef.current = playerRef?.current.isPlaying();
-    }
-  }, [playerRef?.current?.isPlaying()]);
 
   useEffect(() => {
     const position = timeMsToUnits((currentFrame / fps) * 1000, scale.zoom);
@@ -237,19 +231,15 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
 
   const handleOnScrollH = (e: any) => {
     const scrollLeft = e.currentTarget.scrollLeft;
-    if (canScrollRef.current) {
-      const canvas: any = canvasRef.current!;
-      canvas.scrollTo({ scrollLeft });
-    }
+    const canvas: any = canvasRef.current!;
+    canvas.scrollTo({ scrollLeft });
     setScrollLeft(scrollLeft);
   };
 
   const handleOnScrollV = (e: any) => {
     const scrollTop = e.currentTarget.scrollTop;
-    if (canScrollRef.current) {
-      const canvas: any = canvasRef.current!;
-      canvas.scrollTo({ scrollTop });
-    }
+    const canvas: any = canvasRef.current!;
+    canvas.scrollTo({ scrollTop });
   };
 
   useEffect(() => {
@@ -320,15 +310,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
               className="ScrollAreaScrollbar"
               orientation="horizontal"
             >
-              <ScrollArea.Thumb
-                className="ScrollAreaThumb"
-                onMouseDown={() => {
-                  canScrollRef.current = true;
-                }}
-                onMouseUp={() => {
-                  canScrollRef.current = false;
-                }}
-              />
+              <ScrollArea.Thumb className="ScrollAreaThumb" />
             </ScrollArea.Scrollbar>
           </ScrollArea.Root>
 
@@ -360,15 +342,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
               className="ScrollAreaScrollbar"
               orientation="vertical"
             >
-              <ScrollArea.Thumb
-                className="ScrollAreaThumb"
-                onMouseDown={() => {
-                  canScrollRef.current = true;
-                }}
-                onMouseUp={() => {
-                  canScrollRef.current = false;
-                }}
-              />
+              <ScrollArea.Thumb className="ScrollAreaThumb" />
             </ScrollArea.Scrollbar>
           </ScrollArea.Root>
         </div>

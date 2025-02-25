@@ -13,6 +13,7 @@ export const useStore = create<ITimelineStore>((set) => ({
     width: 1080,
     height: 1920,
   },
+  aspectRatio: 16 / 9,
   duration: 5000,
   fps: 30,
   scale: {

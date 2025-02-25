@@ -7,6 +7,8 @@ import {
   ADD_TEXT,
   ADD_VIDEO,
   DESIGN_LOAD,
+  SCENE_LOAD,
+  SCENE_RESIZE,
 } from "@/classes/timeline/events/constants-events";
 import { EventBusData } from "@/classes/timeline/events/event-bus/types";
 import { StateManager } from "..";
@@ -183,7 +185,20 @@ export function handleActiveItemsStateEvents(
 }
 
 export async function handleSceneStateEvents(this: any, event: EventBusData) {
-  if (event.key === "scene:load") {
+  if (event.key === SCENE_RESIZE) {
+    const payload = event.value?.payload;
+    this.updateState(
+      {
+        size: payload,
+      },
+      {
+        kind: "scene:resize",
+        updateHistory: !1,
+      }
+    );
+  }
+
+  if (event.key === SCENE_LOAD) {
     const payload = event.value?.payload;
 
     const size = payload.size;

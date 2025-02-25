@@ -213,6 +213,7 @@ export type ITimelineStore = {
     width: number;
     height: number;
   };
+  aspectRatio: number;
 
   setState: (state: any) => Promise<void>;
 };

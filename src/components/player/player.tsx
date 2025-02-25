@@ -21,8 +21,8 @@ export const Player = () => {
         ref={playerRef}
         component={Composition}
         durationInFrames={Math.round((duration / 1000) * fps) || 5 * 30}
-        compositionWidth={1920}
-        compositionHeight={1080}
+        compositionWidth={size.width}
+        compositionHeight={size.height}
         style={{ width: "100%", height: "100%" }}
         inputProps={{}}
         fps={fps}

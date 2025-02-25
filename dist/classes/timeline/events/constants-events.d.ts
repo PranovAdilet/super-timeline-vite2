@@ -60,4 +60,7 @@ export declare const TIMELINE_PREFIX = "timeline";
 export declare const TIMELINE_BOUNDING_CHANGED = "timeline:boundingChanged";
 export declare const DESIGN_LOAD = "design:load";
 export declare const DESIGN_PREFIX = "design";
+export declare const SCENE_PREFIX = "scene";
+export declare const SCENE_RESIZE = "scene:resize";
+export declare const SCENE_LOAD = "scene:load";
 //# sourceMappingURL=constants-events.d.ts.map

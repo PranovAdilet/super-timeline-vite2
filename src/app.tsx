@@ -6,8 +6,9 @@ import { MenuItem } from "@/components/menu-item";
 import Navbar from "@/components/navbar";
 import { Scene } from "@/components/scene";
 import { StateManager } from "@/classes/state";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
+import { eventBus, SCENE_LOAD } from "./classes";
 
 const stateManager = new StateManager();
 
@@ -21,7 +22,7 @@ export const App = () => {
 
   // useEffect(() => {
   //   if (!data) return;
-  //   eventBus.dispatch("scene:load", {
+  //   eventBus.dispatch(SCENE_LOAD, {
   //     payload: data,
   //   });
   // }, [data]);

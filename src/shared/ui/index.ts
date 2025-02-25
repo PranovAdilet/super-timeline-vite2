@@ -4,3 +4,4 @@ export * from "./scroll-area";
 export * from "./draggable";
 export * from "./tabs";
 export * from "./droppable";
+export * from "./popover";

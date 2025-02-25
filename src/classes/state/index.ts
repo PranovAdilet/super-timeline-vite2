@@ -15,6 +15,7 @@ import {
   HISTORY_REDO,
   HISTORY_UNDO,
   LAYER_PREFIX,
+  SCENE_PREFIX,
 } from "../timeline/events/constants-events";
 import {
   handleActiveItemsStateEvents,
@@ -538,7 +539,7 @@ export function setupHistoryListeners(state: any) {
   const sceneSubscription = eventBus.subject
     .pipe(
       filter(({ key, value }) => {
-        return key.startsWith("scene");
+        return key.startsWith(SCENE_PREFIX);
       })
     )
     .subscribe(async (event) => {
