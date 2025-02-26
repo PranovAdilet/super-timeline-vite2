@@ -10,4 +10,5 @@ export * from "./scene";
 export * from "./timeline";
 export * from "./sequence-item";
 export * from "./control-list";
+export * from "./control-item";
 //# sourceMappingURL=index.d.ts.map

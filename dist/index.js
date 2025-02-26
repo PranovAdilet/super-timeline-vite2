@@ -18440,7 +18440,113 @@ const DE = ({
       }
     )
   }
-), zE = { Date: !0, RegExp: !0, String: !0, Number: !0 };
+), zE = () => /* @__PURE__ */ p.jsx("div", { className: "flex flex-1 flex-col", children: /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Presets" }) }), HE = () => {
+  const { activeIds: e } = Gt();
+  return /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
+    /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Animations" }),
+    /* @__PURE__ */ p.jsx("div", { className: "px-4", children: /* @__PURE__ */ p.jsxs(
+      Wp,
+      {
+        defaultValue: "in",
+        className: "w-full",
+        children: [
+          /* @__PURE__ */ p.jsxs(uu, { className: "grid w-full grid-cols-2", children: [
+            /* @__PURE__ */ p.jsx(yo, { value: "in", children: "In" }),
+            /* @__PURE__ */ p.jsx(yo, { value: "out", children: "Out" })
+          ] }),
+          /* @__PURE__ */ p.jsx(bo, { value: "in", children: /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-3 gap-2 py-4" }) }),
+          /* @__PURE__ */ p.jsx(bo, { value: "out", children: /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-3 gap-2 py-4" }) })
+        ]
+      }
+    ) })
+  ] });
+}, WE = () => /* @__PURE__ */ p.jsx("div", { className: "flex flex-1 flex-col", children: /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Ai things" }) }), BE = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
+  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Text" }),
+  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsxs("div", { className: "flex flex-col gap-2 px-4", children: [
+    /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2" }),
+    /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-2 gap-2" })
+  ] }) })
+] }), UE = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
+  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Image" }),
+  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2 px-4" }) })
+] }), $E = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
+  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Video" }),
+  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2 px-4", children: /* @__PURE__ */ p.jsx(
+    Le,
+    {
+      variant: "secondary",
+      size: "icon",
+      onClick: () => {
+        console.log(e);
+      },
+      children: /* @__PURE__ */ p.jsx(W8, { size: 18 })
+    }
+  ) }) })
+] }), VE = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
+  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Audio" }),
+  /* @__PURE__ */ p.jsx(_n, { className: "h-full" })
+] }), GE = ({ children: e }) => {
+  const { activeToolboxItem: t, setActiveToolboxItem: n } = Pi(), { activeIds: o, trackItemsMap: s, trackItemDetailsMap: a, transitionsMap: l } = Gt(), [u, f] = Ke(null), [h, m] = Ke(!1);
+  return ut(() => {
+    if (o.length === 1) {
+      const [v] = o, b = a[v], C = {
+        ...s[v],
+        details: b?.details || {}
+      };
+      b ? f(C) : console.log(l[v]);
+    } else
+      f(null), m(!1);
+  }, [o, s]), ut(() => {
+    m(!!t);
+  }, [t]), u ? /* @__PURE__ */ p.jsxs(
+    "div",
+    {
+      style: {
+        right: t && h ? "0" : "-100%",
+        transition: "right 0.25s ease-in-out",
+        zIndex: 200
+      },
+      className: "absolute top-1/2 mt-6 flex h-[calc(100%-32px-64px)] w-[340px] -translate-y-1/2 rounded-lg shadow-lg",
+      children: [
+        /* @__PURE__ */ p.jsxs("div", { className: "relative flex h-full w-[266px] bg-background/80 backdrop-blur-lg backdrop-filter", children: [
+          /* @__PURE__ */ p.jsx(
+            Le,
+            {
+              variant: "ghost",
+              className: "absolute right-2 top-2 h-8 w-8 text-muted-foreground",
+              size: "icon",
+              children: /* @__PURE__ */ p.jsx(
+                Pu,
+                {
+                  width: 16,
+                  onClick: () => {
+                    m(!1), n(null);
+                  }
+                }
+              )
+            }
+          ),
+          Ct.cloneElement(e, {
+            trackItem: u,
+            activeToolboxItem: t
+          })
+        ] }),
+        /* @__PURE__ */ p.jsx("div", { className: "w-[74px]" })
+      ]
+    }
+  ) : null;
+}, ZE = ({
+  trackItem: e,
+  activeToolboxItem: t
+}) => !e || !t ? null : /* @__PURE__ */ p.jsx(p.Fragment, { children: {
+  "basic-text": /* @__PURE__ */ p.jsx(BE, { trackItem: e }),
+  "basic-image": /* @__PURE__ */ p.jsx(UE, { trackItem: e }),
+  "basic-video": /* @__PURE__ */ p.jsx($E, { trackItem: e }),
+  "basic-audio": /* @__PURE__ */ p.jsx(VE, { trackItem: e }),
+  "preset-text": /* @__PURE__ */ p.jsx(zE, {}),
+  animation: /* @__PURE__ */ p.jsx(HE, {}),
+  smart: /* @__PURE__ */ p.jsx(WE, {})
+}[t] }), YE = () => /* @__PURE__ */ p.jsx(GE, { children: /* @__PURE__ */ p.jsx(ZE, {}) }), XE = { Date: !0, RegExp: !0, String: !0, Number: !0 };
 function ig(e, t, n = { cyclesFix: !0 }, o = []) {
   let s = [];
   const a = Array.isArray(e);
@@ -18455,7 +18561,7 @@ function ig(e, t, n = { cyclesFix: !0 }, o = []) {
       continue;
     }
     const m = t[u], v = typeof f == "object" && typeof m == "object" && Array.isArray(f) === Array.isArray(m);
-    f && m && v && !zE[Object.getPrototypeOf(f)?.constructor?.name] && (!n.cyclesFix || !o.includes(f)) ? s.push.apply(s, ig(f, m, n, n.cyclesFix ? o.concat([f]) : []).map((b) => (b.path.unshift(h), b))) : f !== m && // treat NaN values as equivalent
+    f && m && v && !XE[Object.getPrototypeOf(f)?.constructor?.name] && (!n.cyclesFix || !o.includes(f)) ? s.push.apply(s, ig(f, m, n, n.cyclesFix ? o.concat([f]) : []).map((b) => (b.path.unshift(h), b))) : f !== m && // treat NaN values as equivalent
     !(Number.isNaN(f) && Number.isNaN(m)) && !(v && (isNaN(f) ? f + "" == m + "" : +f == +m)) && s.push({
       path: [h],
       type: "CHANGE",
@@ -18519,7 +18625,7 @@ function Br(e) {
 function vr(e) {
   return e ? sg(e) || Array.isArray(e) || !!e[vo] || !!e.constructor?.[vo] || Do(e) || jo(e) : !1;
 }
-var HE = Object.prototype.constructor.toString();
+var KE = Object.prototype.constructor.toString();
 function sg(e) {
   if (!e || typeof e != "object")
     return !1;
@@ -18527,7 +18633,7 @@ function sg(e) {
   if (t === null)
     return !0;
   const n = Object.hasOwnProperty.call(t, "constructor") && t.constructor;
-  return n === Object ? !0 : typeof n == "function" && Function.toString.call(n) === HE;
+  return n === Object ? !0 : typeof n == "function" && Function.toString.call(n) === KE;
 }
 function _o(e, t) {
   Ur(e) === 0 ? Reflect.ownKeys(e).forEach((n) => {
@@ -18548,7 +18654,7 @@ function ag(e, t, n) {
   const o = Ur(e);
   o === 2 ? e.set(t, n) : o === 3 ? e.add(n) : e[t] = n;
 }
-function WE(e, t) {
+function qE(e, t) {
   return e === t ? e !== 0 || 1 / e === 1 / t : e !== e && t !== t;
 }
 function Do(e) {
@@ -18592,9 +18698,9 @@ function Gl(e, t) {
   }
 }
 function Vu(e, t = !1) {
-  return La(e) || Br(e) || !vr(e) || (Ur(e) > 1 && (e.set = e.add = e.clear = e.delete = BE), Object.freeze(e), t && Object.entries(e).forEach(([n, o]) => Vu(o, !0))), e;
+  return La(e) || Br(e) || !vr(e) || (Ur(e) > 1 && (e.set = e.add = e.clear = e.delete = JE), Object.freeze(e), t && Object.entries(e).forEach(([n, o]) => Vu(o, !0))), e;
 }
-function BE() {
+function JE() {
   et(2);
 }
 function La(e) {
@@ -18605,14 +18711,14 @@ function $r(e) {
   const t = Zl[e];
   return t || et(0, e), t;
 }
-function UE(e, t) {
+function QE(e, t) {
   Zl[e] || (Zl[e] = t);
 }
 var Eo;
 function cg() {
   return Eo;
 }
-function $E(e, t) {
+function eI(e, t) {
   return {
     drafts_: [],
     parent_: e,
@@ -18627,15 +18733,15 @@ function E1(e, t) {
   t && ($r("Patches"), e.patches_ = [], e.inversePatches_ = [], e.patchListener_ = t);
 }
 function Yl(e) {
-  Xl(e), e.drafts_.forEach(VE), e.drafts_ = null;
+  Xl(e), e.drafts_.forEach(tI), e.drafts_ = null;
 }
 function Xl(e) {
   e === Eo && (Eo = e.parent_);
 }
 function I1(e) {
-  return Eo = $E(Eo, e);
+  return Eo = eI(Eo, e);
 }
-function VE(e) {
+function tI(e) {
   const t = e[Dt];
   t.type_ === 0 || t.type_ === 1 ? t.revoke_() : t.revoked_ = !0;
 }
@@ -18696,7 +18802,7 @@ function A1(e, t, n, o, s, a, l) {
 function la(e, t, n = !1) {
   !e.parent_ && e.immer_.autoFreeze_ && e.canAutoFreeze_ && Vu(t, n);
 }
-function GE(e, t) {
+function nI(e, t) {
   const n = Array.isArray(e), o = {
     type_: n ? 1 : 0,
     // Track which produce call this is associated with.
@@ -18731,7 +18837,7 @@ var Gu = {
       return e;
     const n = Lr(e);
     if (!To(n, t))
-      return ZE(e, n, t);
+      return rI(e, n, t);
     const o = n[t];
     return e.finalized_ || !vr(o) ? o : o === xl(e.base_, t) ? (wl(e), e.copy_[t] = ql(o, e)) : o;
   },
@@ -18749,7 +18855,7 @@ var Gu = {
       const s = xl(Lr(e), t), a = s?.[Dt];
       if (a && a.base_ === n)
         return e.copy_[t] = n, e.assigned_[t] = !1, !0;
-      if (WE(n, s) && (n !== void 0 || To(e.base_, t)))
+      if (qE(n, s) && (n !== void 0 || To(e.base_, t)))
         return !0;
       wl(e), Kl(e);
     }
@@ -18796,7 +18902,7 @@ function xl(e, t) {
   const n = e[Dt];
   return (n ? Lr(n) : e)[t];
 }
-function ZE(e, t, n) {
+function rI(e, t, n) {
   const o = lg(t, n);
   return o ? "value" in o ? o.value : (
     // This is a very special case, if the prop is a getter defined by the
@@ -18824,7 +18930,7 @@ function wl(e) {
     e.scope_.immer_.useStrictShallowCopy_
   ));
 }
-var YE = class {
+var iI = class {
   constructor(e) {
     this.autoFreeze_ = !0, this.useStrictShallowCopy_ = !1, this.produce = (t, n, o) => {
       if (typeof t == "function" && typeof n != "function") {
@@ -18864,7 +18970,7 @@ var YE = class {
     }, typeof e?.autoFreeze == "boolean" && this.setAutoFreeze(e.autoFreeze), typeof e?.useStrictShallowCopy == "boolean" && this.setUseStrictShallowCopy(e.useStrictShallowCopy);
   }
   createDraft(e) {
-    vr(e) || et(8), Br(e) && (e = XE(e));
+    vr(e) || et(8), Br(e) && (e = oI(e));
     const t = I1(this), n = ql(e, void 0);
     return n[Dt].isManual_ = !0, Xl(t), n;
   }
@@ -18908,10 +19014,10 @@ var YE = class {
   }
 };
 function ql(e, t) {
-  const n = Do(e) ? $r("MapSet").proxyMap_(e, t) : jo(e) ? $r("MapSet").proxySet_(e, t) : GE(e, t);
+  const n = Do(e) ? $r("MapSet").proxyMap_(e, t) : jo(e) ? $r("MapSet").proxySet_(e, t) : nI(e, t);
   return (t ? t.scope_ : cg()).drafts_.push(n), n;
 }
-function XE(e) {
+function oI(e) {
   return Br(e) || et(10, e), ug(e);
 }
 function ug(e) {
@@ -19119,22 +19225,22 @@ function R1() {
   function v(b) {
     return Br(b) ? m(b) : b;
   }
-  UE("Patches", {
+  QE("Patches", {
     applyPatches_: h,
     generatePatches_: s,
     generateReplacementPatches_: f
   });
 }
-var jt = new YE(), KE = jt.produce;
+var jt = new iI(), sI = jt.produce;
 jt.produceWithPatches.bind(
   jt
 );
 jt.setAutoFreeze.bind(jt);
 jt.setUseStrictShallowCopy.bind(jt);
-var qE = jt.applyPatches.bind(jt);
+var aI = jt.applyPatches.bind(jt);
 jt.createDraft.bind(jt);
 jt.finishDraft.bind(jt);
-function JE(e) {
+function cI(e) {
   const t = e.value, n = [];
   if (t?.payload?.trackItemIds) {
     const o = t.payload.trackItemIds;
@@ -19226,7 +19332,7 @@ function JE(e) {
     );
   }
 }
-async function QE(e) {
+async function lI(e) {
   if (e.key === e0) {
     const t = e.value?.payload;
     this.updateState(
@@ -19268,7 +19374,7 @@ async function QE(e) {
     });
   }
 }
-async function eI(e) {
+async function uI(e) {
   const t = Ae.cloneDeep(this.getState()), n = e.value?.options?.trackId, o = e.value?.options?.trackIndex;
   let s = [], a;
   if (e.key === ko) {
@@ -19309,7 +19415,7 @@ async function eI(e) {
     );
     t.trackItemDetailsMap[f.id] = { type: a, details: u }, t.trackItemsMap[f.id] = f, t.trackItemIds.push(f.id), s.push(f.id);
   }
-  const l = tI(
+  const l = dI(
     s,
     t.tracks,
     t.trackItemsMap,
@@ -19350,7 +19456,7 @@ function P1(e, t) {
     static: !1
   };
 }
-const tI = (e, t, n, o, s) => {
+const dI = (e, t, n, o, s) => {
   if (o === void 0 && s === void 0)
     return { trackId: void 0, trackIndex: void 0 };
   const a = s !== void 0 ? t[Math.max(0, Math.min(s, t.length - 1))] : t.find((f) => f.id === o);
@@ -19382,7 +19488,7 @@ const tI = (e, t, n, o, s) => {
   "transitionIds",
   "transitionsMap",
   "trackItemIds"
-], nI = {
+], fI = {
   size: {
     width: 1920,
     height: 1080
@@ -19403,7 +19509,7 @@ const tI = (e, t, n, o, s) => {
   trackItemDetailsMap: {},
   structure: []
 };
-class rI {
+class hI {
   stateSubject;
   stateHistorySubject;
   prevState;
@@ -19412,14 +19518,14 @@ class rI {
   listener;
   constructor(t) {
     this.stateSubject = null, this.stateHistorySubject = null, this.prevState = null, this.undos = [], this.redos = [], this.listener = null;
-    const n = t || nI;
+    const n = t || fI;
     this.stateSubject = new Lh(n), this.stateHistorySubject = new Lh({
       handleRedo: !1,
       handleUndo: !1
     }), this.prevState = n, this.initListeners();
   }
   initListeners() {
-    iI(this);
+    pI(this);
   }
   destroyListeners() {
     this.listener && this.listener.unsubscribe();
@@ -19657,30 +19763,30 @@ class rI {
   }
   applyPatch(t, n) {
     return n.reverse().reduce(
-      (o, s) => KE(o, (a) => {
-        qE(a, [s]);
+      (o, s) => sI(o, (a) => {
+        aI(a, [s]);
       }),
       t
     );
   }
 }
-function iI(e) {
+function pI(e) {
   const t = xe.subject.pipe(Wn(({ key: a }) => a.startsWith(Sx))).subscribe((a) => {
     a.key === Xp && e.undo(), a.key === Kp && e.redo();
   }), n = xe.subject.pipe(Wn(({ key: a, value: l }) => a.startsWith(gx))).subscribe((a) => {
-    eI.bind(e)(a);
+    uI.bind(e)(a);
   }), o = xe.subject.pipe(
     Wn(({ key: a, value: l }) => a.startsWith(Ix))
   ).subscribe(async (a) => {
-    await QE.bind(e)(a);
+    await lI.bind(e)(a);
   }), s = xe.subject.pipe(Wn(({ key: a }) => a.startsWith(wx))).subscribe(async (a) => {
-    JE.bind(e)(a);
+    cI.bind(e)(a);
   });
   return () => {
     t.unsubscribe(), n.unsubscribe(), s.unsubscribe(), o.unsubscribe();
   };
 }
-const oI = () => {
+const mI = () => {
   const { playerRef: e, fps: t, timeline: n, setState: o } = Gt();
   ut(() => {
     const a = xe.subject.pipe(
@@ -19717,115 +19823,9 @@ const oI = () => {
       a.unsubscribe();
     };
   }, [n]);
-}, sI = () => /* @__PURE__ */ p.jsx("div", { className: "flex flex-1 flex-col", children: /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Presets" }) }), aI = () => {
-  const { activeIds: e } = Gt();
-  return /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
-    /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Animations" }),
-    /* @__PURE__ */ p.jsx("div", { className: "px-4", children: /* @__PURE__ */ p.jsxs(
-      Wp,
-      {
-        defaultValue: "in",
-        className: "w-full",
-        children: [
-          /* @__PURE__ */ p.jsxs(uu, { className: "grid w-full grid-cols-2", children: [
-            /* @__PURE__ */ p.jsx(yo, { value: "in", children: "In" }),
-            /* @__PURE__ */ p.jsx(yo, { value: "out", children: "Out" })
-          ] }),
-          /* @__PURE__ */ p.jsx(bo, { value: "in", children: /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-3 gap-2 py-4" }) }),
-          /* @__PURE__ */ p.jsx(bo, { value: "out", children: /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-3 gap-2 py-4" }) })
-        ]
-      }
-    ) })
-  ] });
-}, cI = () => /* @__PURE__ */ p.jsx("div", { className: "flex flex-1 flex-col", children: /* @__PURE__ */ p.jsx("div", { className: "text-md text-text-primary flex h-12 flex-none items-center px-4 font-medium", children: "Ai things" }) }), lI = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
-  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Text" }),
-  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsxs("div", { className: "flex flex-col gap-2 px-4", children: [
-    /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2" }),
-    /* @__PURE__ */ p.jsx("div", { className: "grid grid-cols-2 gap-2" })
-  ] }) })
-] }), uI = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
-  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Image" }),
-  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2 px-4" }) })
-] }), dI = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
-  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Video" }),
-  /* @__PURE__ */ p.jsx(_n, { className: "h-full", children: /* @__PURE__ */ p.jsx("div", { className: "flex flex-col gap-2 px-4", children: /* @__PURE__ */ p.jsx(
-    Le,
-    {
-      variant: "secondary",
-      size: "icon",
-      onClick: () => {
-        console.log(e);
-      },
-      children: /* @__PURE__ */ p.jsx(W8, { size: 18 })
-    }
-  ) }) })
-] }), fI = ({ trackItem: e }) => /* @__PURE__ */ p.jsxs("div", { className: "flex flex-1 flex-col", children: [
-  /* @__PURE__ */ p.jsx("div", { className: "text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium", children: "Audio" }),
-  /* @__PURE__ */ p.jsx(_n, { className: "h-full" })
-] }), hI = ({ children: e }) => {
-  const { activeToolboxItem: t, setActiveToolboxItem: n } = Pi(), { activeIds: o, trackItemsMap: s, trackItemDetailsMap: a, transitionsMap: l } = Gt(), [u, f] = Ke(null), [h, m] = Ke(!1);
-  return ut(() => {
-    if (o.length === 1) {
-      const [v] = o, b = a[v], C = {
-        ...s[v],
-        details: b?.details || {}
-      };
-      b ? f(C) : console.log(l[v]);
-    } else
-      f(null), m(!1);
-  }, [o, s]), ut(() => {
-    m(!!t);
-  }, [t]), u ? /* @__PURE__ */ p.jsxs(
-    "div",
-    {
-      style: {
-        right: t && h ? "0" : "-100%",
-        transition: "right 0.25s ease-in-out",
-        zIndex: 200
-      },
-      className: "absolute top-1/2 mt-6 flex h-[calc(100%-32px-64px)] w-[340px] -translate-y-1/2 rounded-lg shadow-lg",
-      children: [
-        /* @__PURE__ */ p.jsxs("div", { className: "relative flex h-full w-[266px] bg-background/80 backdrop-blur-lg backdrop-filter", children: [
-          /* @__PURE__ */ p.jsx(
-            Le,
-            {
-              variant: "ghost",
-              className: "absolute right-2 top-2 h-8 w-8 text-muted-foreground",
-              size: "icon",
-              children: /* @__PURE__ */ p.jsx(
-                Pu,
-                {
-                  width: 16,
-                  onClick: () => {
-                    m(!1), n(null);
-                  }
-                }
-              )
-            }
-          ),
-          Ct.cloneElement(e, {
-            trackItem: u,
-            activeToolboxItem: t
-          })
-        ] }),
-        /* @__PURE__ */ p.jsx("div", { className: "w-[74px]" })
-      ]
-    }
-  ) : null;
-}, pI = ({
-  trackItem: e,
-  activeToolboxItem: t
-}) => !e || !t ? null : /* @__PURE__ */ p.jsx(p.Fragment, { children: {
-  "basic-text": /* @__PURE__ */ p.jsx(lI, { trackItem: e }),
-  "basic-image": /* @__PURE__ */ p.jsx(uI, { trackItem: e }),
-  "basic-video": /* @__PURE__ */ p.jsx(dI, { trackItem: e }),
-  "basic-audio": /* @__PURE__ */ p.jsx(fI, { trackItem: e }),
-  "preset-text": /* @__PURE__ */ p.jsx(sI, {}),
-  animation: /* @__PURE__ */ p.jsx(aI, {}),
-  smart: /* @__PURE__ */ p.jsx(cI, {})
-}[t] }), mI = () => /* @__PURE__ */ p.jsx(hI, { children: /* @__PURE__ */ p.jsx(pI, {}) }), gI = new rI(), MA = () => {
+}, gI = new hI(), MA = () => {
   const { playerRef: e } = Gt();
-  oI();
+  mI();
   const [t, n] = Ke([]);
   return /* @__PURE__ */ p.jsxs("div", { className: "relative flex h-screen w-screen flex-col bg-background ", children: [
     /* @__PURE__ */ p.jsx(FC, {}),
@@ -19843,7 +19843,7 @@ const oI = () => {
           /* @__PURE__ */ p.jsx(NC, {}),
           /* @__PURE__ */ p.jsx(jC, {}),
           /* @__PURE__ */ p.jsx(OE, {}),
-          /* @__PURE__ */ p.jsx(mI, {}),
+          /* @__PURE__ */ p.jsx(YE, {}),
           /* @__PURE__ */ p.jsx(ZC, {})
         ]
       }
@@ -19875,6 +19875,8 @@ export {
   wk as BASE_TIMELINE_ELEMENT_DURATION_MS,
   Le as Button,
   YC as CanvasMixin,
+  YE as ControlItem,
+  OE as ControlList,
   Tk as DEFAULT_AUDIO_BITRATE,
   _k as DEFAULT_AUDIO_SAMPLE_RATE,
   fA as DEFAULT_BLUR,
@@ -20010,7 +20012,7 @@ export {
   wp as ScrollBar,
   BC as SequenceItem,
   N6 as Slider,
-  rI as StateManager,
+  hI as StateManager,
   Qp as TIMELINE_BOUNDING_CHANGED,
   Ru as TIMELINE_OFFSET_CANVAS_LEFT,
   o1 as TIMELINE_OFFSET_CANVAS_RIGHT,
@@ -20101,7 +20103,7 @@ export {
   ea as removeItemsFromTrack,
   mr as renderControl,
   Cm as reorderTracksByIndex,
-  iI as setupHistoryListeners,
+  pI as setupHistoryListeners,
   Xe as timeMsToUnits,
   y8 as timeToString,
   Ye as transitionStore,
@@ -20111,6 +20113,6 @@ export {
   Ia as useIsDraggingOverTimeline,
   Pi as useLayoutStore,
   Gt as useStore,
-  oI as useTimelineEvents,
+  mI as useTimelineEvents,
   km as wrapResizeWithAnchorPosition
 };
