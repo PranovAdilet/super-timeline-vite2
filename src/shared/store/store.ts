@@ -10,8 +10,8 @@ import {
 export const useStore = create<ITimelineStore>((set) => ({
   timeline: null,
   size: {
-    width: 1080,
-    height: 1920,
+    width: 1920,
+    height: 1080,
   },
   aspectRatio: 16 / 9,
   duration: 5000,

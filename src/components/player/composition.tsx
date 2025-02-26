@@ -1,5 +1,6 @@
 "use client";
 
+import { AbsoluteFill } from "remotion";
 import useStore from "@/shared/store/store";
 import { SequenceItem } from "../sequence-item";
 import { merge } from "lodash";
@@ -12,7 +13,7 @@ const Composition = () => {
   const mergedTrackItemsDeatilsMap = merge(trackItemsMap, trackItemDetailsMap);
 
   return (
-    <>
+    <AbsoluteFill className="bg-black overflow-hidden">
       {trackItemIds.map((id) => {
         const item = mergedTrackItemsDeatilsMap[id];
 
@@ -20,7 +21,7 @@ const Composition = () => {
           fps,
         });
       })}
-    </>
+    </AbsoluteFill>
   );
 };
 

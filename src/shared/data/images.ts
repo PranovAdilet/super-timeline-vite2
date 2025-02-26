@@ -2,6 +2,15 @@ import { IImage } from "../types";
 
 export const IMAGES: Partial<IImage>[] = [
   {
+    id: "123",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/2/17/21\\E6FG5Gp3w6z9ws5ysPCq67.webp",
+    },
+    preview:
+      "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/2/17/21\\E6FG5Gp3w6z9ws5ysPCq67.webp",
+    type: "image",
+  },
+  {
     id: "1",
     details: { src: "https://ik.imagekit.io/wombo/images/img1.jpg" },
     preview: "https://ik.imagekit.io/wombo/images/img1.jpg?tr=w-190",

@@ -116,26 +116,28 @@ export const SequenceItem: Record<
         from={from}
         durationInFrames={durationInFrames}
         style={{
-          width: crop.width || "100%", // Default width
-          height: crop.height || "auto", // Default height
+          // width: crop.width || "100%", // Default width
+          // height: crop.height || "auto", // Default height
           transform: item.details.transform ?? "none",
           opacity: (item.details.opacity ?? 100) / 100 || 1,
           border: item.details.border ?? "none", // Default border
           borderRadius: item.details.borderRadius ?? "0", // Default border radius
           boxShadow: item.details.boxShadow ?? "none", // Default box shadow
-          top: item.details.top ?? 0,
-          left: item.details.left ?? 0,
+          // top: item.details.top ?? 0,
+          // left: item.details.left ?? 0,
           overflow: "hidden",
         }}
+        className="size-full"
       >
         <AbsoluteFill
           style={{
             pointerEvents: "none",
-            width: item.details.width,
-            height: item.details.height,
+            // width: item.details.width,
+            // height: item.details.height,
             top: -crop.y,
             left: -crop.x,
           }}
+          className="size-full"
         >
           <OffthreadVideo
             startFrom={(trim.from / 1000) * fps}
@@ -144,9 +146,10 @@ export const SequenceItem: Record<
             volume={(item.details.volume ?? 100) / 100}
             style={{
               pointerEvents: "none",
-              width: item.details.width,
-              height: item.details.height,
+              // width: item.details.width,
+              // height: item.details.height,
             }}
+            className="size-full"
           />
         </AbsoluteFill>
       </Sequence>

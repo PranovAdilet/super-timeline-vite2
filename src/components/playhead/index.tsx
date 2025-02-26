@@ -1,16 +1,16 @@
-"use client";
-
-import type { MouseEvent, TouchEvent } from "react";
-import { useEffect, useRef, useState } from "react";
-import useStore from "@/shared/store/store";
-import { useCurrentPlayerFrame } from "@/shared/hooks";
-import { timeMsToUnits, unitsToTimeMs } from "@/shared/utils";
-import { TIMELINE_OFFSET_CANVAS_LEFT } from "@/shared/constants";
+import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import {
+  TIMELINE_OFFSET_CANVAS_LEFT,
+  timeMsToUnits,
+  unitsToTimeMs,
+  useCurrentPlayerFrame,
+  useStore,
+} from "@/shared";
 
 const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
   const playheadRef = useRef<HTMLDivElement>(null);
   const { playerRef, fps, scale } = useStore();
-  const currentFrame = useCurrentPlayerFrame(playerRef ?? undefined);
+  const currentFrame = useCurrentPlayerFrame(playerRef!);
   const position =
     timeMsToUnits((currentFrame / fps) * 1000, scale.zoom) - scrollLeft;
   const [isDragging, setIsDragging] = useState(false);
@@ -22,8 +22,11 @@ const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
   };
 
   const handleMouseDown = (
-    e: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>
+    e:
+      | MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      | TouchEvent<HTMLDivElement>
   ) => {
+    e.preventDefault(); // Prevent default drag behavior
     setIsDragging(true);
     const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
     setDragStartX(clientX);
@@ -34,8 +37,9 @@ const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
     e: globalThis.MouseEvent | globalThis.TouchEvent
   ) => {
     if (isDragging) {
+      e.preventDefault(); // Prevent default drag behavior
       const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const delta = clientX - dragStartX;
+      const delta = clientX - dragStartX + scrollLeft;
       const newPosition = dragStartPosition + delta;
 
       const time = unitsToTimeMs(newPosition, scale.zoom);
@@ -59,6 +63,7 @@ const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("touchmove", handleMouseMove);
       document.removeEventListener("touchend", handleMouseUp);
+      document.removeEventListener("dragstart", preventDefaultDrag);
     }
 
     // Cleanup event listeners on component unmount
@@ -74,19 +79,9 @@ const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
   return (
     <div
       ref={playheadRef}
-      role="button"
-      tabIndex={0}
-      onMouseDown={(e) => {
-        handleMouseDown(e);
-      }}
-      onTouchStart={(e) => {
-        handleMouseDown(e);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          handleMouseDown(e as unknown as MouseEvent<HTMLDivElement>);
-        }
-      }}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleMouseDown}
+      onDragStart={(e) => e.preventDefault()}
       style={{
         position: "absolute",
         left: 40 + TIMELINE_OFFSET_CANVAS_LEFT + position,
@@ -96,17 +91,17 @@ const Playhead = ({ scrollLeft }: { scrollLeft: number }) => {
         background: "#d4d4d8",
         zIndex: 10,
         cursor: "pointer",
+        touchAction: "none", // Prevent default touch actions
       }}
     >
       <div className="relative h-full">
-        <div className="absolute top-0  h-full w-3 -translate-x-1/2"></div>
-        <div className="absolute top-0  h-full w-0.5 -translate-x-1/2 bg-white/50"></div>
-
+        <div className="absolute top-0 h-full w-3 -translate-x-1/2 transform"></div>
+        <div className="absolute top-0 h-full w-0.5 -translate-x-1/2 transform bg-white/50"></div>
         <div
           style={{
             borderRadius: "0 0 20px 20px",
           }}
-          className="absolute h-3 -translate-x-1/2 px-1.5"
+          className="absolute h-3 -translate-x-1/2 transform px-1.5"
         >
           <svg
             height="12"

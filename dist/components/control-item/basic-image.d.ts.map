@@ -1,0 +1,1 @@
+{"version":3,"file":"basic-image.d.ts","sourceRoot":"","sources":["../../../src/components/control-item/basic-image.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,UAAU,EAAc,MAAM,UAAU,CAAC;AAE1D,QAAA,MAAM,UAAU,kBAAmB;IAAE,SAAS,EAAE,UAAU,GAAG,MAAM,CAAA;CAAE,4CAWpE,CAAC;AAEF,eAAe,UAAU,CAAC"}

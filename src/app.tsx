@@ -9,6 +9,8 @@ import { StateManager } from "@/classes/state";
 import { useEffect, useState } from "react";
 import "./index.css";
 import { eventBus, SCENE_LOAD } from "./classes";
+import ControlList from "./components/control-list";
+import { ControlItem } from "./components/control-item";
 
 const stateManager = new StateManager();
 
@@ -50,8 +52,8 @@ export const App = () => {
       >
         <MenuList />
         <MenuItem />
-        {/* <ControlList /> */}
-        {/* <ControlItem /> */}
+        <ControlList />
+        <ControlItem />
         <Scene />
       </div>
 
@@ -98,7 +100,7 @@ export const data1 = {
       static: false,
     },
   ],
-  size: { width: 1080, height: 1920 },
+  size: { width: 1920, height: 1080 },
   trackItemDetailsMap: {
     "1": {
       type: "audio",

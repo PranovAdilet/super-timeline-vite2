@@ -56,14 +56,14 @@ export const loadVideoItem = async (
 ): Promise<IVideo> => {
   const src = payload.details.src;
   const file = await loadVideo(src);
-  const position = calculatePosition(options, {
-    ...file,
-  });
+
+  const position = calculatePosition(options, file);
+
   const trim = calculateTrim(payload.trim, { duration: file.duration });
 
   const details = {
-    width: file.width,
-    height: file.height,
+    width: payload.details.width || file.width || 100,
+    height: payload.details.height || file.height || 100,
     duration: file.duration,
     src,
     volume: payload.details.volume ?? 100,

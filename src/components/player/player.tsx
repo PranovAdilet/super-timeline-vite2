@@ -26,8 +26,8 @@ export const Player = () => {
         style={{ width: "100%", height: "100%" }}
         inputProps={{}}
         fps={fps}
-        // overflowVisible
-        controls
+        overflowVisible
+        // controls
         numberOfSharedAudioTags={10}
       />
     </Flex>

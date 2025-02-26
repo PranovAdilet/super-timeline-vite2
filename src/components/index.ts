@@ -9,3 +9,4 @@ export * from "./ruler";
 export * from "./scene";
 export * from "./timeline";
 export * from "./sequence-item";
+export * from "./control-list";

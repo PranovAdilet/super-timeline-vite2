@@ -7,7 +7,7 @@ export class Audio extends AudioBase {
     super(props);
 
     this.text = props.text ?? "Audio";
-    // this.fill = "#2563eb";
+    this.fill = "#768F44";
     // this.fill = "#10B981";
   }
 

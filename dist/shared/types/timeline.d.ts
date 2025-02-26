@@ -139,6 +139,8 @@ export type IText = {
     type: ItemType;
     details: ITextDetails;
 } & ILayerBase;
+export type IItem = IAudio | IImage | IText | IVideo;
+export type ITrackItemAndDetails = ITrackItem & IItem;
 export type IImage = {
     type: "image";
     details: {

@@ -107,7 +107,7 @@ const RESIZE_OPTIONS: ResizeOptionProps[] = [
   },
 ];
 
-const ResizeVideo = () => {
+export const ResizeVideo = () => {
   const handleResize = (options: ResizeValue) => {
     eventBus.dispatch(SCENE_RESIZE, {
       payload: {

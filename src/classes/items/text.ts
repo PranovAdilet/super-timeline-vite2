@@ -4,7 +4,7 @@ export class Text extends TextBase {
   static type = "Text";
   constructor(props: any) {
     super(props);
-    this.fill = "#303030";
+    this.fill = "#6E6855";
     // this.fill = "#FFAA33";
   }
 
