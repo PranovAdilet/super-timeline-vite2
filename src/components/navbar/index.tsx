@@ -6,6 +6,12 @@ import {
 import eventBus from "@/classes/timeline/events/event-bus";
 import { Button, Popover } from "@/shared/ui";
 import { Icons } from "../menu-list/icons";
+import { useEffect, useState } from "react";
+import { useStore } from "@/shared";
+import { v4 as uuid } from "uuid";
+import { ChevronDown, Download } from "lucide-react";
+import { Label } from "@radix-ui/themes/dist/cjs/components/context-menu";
+import { Progress } from "@radix-ui/themes";
 
 export default function Navbar() {
   const handleUndo = () => {
@@ -55,6 +61,11 @@ export default function Navbar() {
         <div className="flex h-12 items-center gap-4 rounded-md bg-background px-2.5">
           <div className="px-1 text-sm font-medium">Untitled video</div>
           <ResizeVideo />
+        </div>
+      </div>
+      <div className="pointer-events-auto flex h-14 items-center justify-end gap-2">
+        <div className="flex h-12 items-center gap-2 rounded-md bg-background px-2.5">
+          <DownloadPopover />
         </div>
       </div>
     </div>
@@ -164,4 +175,149 @@ const ResizeOption = ({
       </div>
     </div>
   );
+};
+
+const baseUrl = "http://localhost:8000";
+const size = {
+  width: 1080,
+  height: 1920,
+};
+
+interface IDownloadState {
+  renderId: string;
+  progress: number;
+  isDownloading: boolean;
+}
+const DownloadPopover = () => {
+  const [open, setOpen] = useState(false);
+  const [downloadState, setDownloadState] = useState<IDownloadState>({
+    progress: 0,
+    isDownloading: false,
+    renderId: "",
+  });
+  const {
+    tracks,
+    trackItemIds,
+    trackItemsMap,
+    trackItemDetailsMap,
+    transitionsMap,
+    transitionIds,
+    fps,
+  } = useStore();
+
+  const handleExport = () => {
+    const data: any = {
+      id: uuid(),
+      fps,
+      size,
+      tracks,
+      trackItemDetailsMap,
+      trackItemIds,
+      transitionsMap,
+      trackItemsMap,
+      transitionIds,
+    };
+    console.log(data);
+  };
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (downloadState.renderId) {
+      interval = setInterval(() => {
+        fetch(`${baseUrl}/status/${downloadState.renderId}`)
+          .then((res) => res.json())
+          .then(({ render: { progress, output } }) => {
+            if (progress === 100) {
+              clearInterval(interval);
+              setDownloadState({
+                ...downloadState,
+                renderId: "",
+                progress: 0,
+                isDownloading: false,
+              });
+              download(output, `${downloadState.renderId}`);
+              setOpen(false);
+            } else {
+              setDownloadState({
+                ...downloadState,
+                progress,
+                isDownloading: true,
+              });
+            }
+          });
+      }, 1000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [downloadState.renderId]);
+
+  return (
+    <Popover
+      open={open}
+      onOpenChange={setOpen}
+      trigger={
+        <Button
+          className="flex h-9 w-9 gap-1 border border-border"
+          size="icon"
+          variant="secondary"
+        >
+          <Download width={18} />
+        </Button>
+      }
+    >
+      {downloadState.isDownloading ? (
+        <>
+          <Label>Downloading</Label>
+          <div className="flex items-center gap-2">
+            <Progress
+              className="h-2 rounded-sm"
+              value={downloadState.progress}
+            />
+            <div className="rounded-sm border border-border p-1 text-sm text-zinc-400">
+              {parseInt(downloadState.progress.toString())}%
+            </div>
+          </div>
+          <div>
+            <Button className="w-full">Copy link</Button>
+          </div>
+        </>
+      ) : (
+        <div className="flex flex-col gap-3">
+          <Label>Export settings</Label>
+          <Button
+            className="w-full justify-between"
+            variant="outline"
+          >
+            <div>MP4</div>
+            <ChevronDown width={16} />
+          </Button>
+          <div>
+            <Button
+              onClick={handleExport}
+              className="w-full"
+            >
+              Export
+            </Button>
+          </div>
+        </div>
+      )}
+    </Popover>
+  );
+};
+
+export const download = (url: string, filename: string) => {
+  fetch(url)
+    .then((response) => response.blob())
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${filename}.mp4`);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode?.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    })
+    .catch((error) => console.error("Download error:", error));
 };

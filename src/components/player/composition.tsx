@@ -1,7 +1,7 @@
 "use client";
 
 import { AbsoluteFill } from "remotion";
-import useStore from "@/shared/store/store";
+import useStore from "../../shared/store/store";
 import { SequenceItem } from "../sequence-item";
 import { merge } from "lodash";
 

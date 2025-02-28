@@ -1,4 +1,4 @@
-import type { ITrackItem } from "@/shared/types/timeline";
+import type { ITrackItem } from "../../";
 type SequenceItemOptions = {
     fps: number;
     width?: number;

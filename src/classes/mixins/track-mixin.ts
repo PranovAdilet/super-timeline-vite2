@@ -127,6 +127,10 @@ export class TracksMixin {
         this.insertAt(0, helper);
       } else {
         const TrackClass: any = classRegistry.getClass("Track") || TrackObject;
+        const accepts =
+          element.type === "image" || element.type === "video"
+            ? ["image", "video"]
+            : [element.type];
         const track = new TrackClass({
           id: element.id,
           top: topPosition,
@@ -135,7 +139,8 @@ export class TracksMixin {
           height: 42,
           width: trackWidth,
           tScale: this.tScale,
-          accepts: this.acceptsMap?.[element.type] || [],
+          accepts: accepts,
+          // accepts: this.acceptsMap?.[element.type] || [],
           items: element.items,
         });
         topPosition += 42;

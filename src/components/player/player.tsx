@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import type { PlayerRef } from "@remotion/player";
 import { Player as RemotionPlayer } from "@remotion/player";
 import Composition from "./composition";
-import useStore from "@/shared/store/store";
+import useStore from "../../shared/store/store";
 import { Flex } from "@radix-ui/themes";
 
 export const Player = () => {

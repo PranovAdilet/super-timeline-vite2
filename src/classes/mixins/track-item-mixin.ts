@@ -32,6 +32,7 @@ export class TrackItemsMixin {
     this.trackItemIds.push(id);
     this.renderTracks();
     this.alignItemsToTrack();
+    this.updateTrackItemsPosition();
     this.calcBounding();
     this.duration = calculateDuration(this.trackItemsMap);
     // this.updateState();

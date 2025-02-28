@@ -1,6 +1,6 @@
 "use client";
 
-import type { ITrackItem } from "@/shared/types/timeline";
+import type { ITrackItem } from "../../";
 import { AbsoluteFill, Audio, Img, OffthreadVideo, Sequence } from "remotion";
 
 const calculateFrames = (
@@ -71,19 +71,22 @@ export const SequenceItem: Record<
         from={from}
         durationInFrames={durationInFrames}
         style={{
-          width: item.details.width ?? "100%", // Default width
-          height: item.details.height ?? "auto", // Default height
-          transform: item.details.transform ?? "none",
+          // width: item.details.width ?? "100%", // Default width
+          // height: item.details.height ?? "auto", // Default height
+          // transform: item.details.transform ?? "none",
           opacity: (item.details.opacity ?? 100) / 100 || 1,
           border: item.details.border ?? "none", // Default border
           borderRadius: item.details.borderRadius ?? "0", // Default border radius
           boxShadow: item.details.boxShadow ?? "none", // Default box shadow
           filter: item.details.filter || "none",
-          top: item.details.top ?? 0,
-          left: item.details.left ?? 0,
+          // top: item.details.top ?? 0,
+          // left: item.details.left ?? 0,
         }}
       >
-        <AbsoluteFill style={{ pointerEvents: "none" }}>
+        <AbsoluteFill
+          style={{ pointerEvents: "none" }}
+          className="flex justify-center"
+        >
           <Img
             style={{ pointerEvents: "none" }}
             data-id={item.id}
