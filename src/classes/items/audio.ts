@@ -20,9 +20,9 @@ export class Audio extends AudioBase {
     this.downbeats = music.audio_metadata.downbeats;
     this.segments = music.audio_metadata.segments;
 
-    if (this.src) {
-      this.loadAudioData();
-    }
+    // if (this.src) {
+    //   this.loadAudioData();
+    // }
   }
 
   public _render(ctx: CanvasRenderingContext2D) {
@@ -61,11 +61,13 @@ export class Audio extends AudioBase {
   private async loadAudioData() {
     try {
       const response = await fetch(this.src);
+
       const arrayBuffer = await response.arrayBuffer();
       const audioContext = new AudioContext();
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 
       const rawData = audioBuffer.getChannelData(0);
+      console.log(arrayBuffer, audioBuffer, rawData);
       const samples = Math.floor(this.width / 2);
 
       const blockSize = Math.floor(rawData.length / samples);
