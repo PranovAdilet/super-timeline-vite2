@@ -11,6 +11,7 @@ import {
   ADD_TEXT,
   ADD_VIDEO,
   DESIGN_PREFIX,
+  EDIT_PREFIX,
   HISTORY_PREFIX,
   HISTORY_REDO,
   HISTORY_UNDO,
@@ -20,6 +21,7 @@ import {
 import {
   handleActiveItemsStateEvents,
   handleAddRemoveStateEvents,
+  handleEditObject,
   handleSceneStateEvents,
 } from "./events/crud";
 import { IKindHistory } from "@/shared/types";
@@ -552,6 +554,12 @@ export function setupHistoryListeners(state: any) {
       handleActiveItemsStateEvents.bind(state)(event);
     });
 
+  const editSubscription = eventBus.subject
+    .pipe(filter(({ key }) => key.startsWith(EDIT_PREFIX)))
+    .subscribe(async (event) => {
+      handleEditObject.bind(state)(event);
+    });
+
   // const layerSubscription = eventBus.subject
   //   .pipe(filter(({ key }) => key.startsWith(LAYER_PREFIX)))
   //   .subscribe((event) => {
@@ -563,6 +571,7 @@ export function setupHistoryListeners(state: any) {
     addSubscription.unsubscribe();
     activeSubscription.unsubscribe();
     sceneSubscription.unsubscribe();
+    editSubscription.unsubscribe();
     // layerSubscription.unsubscribe();
   };
 }

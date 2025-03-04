@@ -1,7 +1,7 @@
-type FontDetails = {
-    fontFamily: string;
-    fontUrl: string;
-};
-export declare const loadFonts: (fonts: FontDetails[]) => Promise<boolean>;
-export {};
+import { ICompactFont, IFont } from "@/shared/types";
+export declare const loadFonts: (fonts: {
+    name: string;
+    url: string;
+}[]) => Promise<unknown>;
+export declare const getCompactFontData: (fonts: IFont[]) => ICompactFont[];
 //# sourceMappingURL=load-fonts.d.ts.map

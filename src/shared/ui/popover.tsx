@@ -17,7 +17,7 @@ export const Popover = ({ trigger, children, ...props }: PopoverProps) => {
           {trigger}
         </PopoverRadix.Trigger>
       )}
-      <PopoverRadix.Content maxHeight="250px">{children}</PopoverRadix.Content>
+      <PopoverRadix.Content>{children}</PopoverRadix.Content>
     </PopoverRadix.Root>
   );
 };

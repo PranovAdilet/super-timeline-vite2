@@ -56,7 +56,6 @@ export const App = () => {
         <ControlItem />
         <Scene />
       </div>
-
       <div className="h-70 w-full ">
         {/* <Button
           onClick={() => {

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/shared/ui/color-picker/index.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,EAAE,EAAE,MAAM,OAAO,CAAC;AAIhC,KAAK,KAAK,GAAG;IACX,KAAK,EAAE,MAAM,CAAC;IACd,QAAQ,EAAE,CAAC,KAAK,EAAE,MAAM,KAAK,IAAI,CAAC;CACnC,CAAC;AAEF,eAAO,MAAM,WAAW,EAAE,EAAE,CAAC,KAAK,CASjC,CAAC"}

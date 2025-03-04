@@ -132,8 +132,8 @@ export const loadTextItem = async (
 
   await loadFonts([
     {
-      fontFamily: payload.details.fontFamily ?? "",
-      fontUrl: payload.details.fontUrl ?? "",
+      name: payload.details.fontFamily ?? "",
+      url: payload.details.fontUrl ?? "",
     },
   ]);
 

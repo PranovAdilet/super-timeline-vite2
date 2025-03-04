@@ -1,56 +1,49 @@
-type FontDetails = {
-  fontFamily: string;
-  fontUrl: string;
+import { ICompactFont, IFont } from "@/shared/types";
+import { groupBy } from "lodash";
+
+export const loadFonts = (fonts: { name: string; url: string }[]) => {
+  const promisesList = fonts.map((font) => {
+    return new FontFace(font.name, `url(${font.url})`)
+      .load()
+      .catch((err) => err);
+  });
+  return new Promise((resolve, reject) => {
+    Promise.all(promisesList)
+      .then((res) => {
+        res.forEach((uniqueFont) => {
+          if (uniqueFont && uniqueFont.family) {
+            document.fonts.add(uniqueFont);
+            resolve(true);
+          }
+        });
+      })
+      .catch((err) => reject(err));
+  });
 };
 
-type FontLoadResult = FontFace | Error;
-export const loadFonts = (fonts: FontDetails[]): Promise<boolean> => {
-  const fontPromises: Promise<FontLoadResult>[] = fonts.map(
-    (font) => new FontFace(font.fontFamily, `url(${font.fontUrl})`).load()
-    // .catch((error: unknown) => error),
+const findDefaultFont = (fonts: IFont[]): IFont => {
+  const regularFont = fonts.find((font) =>
+    font.fullName.toLowerCase().includes("regular")
   );
 
-  return fontPromises.length === 0
-    ? Promise.resolve(true)
-    : new Promise((resolve, reject) => {
-        Promise.all(fontPromises)
-          .then((loadedFonts) => {
-            loadedFonts.forEach((font) => {
-              if (font instanceof FontFace && font.family) {
-                document.fonts.add(font);
-                resolve(true);
-              }
-            });
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      });
+  return regularFont ? regularFont : fonts[0];
 };
 
-// const findDefaultFont = (fonts: IFont[]): IFont => {
-//   const regularFont = fonts.find((font) =>
-//     font.fullName.toLowerCase().includes("regular")
-//   );
+export const getCompactFontData = (fonts: IFont[]): ICompactFont[] => {
+  const compactFontsMap: { [key: string]: ICompactFont } = {};
+  // lodash groupby
+  const fontsGroupedByFamily = groupBy(fonts, (font) => font.family);
 
-//   return regularFont ? regularFont : fonts[0];
-// };
+  Object.keys(fontsGroupedByFamily).forEach((family) => {
+    const fontsInFamily = fontsGroupedByFamily[family];
+    const defaultFont = findDefaultFont(fontsInFamily);
+    const compactFont: ICompactFont = {
+      family: family,
+      styles: fontsInFamily,
+      default: defaultFont,
+    };
+    compactFontsMap[family] = compactFont;
+  });
 
-// export const getCompactFontData = (fonts: IFont[]): ICompactFont[] => {
-//   const compactFontsMap: { [key: string]: ICompactFont } = {};
-//   // lodash groupby
-//   const fontsGroupedByFamily = groupBy(fonts, (font) => font.family);
-
-//   Object.keys(fontsGroupedByFamily).forEach((family) => {
-//     const fontsInFamily = fontsGroupedByFamily[family];
-//     const defaultFont = findDefaultFont(fontsInFamily);
-//     const compactFont: ICompactFont = {
-//       family: family,
-//       styles: fontsInFamily,
-//       default: defaultFont,
-//     };
-//     compactFontsMap[family] = compactFont;
-//   });
-
-//   return Object.values(compactFontsMap);
-// };
+  return Object.values(compactFontsMap);
+};

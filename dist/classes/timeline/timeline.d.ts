@@ -49,7 +49,17 @@ export declare class Timeline extends Canvas {
     getUpdatedState(): {
         tracks: ITrack[];
         trackItemIds: string[];
-        trackItemsMap: Record<string, ITrackItem>;
+        trackItemsMap: Record<string, (import("@/shared/types").ITrackItemBase & {
+            type: "text";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "image";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "video";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "audio";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "helper";
+        })>;
         transitionIds: string[];
         transitionsMap: Record<string, ITransition>;
         scale: ITimelineScaleState | undefined;
@@ -58,10 +68,30 @@ export declare class Timeline extends Canvas {
     getState(): {
         tracks: ITrack[];
         trackItemIds: string[];
-        trackItemsMap: Record<string, ITrackItem>;
+        trackItemsMap: Record<string, (import("@/shared/types").ITrackItemBase & {
+            type: "text";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "image";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "video";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "audio";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "helper";
+        })>;
         transitionIds: string[];
         transitionsMap: Record<string, ITransition>;
-        trackItemDetailsMap: Record<string, ITrackItem>;
+        trackItemDetailsMap: Record<string, (import("@/shared/types").ITrackItemBase & {
+            type: "text";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "image";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "video";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "audio";
+        }) | (import("@/shared/types").ITrackItemBase & {
+            type: "helper";
+        })>;
         scale: ITimelineScaleState | undefined;
         duration: number;
     };

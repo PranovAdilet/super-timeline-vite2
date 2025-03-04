@@ -24,31 +24,40 @@ type ICommonDetails = {
   opacity?: number;
   border?: string;
   borderRadius?: string;
-  boxShadow?: string;
+  boxShadow?: IBoxShadow;
   top?: number | string;
   left?: number | string;
 };
+export interface IBoxShadow {
+  color: string;
+  x: number;
+  y: number;
+  blur: number;
+}
+
 export type ITrackItem =
   | (ITrackItemBase & {
       type: "text";
-      details: ITextDetails;
     })
   | (ITrackItemBase & {
       type: "image";
-      details: IImageDetails;
     })
   | (ITrackItemBase & {
       type: "video";
-      details: IVideoDetails;
     })
   | (ITrackItemBase & {
       type: "audio";
-      details: IAudioDetails;
     })
   | (ITrackItemBase & {
       type: "helper";
-      details: ICommonDetails;
+    })
+  | (ITrackItemBase & {
+      type: "caption";
+    })
+  | (ITrackItemBase & {
+      type: "template";
     });
+
 export type ITransition = {};
 export type ITrackItemBase = {
   id: string;
@@ -169,6 +178,8 @@ export type IImage = {
     top?: number | string;
     left?: number | string;
     duration?: number;
+    blur?: number;
+    brightness?: number;
   };
 } & ILayerBase;
 export type IVideo = {

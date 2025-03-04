@@ -154,7 +154,6 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
 
     const tracksSubscription = stateManager.subscribeToTracks(
       (newState: any) => {
-        // console.log(newState);
         setState(newState);
       }
     );

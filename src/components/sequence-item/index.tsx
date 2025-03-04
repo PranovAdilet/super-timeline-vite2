@@ -78,7 +78,11 @@ export const SequenceItem: Record<
           border: item.details.border ?? "none", // Default border
           borderRadius: item.details.borderRadius ?? "0", // Default border radius
           boxShadow: item.details.boxShadow ?? "none", // Default box shadow
-          filter: item.details.filter || "none",
+          filter:
+            `brightness(${item.details.brightness ?? 100}%) blur(${
+              item.details.blur ?? 0
+            }px)` || "none",
+
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
         }}
@@ -88,7 +92,15 @@ export const SequenceItem: Record<
           className="flex justify-center"
         >
           <Img
-            style={{ pointerEvents: "none" }}
+            style={{
+              pointerEvents: "none",
+              objectFit: "contain",
+              opacity: item.details.opacity || 1,
+              filter:
+                `brightness(${item.details.brightness}%) blur(${item.details.blur}px)` ||
+                "none",
+            }}
+            className="size-full"
             data-id={item.id}
             src={item.details.src}
           />
@@ -149,6 +161,7 @@ export const SequenceItem: Record<
             volume={(item.details.volume ?? 100) / 100}
             style={{
               pointerEvents: "none",
+              opacity: (item.details.opacity ?? 100) / 100 || 1,
               // width: item.details.width,
               // height: item.details.height,
             }}

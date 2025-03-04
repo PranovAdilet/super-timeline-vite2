@@ -7,6 +7,7 @@ import {
   ADD_TEXT,
   ADD_VIDEO,
   DESIGN_LOAD,
+  EDIT_OBJECT,
   SCENE_LOAD,
   SCENE_RESIZE,
 } from "@/classes/timeline/events/constants-events";
@@ -22,6 +23,7 @@ import {
 } from "@/classes/timeline/utils";
 import { v4 as uuidv4 } from "uuid";
 import { cloneDeep } from "lodash";
+import { ITrackItem } from "@/shared";
 
 export function handleActiveItemsStateEvents(
   this: StateManager,
@@ -235,6 +237,35 @@ export async function handleSceneStateEvents(this: any, event: EventBusData) {
       trackItemsMap,
       duration,
     });
+  }
+}
+
+export function handleEditObject(this: any, event: EventBusData) {
+  if (event.key === EDIT_OBJECT) {
+    const payload: ITrackItem = event.value?.payload;
+    const state = cloneDeep(this.getState());
+    const trackItemDetailsMap = state.trackItemDetailsMap;
+    const trackItemsMap = state.trackItemsMap;
+
+    for (const value of Object.entries(payload)) {
+      const id = value[0];
+      const details = value[1].details;
+
+      if (trackItemDetailsMap[id]) {
+        trackItemDetailsMap[id].details = {
+          ...trackItemDetailsMap[id].details,
+          ...details,
+        };
+      }
+
+      if (trackItemsMap[id]) {
+        trackItemsMap[id].details = {
+          ...trackItemsMap[id].details,
+          ...details,
+        };
+      }
+    }
+    this.updateState({ trackItemDetailsMap, trackItemsMap });
   }
 }
 
