@@ -1,10 +1,11 @@
 import { EDIT_OBJECT, eventBus } from "@/classes";
-import { ScrollArea, Button, useLayoutStore } from "@/shared";
+import { ScrollArea } from "@/shared";
 import { ITrackItem, IVideo } from "@/shared/types";
-import { Crop } from "lucide-react";
 import { useEffect, useState } from "react";
 import Opacity from "./common/opacity";
 import Volume from "./common/volume";
+
+import Zoom from "./common/zoom";
 
 const BasicVideo = ({ trackItem }: { trackItem: ITrackItem & IVideo }) => {
   const [properties, setProperties] = useState(trackItem);
@@ -16,6 +17,7 @@ const BasicVideo = ({ trackItem }: { trackItem: ITrackItem & IVideo }) => {
         ...trackItem.details,
         volume: trackItem.details.volume ?? 100,
         opacity: trackItem.details.opacity ?? 100,
+        zoom: trackItem?.details.zoom,
       },
     });
   }, [trackItem]);
@@ -63,6 +65,60 @@ const BasicVideo = ({ trackItem }: { trackItem: ITrackItem & IVideo }) => {
     });
   };
 
+  const handleZoomTypeChange = (type: string) => {
+    eventBus.dispatch(EDIT_OBJECT, {
+      payload: {
+        [trackItem.id]: {
+          details: {
+            zoom: {
+              ...trackItem.details.zoom,
+              type,
+            },
+          },
+        },
+      },
+    });
+    setProperties((prev) => {
+      return {
+        ...prev,
+        details: {
+          ...prev.details,
+          zoom: {
+            ...prev.details.zoom,
+            type,
+          },
+        },
+      };
+    });
+  };
+
+  const handleZoomEaseChange = (ease: string) => {
+    eventBus.dispatch(EDIT_OBJECT, {
+      payload: {
+        [trackItem.id]: {
+          details: {
+            zoom: {
+              ...trackItem.details.zoom,
+              ease,
+            },
+          },
+        },
+      },
+    });
+    setProperties((prev) => {
+      return {
+        ...prev,
+        details: {
+          ...prev.details,
+          zoom: {
+            ...prev.details.zoom,
+            ease,
+          },
+        },
+      };
+    });
+  };
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium">
@@ -78,6 +134,12 @@ const BasicVideo = ({ trackItem }: { trackItem: ITrackItem & IVideo }) => {
           <Opacity
             onChange={(v: number) => handleChangeOpacity(v)}
             value={properties.details.opacity!}
+          />
+          <Zoom
+            type={properties.details.zoom?.type ?? "none"}
+            ease={properties.details.zoom?.ease ?? "in"}
+            onTypeChange={handleZoomTypeChange}
+            onEaseChange={handleZoomEaseChange}
           />
         </div>
       </ScrollArea>

@@ -1,6 +1,6 @@
 import { ADD_VIDEO } from "@/classes/timeline/events/constants-events";
 import eventBus from "@/classes/timeline/events/event-bus";
-import { VIDEOS } from "@/shared/data";
+import { useDataStore } from "@/shared";
 import { useIsDraggingOverTimeline } from "@/shared/hooks";
 import { IVideo } from "@/shared/types";
 import { Draggable, ScrollArea } from "@/shared/ui";
@@ -9,6 +9,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export const Videos = () => {
   const isDraggingOverTimeline = useIsDraggingOverTimeline();
+
+  const videos = useDataStore((state) => state.videos);
 
   const handleAddVideo = (payload: Partial<IVideo>) => {
     eventBus.dispatch(ADD_VIDEO, {
@@ -26,7 +28,7 @@ export const Videos = () => {
       </div>
       <ScrollArea>
         <div className="masonry-sm px-4">
-          {VIDEOS.map((video, index) => {
+          {videos?.map((video, index) => {
             return (
               <VideoItem
                 key={index}

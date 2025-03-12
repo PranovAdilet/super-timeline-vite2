@@ -26,6 +26,10 @@ export interface IBoxShadow {
     y: number;
     blur: number;
 }
+export type ZoomType = {
+    type?: string | null;
+    ease?: string | null;
+};
 export type ITrackItem = (ITrackItemBase & {
     type: "text";
 }) | (ITrackItemBase & {
@@ -98,6 +102,7 @@ export type IVideoDetails = {
     height: number;
     volume?: number;
     text?: string;
+    zoom?: ZoomType;
 } & ICommonDetails;
 export type ITimelineScaleState = {
     unit: number;

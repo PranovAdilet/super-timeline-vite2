@@ -4,11 +4,13 @@ import { ADD_IMAGE } from "@/classes/timeline/events/constants-events";
 import { IImage } from "@/shared/types";
 import { useIsDraggingOverTimeline } from "@/shared/hooks";
 import { Draggable, ScrollArea } from "@/shared/ui";
-import { IMAGES } from "@/shared/data";
 import { v4 as uuidv4 } from "uuid";
+import { useDataStore } from "@/shared";
 
 export const Images = () => {
   const isDraggingOverTimeline = useIsDraggingOverTimeline();
+
+  const images = useDataStore((state) => state.images);
 
   const handleAddImage = (payload: Partial<IImage>) => {
     eventBus.dispatch(ADD_IMAGE, {
@@ -26,7 +28,7 @@ export const Images = () => {
       </div>
       <ScrollArea>
         <div className="masonry-sm px-4">
-          {IMAGES.map((image, index) => {
+          {images?.map((image, index) => {
             return (
               <ImageItem
                 key={index}

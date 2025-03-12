@@ -1,0 +1,1 @@
+{"version":3,"file":"zoom.d.ts","sourceRoot":"","sources":["../../../../src/components/control-item/common/zoom.tsx"],"names":[],"mappings":"AAIA,QAAA,MAAM,IAAI,gDAKP;IACD,IAAI,EAAE,MAAM,CAAC;IACb,YAAY,EAAE,CAAC,CAAC,EAAE,MAAM,KAAK,IAAI,CAAC;IAClC,IAAI,EAAE,MAAM,CAAC;IACb,YAAY,EAAE,CAAC,CAAC,EAAE,MAAM,KAAK,IAAI,CAAC;CACnC,4CAyBA,CAAC;AAqCF,eAAe,IAAI,CAAC"}

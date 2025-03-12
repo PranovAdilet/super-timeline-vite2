@@ -11,32 +11,42 @@ import "./index.css";
 import { eventBus, SCENE_LOAD } from "./classes";
 import ControlList from "./components/control-list";
 import { ControlItem } from "./components/control-item";
+import { AUDIOS, IMAGES, useDataStore, VIDEOS } from "./shared";
 
 const stateManager = new StateManager();
 
 export const App = () => {
   const { playerRef } = useStore();
+  const setState = useDataStore((state) => state.setState);
 
   useTimelineEvents();
 
   const [data, setData] = useState<any>([]);
   // const [isVisible, setIsVisible] = useState(true);
 
-  // useEffect(() => {
-  //   if (!data) return;
-  //   eventBus.dispatch(SCENE_LOAD, {
-  //     payload: data,
-  //   });
-  // }, [data]);
+  useEffect(() => {
+    if (!data) return;
+    eventBus.dispatch(SCENE_LOAD, {
+      payload: data,
+    });
+  }, [data]);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setData(data1);
-  //   }, 1000);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, []);
+  useEffect(() => {
+    setState({
+      audios: AUDIOS,
+      videos: VIDEOS,
+      images: IMAGES,
+    });
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setData(data1);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-background ">
@@ -54,7 +64,7 @@ export const App = () => {
         <MenuItem />
         <ControlList />
         <ControlItem />
-        <Scene />
+        <Scene stateManager={stateManager} />
       </div>
       <div className="h-70 w-full ">
         {/* <Button
@@ -150,7 +160,7 @@ export const data1 = {
       id: "1",
       name: "",
       type: "audio",
-      display: { from: 3000, to: 120242.833 },
+      display: { from: 0, to: 120242.833 },
       trim: { from: 0, to: 120242.833 },
       metadata: { author: "Roman Senyk" },
       isMain: false,

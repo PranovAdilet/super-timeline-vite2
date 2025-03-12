@@ -35,6 +35,13 @@ export interface IBoxShadow {
   blur: number;
 }
 
+export type ZoomType = {
+  type?: string | null;
+  ease?: string | null;
+  // type: "in" | "out" | null;
+  // ease: "linear" | "ease-in" | "ease-out" | "ease-in-out" | null;
+};
+
 export type ITrackItem =
   | (ITrackItemBase & {
       type: "text";
@@ -122,6 +129,7 @@ export type IVideoDetails = {
   height: number;
   volume?: number;
   text?: string;
+  zoom?: ZoomType;
 } & ICommonDetails;
 export type ITimelineScaleState = {
   unit: number;

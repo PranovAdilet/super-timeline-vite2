@@ -9,4 +9,5 @@ export * from "./input";
 export * from "./color-picker";
 export * from "./toggle";
 export * from "./toggle-group";
+export * from "./select";
 //# sourceMappingURL=index.d.ts.map

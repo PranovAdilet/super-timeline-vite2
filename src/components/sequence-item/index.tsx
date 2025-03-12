@@ -1,7 +1,15 @@
 "use client";
 
-import type { ITrackItem } from "../../";
-import { AbsoluteFill, Audio, Img, OffthreadVideo, Sequence } from "remotion";
+import type { ITrackItem, ZoomType } from "../../";
+import {
+  AbsoluteFill,
+  Audio,
+  Easing,
+  Img,
+  interpolate,
+  OffthreadVideo,
+  Sequence,
+} from "remotion";
 
 const calculateFrames = (
   display: { from: number; to: number },
@@ -14,8 +22,10 @@ const calculateFrames = (
 
 type SequenceItemOptions = {
   fps: number;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
+  currentFrame: number;
+  // handleReady: any;
 };
 
 type ItemType = "text" | "image" | "video" | "audio";
@@ -25,7 +35,7 @@ export const SequenceItem: Record<
   (item: ITrackItem, options: SequenceItemOptions) => React.JSX.Element
 > = {
   text: (item: ITrackItem, options: SequenceItemOptions) => {
-    const { fps, height, width } = options;
+    const { fps } = options;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
     return (
       <Sequence
@@ -62,8 +72,16 @@ export const SequenceItem: Record<
     );
   },
   image: (item: ITrackItem, options: SequenceItemOptions) => {
-    const { fps } = options;
+    const { fps, currentFrame } = options;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
+
+    const adjustedFrame = currentFrame - from;
+
+    const zoomScale = calculateScale(
+      adjustedFrame,
+      durationInFrames,
+      item.details.zoom
+    );
 
     return (
       <Sequence
@@ -88,19 +106,24 @@ export const SequenceItem: Record<
         }}
       >
         <AbsoluteFill
-          style={{ pointerEvents: "none" }}
-          className="flex justify-center"
+          style={{
+            pointerEvents: "none",
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
           <Img
             style={{
+              width: "100%",
+              height: "100%",
               pointerEvents: "none",
               objectFit: "contain",
               opacity: item.details.opacity || 1,
               filter:
                 `brightness(${item.details.brightness}%) blur(${item.details.blur}px)` ||
                 "none",
+              transform: `scale(${zoomScale})`,
             }}
-            className="size-full"
             data-id={item.id}
             src={item.details.src}
           />
@@ -109,7 +132,7 @@ export const SequenceItem: Record<
     );
   },
   video: (item: ITrackItem, options: SequenceItemOptions) => {
-    const { fps } = options;
+    const { fps, currentFrame } = options;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
     const trim = item.trim;
 
@@ -119,6 +142,16 @@ export const SequenceItem: Record<
       width: item.details.width,
       height: item.details.height,
     };
+
+    const adjustedFrame = currentFrame - from;
+
+    const zoomScale = calculateScale(
+      adjustedFrame,
+      durationInFrames,
+      item.details.zoom
+    );
+
+    // console.log(zoomScale, item);
 
     if (!trim) {
       return <></>;
@@ -162,6 +195,7 @@ export const SequenceItem: Record<
             style={{
               pointerEvents: "none",
               opacity: (item.details.opacity ?? 100) / 100 || 1,
+              transform: `scale(${zoomScale})`,
               // width: item.details.width,
               // height: item.details.height,
             }}
@@ -202,4 +236,36 @@ export const SequenceItem: Record<
       </Sequence>
     );
   },
+};
+
+const calculateScale = (
+  frame: number,
+  durationInFrames: number,
+  zoom?: ZoomType
+) => {
+  const startScale = zoom?.type === "out" ? 1.3 : 1;
+  const endScale = zoom?.type === "in" ? 1.3 : 1;
+
+  const zoomScale =
+    zoom?.type === "none"
+      ? 1
+      : interpolate(frame, [0, durationInFrames], [startScale, endScale], {
+          easing: getEasingFunction(zoom?.ease),
+          extrapolateRight: "clamp",
+        });
+
+  return zoomScale;
+};
+
+const getEasingFunction = (easing?: ZoomType["ease"]) => {
+  switch (easing) {
+    case "ease-in":
+      return Easing.in(Easing.quad);
+    case "ease-out":
+      return Easing.out(Easing.quad);
+    case "ease-in-out":
+      return Easing.inOut(Easing.quad);
+    default:
+      return Easing.linear;
+  }
 };

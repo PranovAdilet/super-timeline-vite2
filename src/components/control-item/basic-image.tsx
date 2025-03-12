@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Opacity from "./common/opacity";
 import Blur from "./common/blur";
 import Brightness from "./common/brightness";
+import Zoom from "./common/zoom";
 
 const BasicImage = ({ trackItem }: { trackItem: ITrackItem & IImage }) => {
   const [properties, setProperties] = useState(trackItem);
@@ -15,6 +16,7 @@ const BasicImage = ({ trackItem }: { trackItem: ITrackItem & IImage }) => {
         brightness: trackItem.details?.brightness ?? 100,
         opacity: trackItem.details?.opacity ?? 100,
         blur: trackItem.details?.blur ?? 0,
+        zoom: trackItem?.details.zoom ?? { type: "none", ease: "linear" },
       },
     });
   }, [trackItem]);
@@ -81,6 +83,60 @@ const BasicImage = ({ trackItem }: { trackItem: ITrackItem & IImage }) => {
     });
   };
 
+  const handleZoomTypeChange = (type: string) => {
+    eventBus.dispatch(EDIT_OBJECT, {
+      payload: {
+        [trackItem.id]: {
+          details: {
+            zoom: {
+              ...trackItem.details.zoom,
+              type,
+            },
+          },
+        },
+      },
+    });
+    setProperties((prev) => {
+      return {
+        ...prev,
+        details: {
+          ...prev.details,
+          zoom: {
+            ...prev.details.zoom,
+            type,
+          },
+        },
+      };
+    });
+  };
+
+  const handleZoomEaseChange = (ease: string) => {
+    eventBus.dispatch(EDIT_OBJECT, {
+      payload: {
+        [trackItem.id]: {
+          details: {
+            zoom: {
+              ...trackItem.details.zoom,
+              ease,
+            },
+          },
+        },
+      },
+    });
+    setProperties((prev) => {
+      return {
+        ...prev,
+        details: {
+          ...prev.details,
+          zoom: {
+            ...prev.details.zoom,
+            ease,
+          },
+        },
+      };
+    });
+  };
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium">
@@ -99,6 +155,12 @@ const BasicImage = ({ trackItem }: { trackItem: ITrackItem & IImage }) => {
           <Brightness
             onChange={(v: number) => onChangeBrightness(v)}
             value={properties.details.brightness!}
+          />
+          <Zoom
+            type={properties.details.zoom?.type ?? "none"}
+            ease={properties.details.zoom?.ease ?? "in"}
+            onTypeChange={handleZoomTypeChange}
+            onEaseChange={handleZoomEaseChange}
           />
         </div>
       </ScrollArea>

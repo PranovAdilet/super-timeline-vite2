@@ -1,4 +1,3 @@
-import { AUDIOS } from "@/shared/data";
 import { Music } from "lucide-react";
 import { useIsDraggingOverTimeline } from "@/shared/hooks";
 import React from "react";
@@ -6,9 +5,12 @@ import { ADD_AUDIO } from "@/classes/timeline/events/constants-events";
 import eventBus from "@/classes/timeline/events/event-bus";
 import { IAudio } from "@/shared/types";
 import { ScrollArea, Draggable } from "@/shared/ui";
+import { useDataStore } from "@/shared";
 
 export const Audios = () => {
   const isDraggingOverTimeline = useIsDraggingOverTimeline();
+
+  const audios = useDataStore((state) => state.audios);
 
   const handleAddAudio = (payload: Partial<IAudio>) => {
     eventBus.dispatch(ADD_AUDIO, {
@@ -24,7 +26,7 @@ export const Audios = () => {
       </div>
       <ScrollArea>
         <div className="flex flex-col px-2">
-          {AUDIOS.map((audio, index) => {
+          {audios?.map((audio, index) => {
             return (
               <AudioItem
                 shouldDisplayPreview={!isDraggingOverTimeline}

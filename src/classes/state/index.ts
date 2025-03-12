@@ -144,11 +144,10 @@ export class StateManager {
         this.updateHistory(updatedState, options.kind);
       }
 
-      const { duration, trackItemsMap, ...rest } = currentState;
+      const { trackItemsMap, ...rest } = currentState;
 
       this.prevState = {
         ...rest,
-        duration: this.prevState.duration,
         trackItemsMap: this.prevState.trackItemsMap,
       };
       this.stateSubject.next(updatedState);

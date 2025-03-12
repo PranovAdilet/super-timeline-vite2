@@ -2,6 +2,32 @@ import { IAudio } from "../types";
 
 export const AUDIOS = [
   {
+    id: "321",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/audio/2025/2/13/7/TECUHuELt9ZksDVivzsmHj.mpeg",
+      text: "Music",
+    },
+    name: "Shippuuden",
+    type: "audio",
+    metadata: {
+      author: "Takanashi Yasuharu",
+    },
+    display: { from: 0 },
+  },
+  {
+    id: "321222",
+    details: {
+      src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/audio/2025/2/13/7/TECUHuELt9ZksDVivzsmHj.mpeg",
+      text: "Music",
+    },
+    name: "Super",
+    type: "audio",
+    metadata: {
+      author: "Adilet",
+    },
+    display: { from: 0 },
+  },
+  {
     id: "111",
     details: {
       src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/2/20/18\\KhDhy5qKkppcfCMWV9md5w.mpeg",

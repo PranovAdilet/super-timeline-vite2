@@ -39,6 +39,7 @@ export const loadImageItem = async (
       boxShadow: details.boxShadow || "none",
       top: position.top || "0px",
       left: position.left || "0px",
+      zoom: details?.zoom ?? { type: "none", ease: "linear" },
     },
     metadata: payload.metadata || {},
   };
@@ -70,6 +71,7 @@ export const loadVideoItem = async (
     top: payload.details.top || position.top || "0px",
     left: payload.details.left || position.left || "0px",
     text: payload.details.text,
+    zoom: payload?.details?.zoom ?? { type: "none", ease: "linear" },
     // Default volume
   };
 

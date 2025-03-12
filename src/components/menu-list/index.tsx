@@ -56,7 +56,7 @@ export default function MenuList() {
       >
         <Icons.video width={20} />
       </Button>
-      <Button
+      {/* <Button
         onClick={() => {
           setActiveMenuItem("captions");
           setShowMenuItem(true);
@@ -70,7 +70,7 @@ export default function MenuList() {
         size={"icon"}
       >
         <Icons.captions width={20} />
-      </Button>
+      </Button> */}
       <Button
         onClick={() => {
           setActiveMenuItem("images");
@@ -86,7 +86,7 @@ export default function MenuList() {
       >
         <Icons.image width={20} />
       </Button>
-      <Button
+      {/* <Button
         onClick={() => {
           setActiveMenuItem("shapes");
           setShowMenuItem(true);
@@ -100,7 +100,7 @@ export default function MenuList() {
         size={"icon"}
       >
         <Icons.shapes width={20} />
-      </Button>
+      </Button> */}
       <Button
         onClick={() => {
           setActiveMenuItem("audios");
@@ -117,7 +117,7 @@ export default function MenuList() {
         <Icons.audio width={20} />
       </Button>
 
-      <Button
+      {/* <Button
         onClick={() => {
           setActiveMenuItem("transitions");
           setShowMenuItem(true);
@@ -141,7 +141,7 @@ export default function MenuList() {
             fill="currentColor"
           />
         </svg>
-      </Button>
+      </Button> */}
     </div>
   );
 }
