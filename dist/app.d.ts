@@ -16,6 +16,35 @@ export declare const data1: {
         height: number;
     };
     trackItemDetailsMap: {
+        "d75c944f-05cf-4af0-aea8-576b33cf4afb": {
+            type: string;
+            details: {
+                fontFamily: string;
+                fontSize: number;
+                fontWeight: string;
+                fontStyle: string;
+                textDecoration: string;
+                textAlign: string;
+                lineHeight: string;
+                letterSpacing: string;
+                wordSpacing: string;
+                color: string;
+                backgroundColor: string;
+                border: string;
+                textShadow: string;
+                text: string;
+                opacity: number;
+                width: number;
+                wordWrap: string;
+                wordBreak: string;
+                WebkitTextStrokeColor: string;
+                WebkitTextStrokeWidth: string;
+                top: string;
+                left: string;
+                height: number;
+                fontUrl: string;
+            };
+        };
         "1": {
             type: string;
             details: {
@@ -57,6 +86,43 @@ export declare const data1: {
     trackItemIds: string[];
     transitionsMap: {};
     trackItemsMap: {
+        "d75c944f-05cf-4af0-aea8-576b33cf4afb": {
+            id: string;
+            name: string;
+            type: string;
+            display: {
+                from: number;
+                to: number;
+            };
+            metadata: {};
+            isMain: boolean;
+            details: {
+                fontFamily: string;
+                fontSize: number;
+                fontWeight: string;
+                fontStyle: string;
+                textDecoration: string;
+                textAlign: string;
+                lineHeight: string;
+                letterSpacing: string;
+                wordSpacing: string;
+                color: string;
+                backgroundColor: string;
+                border: string;
+                textShadow: string;
+                text: string;
+                opacity: number;
+                width: number;
+                wordWrap: string;
+                wordBreak: string;
+                WebkitTextStrokeColor: string;
+                WebkitTextStrokeWidth: string;
+                top: string;
+                left: string;
+                height: number;
+                fontUrl: string;
+            };
+        };
         "1": {
             id: string;
             name: string;

@@ -160,8 +160,9 @@ export const loadTextItem = async (
     wordBreak: payload.details.wordBreak ?? "normal",
     WebkitTextStrokeColor: payload.details.WebkitTextStrokeColor ?? "#ffffff",
     WebkitTextStrokeWidth: payload.details.WebkitTextStrokeWidth ?? "0px",
-    top: payload.details.top ?? "0px",
-    left: payload.details.left ?? "0px",
+    top: payload.details.top,
+    left: payload.details.left,
+    height: payload.details.height,
   };
 
   const height = getTextHeight(payload.details.text ?? "", textStyle);
@@ -181,9 +182,9 @@ export const loadTextItem = async (
     },
     details: {
       ...textStyle,
-      height,
-      top: position.top,
-      left: position.left,
+      height: textStyle.height ?? height,
+      top: textStyle.top ?? position.top,
+      left: textStyle.left ?? position.left,
       fontUrl: payload.details.fontUrl,
       text: payload.details.text ?? "",
     },

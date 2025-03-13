@@ -57,5 +57,5 @@ export default {
       },
     },
   },
-  plugins: [animatePlugin],
+  plugins: [],
 };
