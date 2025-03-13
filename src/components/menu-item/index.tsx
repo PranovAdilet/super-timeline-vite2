@@ -30,6 +30,9 @@ const Container = ({ children }: { children: React.ReactNode }) => {
           variant="ghost"
           className="absolute right-2 top-2 h-8 w-8 text-muted-foreground"
           size="icon"
+          style={{
+            width: "2rem",
+          }}
         >
           <X
             width={16}

@@ -67,7 +67,14 @@ export const SequenceItem: Record<
           pointerEvents: "auto",
         }}
       >
-        <div>{item.details.text}</div>
+        <div
+          style={{
+            textAlign: item.details.textAlign || "left",
+            width: "100%",
+          }}
+        >
+          {item.details.text}
+        </div>
       </Sequence>
     );
   },

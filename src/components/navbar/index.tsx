@@ -38,24 +38,7 @@ export default function Navbar() {
             className="p-1"
           /> */}
         </div>
-        <div className="flex h-12 items-center bg-background px-1.5">
-          <Button
-            onClick={handleUndo}
-            className="text-muted-foreground"
-            variant="ghost"
-            size="icon"
-          >
-            <Icons.undo width={20} />
-          </Button>
-          <Button
-            onClick={handleRedo}
-            className="text-muted-foreground"
-            variant="ghost"
-            size="icon"
-          >
-            <Icons.redo width={20} />
-          </Button>
-        </div>
+        <HistoryButtons />
       </div>
       <div className="pointer-events-auto flex h-14 items-center justify-center gap-2">
         <div className="flex h-12 items-center gap-4 rounded-md bg-background px-2.5">
@@ -153,6 +136,36 @@ export const ResizeVideo = () => {
   );
 };
 
+export const HistoryButtons = () => {
+  const handleUndo = () => {
+    eventBus.dispatch(HISTORY_UNDO);
+  };
+
+  const handleRedo = () => {
+    eventBus.dispatch(HISTORY_REDO);
+  };
+  return (
+    <div className="flex h-12 items-center bg-background px-1.5">
+      <Button
+        onClick={handleUndo}
+        className="text-muted-foreground"
+        variant="ghost"
+        size="icon"
+      >
+        <Icons.undo width={20} />
+      </Button>
+      <Button
+        onClick={handleRedo}
+        className="text-muted-foreground"
+        variant="ghost"
+        size="icon"
+      >
+        <Icons.redo width={20} />
+      </Button>
+    </div>
+  );
+};
+
 const ResizeOption = ({
   label,
   icon,
@@ -188,7 +201,11 @@ interface IDownloadState {
   progress: number;
   isDownloading: boolean;
 }
-const DownloadPopover = () => {
+export const DownloadPopover = ({
+  onExport,
+}: {
+  onExport?: (data: any) => void;
+}) => {
   const [open, setOpen] = useState(false);
   const [downloadState, setDownloadState] = useState<IDownloadState>({
     progress: 0,
@@ -217,6 +234,7 @@ const DownloadPopover = () => {
       trackItemsMap,
       transitionIds,
     };
+    onExport?.(data);
     console.log(data);
   };
 
