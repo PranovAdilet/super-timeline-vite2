@@ -276,7 +276,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
               handleChangeFont={handleChangeFont}
               fontFamilyDisplay={properties.fontFamilyDisplay}
             />
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-3">
               <FontStyle
                 selectedFont={selectedFont}
                 handleChangeFontStyle={handleChangeFontStyle}
@@ -447,7 +447,7 @@ const FontStyle = ({
     <Popover
       trigger={
         <Button
-          className="flex w-full items-center justify-between text-sm"
+          className="flex w-full items-center justify-between text-sm max-h-full"
           variant="secondary"
         >
           <div className="w-full overflow-hidden text-left">

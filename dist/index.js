@@ -3063,7 +3063,7 @@ const XZ = BS(
         link: "text-primary underline-offset-4 hover:underline"
       },
       size: {
-        default: "w-[auto]",
+        default: "py-2 w-[auto] px-3",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9"
@@ -15512,7 +15512,14 @@ const $s = ({ trigger: e, children: t, ...r }) => {
   };
   return /* @__PURE__ */ y.jsxs(p1, { ...r, children: [
     e && /* @__PURE__ */ y.jsx(f1, { onClick: a, children: e }),
-    /* @__PURE__ */ y.jsx(m1, { style: { minHeight: "auto" }, children: t })
+    /* @__PURE__ */ y.jsx(
+      m1,
+      {
+        style: { minHeight: "auto" },
+        className: "!min-h-[auto] min-h-[auto]",
+        children: t
+      }
+    )
   ] });
 }, Si = m.forwardRef(
   ({ className: e, type: t = "text", variant: r = "default", ...a }, o) => {
@@ -35605,35 +35612,28 @@ const a2e = [
           ] })
         ] }),
         /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(Qe, { className: "w-full", children: "Copy link" }) })
-      ] }) : /* @__PURE__ */ y.jsxs(
-        "div",
-        {
-          className: "flex flex-col gap-3",
-          style: { minHeight: "auto" },
-          children: [
-            /* @__PURE__ */ y.jsx(bn.Label, { children: "Export settings" }),
-            /* @__PURE__ */ y.jsxs(
-              Qe,
-              {
-                className: "w-full justify-between",
-                variant: "outline",
-                children: [
-                  /* @__PURE__ */ y.jsx("div", { children: "MP4" }),
-                  /* @__PURE__ */ y.jsx(w1, { width: 16 })
-                ]
-              }
-            ),
-            /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(
-              Qe,
-              {
-                onClick: v,
-                className: "w-full",
-                children: "Export"
-              }
-            ) })
-          ]
-        }
-      )
+      ] }) : /* @__PURE__ */ y.jsxs("div", { className: "flex flex-col gap-3", children: [
+        /* @__PURE__ */ y.jsx(bn.Label, { children: "Export settings" }),
+        /* @__PURE__ */ y.jsxs(
+          Qe,
+          {
+            className: "w-full justify-between",
+            variant: "outline",
+            children: [
+              /* @__PURE__ */ y.jsx("div", { children: "MP4" }),
+              /* @__PURE__ */ y.jsx(w1, { width: 16 })
+            ]
+          }
+        ),
+        /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(
+          Qe,
+          {
+            onClick: v,
+            className: "w-full",
+            children: "Export"
+          }
+        ) })
+      ] })
     }
   );
 }, u2e = (e, t) => {
@@ -41127,7 +41127,7 @@ const Pye = () => {
             fontFamilyDisplay: t.fontFamilyDisplay
           }
         ),
-        /* @__PURE__ */ y.jsxs("div", { className: "grid grid-cols-2 gap-2", children: [
+        /* @__PURE__ */ y.jsxs("div", { className: "grid grid-cols-2 gap-3", children: [
           /* @__PURE__ */ y.jsx(
             Lye,
             {
@@ -41267,7 +41267,7 @@ const Pye = () => {
     trigger: /* @__PURE__ */ y.jsxs(
       Qe,
       {
-        className: "flex w-full items-center justify-between text-sm",
+        className: "flex w-full items-center justify-between text-sm max-h-full",
         variant: "secondary",
         children: [
           /* @__PURE__ */ y.jsx("div", { className: "w-full overflow-hidden text-left", children: /* @__PURE__ */ y.jsxs("p", { className: "truncate", children: [
