@@ -3063,7 +3063,7 @@ const XZ = BS(
         link: "text-primary underline-offset-4 hover:underline"
       },
       size: {
-        default: "h-9 px-4 py-2",
+        default: "",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9"
@@ -35605,28 +35605,35 @@ const a2e = [
           ] })
         ] }),
         /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(Qe, { className: "w-full", children: "Copy link" }) })
-      ] }) : /* @__PURE__ */ y.jsxs("div", { className: "flex flex-col gap-3", children: [
-        /* @__PURE__ */ y.jsx(bn.Label, { children: "Export settings" }),
-        /* @__PURE__ */ y.jsxs(
-          Qe,
-          {
-            className: "w-full justify-between",
-            variant: "outline",
-            children: [
-              /* @__PURE__ */ y.jsx("div", { children: "MP4" }),
-              /* @__PURE__ */ y.jsx(w1, { width: 16 })
-            ]
-          }
-        ),
-        /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(
-          Qe,
-          {
-            onClick: v,
-            className: "w-full",
-            children: "Export"
-          }
-        ) })
-      ] })
+      ] }) : /* @__PURE__ */ y.jsxs(
+        "div",
+        {
+          className: "flex flex-col gap-3",
+          style: { minHeight: "auto" },
+          children: [
+            /* @__PURE__ */ y.jsx(bn.Label, { children: "Export settings" }),
+            /* @__PURE__ */ y.jsxs(
+              Qe,
+              {
+                className: "w-full justify-between",
+                variant: "outline",
+                children: [
+                  /* @__PURE__ */ y.jsx("div", { children: "MP4" }),
+                  /* @__PURE__ */ y.jsx(w1, { width: 16 })
+                ]
+              }
+            ),
+            /* @__PURE__ */ y.jsx("div", { children: /* @__PURE__ */ y.jsx(
+              Qe,
+              {
+                onClick: v,
+                className: "w-full",
+                children: "Export"
+              }
+            ) })
+          ]
+        }
+      )
     }
   );
 }, u2e = (e, t) => {
@@ -41194,24 +41201,31 @@ const Pye = () => {
           ]
         }
       ),
-      children: /* @__PURE__ */ y.jsx(Va, { className: "h-[250px] w-full py-2", children: r.map((a, o) => /* @__PURE__ */ y.jsx(
-        "div",
+      children: /* @__PURE__ */ y.jsx(
+        Va,
         {
-          onClick: () => e(a),
-          className: "cursor-pointer px-2 py-1 hover:bg-zinc-800/50",
-          children: /* @__PURE__ */ y.jsx(
-            "img",
+          className: " h-[250px] w-full py-2",
+          style: { minHeight: "auto" },
+          children: r.map((a, o) => /* @__PURE__ */ y.jsx(
+            "div",
             {
-              style: {
-                filter: "invert(100%)"
-              },
-              src: a.default.preview,
-              alt: a.family
-            }
-          )
-        },
-        o
-      )) })
+              onClick: () => e(a),
+              className: "cursor-pointer px-2 py-1 hover:bg-zinc-800/50",
+              children: /* @__PURE__ */ y.jsx(
+                "img",
+                {
+                  style: {
+                    filter: "invert(100%)"
+                  },
+                  src: a.default.preview,
+                  alt: a.family
+                }
+              )
+            },
+            o
+          ))
+        }
+      )
     }
   );
 }, Bye = ({
@@ -41275,8 +41289,9 @@ const Pye = () => {
       return /* @__PURE__ */ y.jsx(
         "div",
         {
-          className: "flex h-6 cursor-pointer items-center px-2 py-3.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100",
+          className: "flex min-h-auto h-6 cursor-pointer items-center px-2 py-3.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100",
           onClick: () => t(r),
+          style: { minHeight: "auto" },
           children: i
         },
         a
@@ -41595,6 +41610,7 @@ const Pye = () => {
       {
         className: "flex cursor-pointer items-center px-2 py-1.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100 rounded-lg",
         onClick: () => t(a),
+        style: { minHeight: "auto" },
         children: a
       },
       o
