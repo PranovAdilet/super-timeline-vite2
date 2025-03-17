@@ -358,7 +358,10 @@ const FontFamily = ({
         </Button>
       }
     >
-      <ScrollArea className="h-[250px] w-full py-2">
+      <ScrollArea
+        className=" h-[250px] w-full py-2"
+        style={{ minHeight: "auto" }}
+      >
         {compactFonts.map((font, index) => (
           <div
             onClick={() => handleChangeFont(font)}
@@ -464,9 +467,10 @@ const FontStyle = ({
           .replace("Italic", " Italic");
         return (
           <div
-            className="flex h-6 cursor-pointer items-center px-2 py-3.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100"
+            className="flex min-h-auto h-6 cursor-pointer items-center px-2 py-3.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100"
             key={index}
             onClick={() => handleChangeFontStyle(style)}
+            style={{ minHeight: "auto" }}
           >
             {styleName}
           </div>

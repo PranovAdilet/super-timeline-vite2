@@ -66,6 +66,7 @@ const ZoomDisplay = ({
           className="flex cursor-pointer items-center px-2 py-1.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100 rounded-lg"
           key={index}
           onClick={() => onZoomChange(value)}
+          style={{ minHeight: "auto" }}
         >
           {value}
         </div>
