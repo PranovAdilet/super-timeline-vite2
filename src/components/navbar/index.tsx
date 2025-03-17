@@ -301,10 +301,7 @@ export const DownloadPopover = ({
           </div>
         </>
       ) : (
-        <div
-          className="flex flex-col gap-3"
-          style={{ minHeight: "auto" }}
-        >
+        <div className="flex flex-col gap-3">
           <Label>Export settings</Label>
           <Button
             className="w-full justify-between"

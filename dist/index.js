@@ -3063,7 +3063,7 @@ const XZ = BS(
         link: "text-primary underline-offset-4 hover:underline"
       },
       size: {
-        default: "",
+        default: "w-[auto]",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9"
@@ -15512,7 +15512,7 @@ const $s = ({ trigger: e, children: t, ...r }) => {
   };
   return /* @__PURE__ */ y.jsxs(p1, { ...r, children: [
     e && /* @__PURE__ */ y.jsx(f1, { onClick: a, children: e }),
-    /* @__PURE__ */ y.jsx(m1, { children: t })
+    /* @__PURE__ */ y.jsx(m1, { style: { minHeight: "auto" }, children: t })
   ] });
 }, Si = m.forwardRef(
   ({ className: e, type: t = "text", variant: r = "default", ...a }, o) => {
