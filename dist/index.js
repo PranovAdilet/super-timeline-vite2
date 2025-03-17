@@ -36061,7 +36061,7 @@ const a2e = [
       )
     }
   );
-}, v2e = ({ stateManager: e }) => /* @__PURE__ */ y.jsx(
+}, v2e = ({}) => /* @__PURE__ */ y.jsx(
   br,
   {
     flexGrow: "1",
@@ -36069,7 +36069,7 @@ const a2e = [
     width: "100%",
     height: "100%",
     className: "bg-scene py-3",
-    children: /* @__PURE__ */ y.jsx("div", { className: "max-w-3xl flex-1  w-full h-full flex relative", children: /* @__PURE__ */ y.jsx(m2e, { stateManager: e }) })
+    children: /* @__PURE__ */ y.jsx("div", { className: "max-w-3xl flex-1  w-full h-full flex relative", children: /* @__PURE__ */ y.jsx(m2e, {}) })
   }
 );
 class y2e {
@@ -42267,16 +42267,16 @@ const Pye = () => {
     }
   },
   trackItemIds: [
-    "5923c95e-9996-4fef-ac4d-f538413d90d7",
-    "efeefe1c-8a22-4972-94a9-32e72167960f",
-    "85f4157e-dc83-4d9d-89df-1a9b422d0f76",
-    "b9e5723f-205c-42bf-87bd-e909d3c98337",
-    "695c748b-4027-4ddf-ba04-f3929b9a1afa",
     "3400f41c-d2b0-4987-9eb7-63bf9e7c10d1",
     "cffd1b0e-6b4a-46f5-948d-15a93a0afc1e",
     "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240",
     "251574f7-350d-4c36-8cec-bb1c18c263b8",
-    "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7"
+    "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7",
+    "5923c95e-9996-4fef-ac4d-f538413d90d7",
+    "efeefe1c-8a22-4972-94a9-32e72167960f",
+    "85f4157e-dc83-4d9d-89df-1a9b422d0f76",
+    "b9e5723f-205c-42bf-87bd-e909d3c98337",
+    "695c748b-4027-4ddf-ba04-f3929b9a1afa"
   ],
   trackItemDetailsMap: {
     "5923c95e-9996-4fef-ac4d-f538413d90d7": {

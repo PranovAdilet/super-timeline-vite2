@@ -4,7 +4,7 @@ import { Flex } from "@radix-ui/themes";
 import { Player } from "../player";
 import { StateManager } from "@/classes";
 
-export const Scene = ({ stateManager }: { stateManager: StateManager }) => {
+export const Scene = ({}: { stateManager?: StateManager }) => {
   return (
     <Flex
       flexGrow="1"
@@ -14,7 +14,7 @@ export const Scene = ({ stateManager }: { stateManager: StateManager }) => {
       className="bg-scene py-3"
     >
       <div className="max-w-3xl flex-1  w-full h-full flex relative">
-        <Player stateManager={stateManager} />
+        <Player />
       </div>
     </Flex>
   );

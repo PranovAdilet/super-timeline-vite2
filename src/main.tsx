@@ -6,14 +6,6 @@ import { App } from "./app";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Theme
-      accentColor="lime"
-      grayColor="mauve"
-      panelBackground="solid"
-      radius="large"
-      appearance="dark"
-    >
-      <App />
-    </Theme>
+    <App />
   </StrictMode>
 );
