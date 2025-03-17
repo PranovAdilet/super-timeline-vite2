@@ -2,6 +2,7 @@ export * from "./components";
 export * from "./classes";
 export * from "./shared";
 export * from "./lib/utils";
+export * from "./index.css";
 
 import TimelineComponent from "./components/timeline";
 import PlayheadComponent from "./components/playhead";
