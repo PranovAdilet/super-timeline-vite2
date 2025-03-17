@@ -4,7 +4,7 @@ import animatePlugin from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "../dist/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "../dist/**/*.{js,ts,jsx,tsx}", "../dist/**/*.tsx", "./src/**/*.tsx"],
   fontFamily: {
     sans: ['"Geist Variable"', ...defaultTheme.fontFamily.sans],
   },
