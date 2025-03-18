@@ -22,7 +22,7 @@ import {
   loadVideoItem,
 } from "@/classes/timeline/utils";
 import { v4 as uuidv4 } from "uuid";
-import { cloneDeep } from "lodash";
+import { cloneDeep } from "lodash-es";
 import { ITrackItem } from "@/shared";
 
 export function handleActiveItemsStateEvents(

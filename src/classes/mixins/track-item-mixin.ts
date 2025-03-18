@@ -8,7 +8,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { VideoObject } from "../objects";
 import { AudioObject } from "../objects/audio";
-import { isEqual } from "lodash";
+import { isEqual } from "lodash-es";
 import { ActiveSelection } from "fabric";
 import {
   calculateDuration,

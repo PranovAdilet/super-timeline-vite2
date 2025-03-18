@@ -1,6 +1,6 @@
 import { Transition } from "@/classes/objects";
 import { Canvas } from "fabric";
-import { cloneDeep } from "lodash";
+import { cloneDeep } from "lodash-es";
 import { movingState } from "../../store";
 
 export const transitionModified = (event: any) => {

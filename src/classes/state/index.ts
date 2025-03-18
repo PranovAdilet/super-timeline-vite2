@@ -1,6 +1,6 @@
 import { BehaviorSubject, filter } from "rxjs";
 import microdiff, { Difference } from "microdiff";
-import { cloneDeep, isEqual, pick } from "lodash";
+import { cloneDeep, isEqual, pick } from "lodash-es";
 import { enablePatches, produce, applyPatches } from "immer";
 import eventBus from "../timeline/events/event-bus";
 import {

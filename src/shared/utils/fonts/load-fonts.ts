@@ -1,5 +1,5 @@
 import { ICompactFont, IFont } from "@/shared/types";
-import { groupBy } from "lodash";
+import { groupBy } from "lodash-es";
 
 export const loadFonts = (fonts: { name: string; url: string }[]) => {
   const promisesList = fonts.map((font) => {

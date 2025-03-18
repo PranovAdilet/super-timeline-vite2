@@ -1851,16 +1851,6 @@
     postcss "^8.4.41"
     tailwindcss "4.0.6"
 
-"@tailwindcss/vite@^4.0.3":
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/vite/-/vite-4.0.6.tgz#e43be7bfaabaf3f157d08273e21edb74faf24f47"
-  integrity sha512-O25vZ/URWbZ2JHdk2o8wH7jOKqEGCsYmX3GwGmYS5DjE4X3mpf93a72Rn7VRnefldNauBzr5z2hfZptmBNtTUQ==
-  dependencies:
-    "@tailwindcss/node" "^4.0.6"
-    "@tailwindcss/oxide" "^4.0.6"
-    lightningcss "^1.29.1"
-    tailwindcss "4.0.6"
-
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
@@ -3681,11 +3671,6 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==
 
-lodash@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
-
 loose-envify@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -5413,11 +5398,6 @@ watchpack@^2.4.1:
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
-
-wavesurfer.js@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-7.9.1.tgz#377afd7532e201d80116498976312c8cccd10c7e"
-  integrity sha512-+pG8X9c9BrfAW8KR54OPzZcAj/57sOL08He/tc6/7Mt6NCX3IfDFwexQxXVTILggGZUOUk7tFKfny32yGrysKA==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

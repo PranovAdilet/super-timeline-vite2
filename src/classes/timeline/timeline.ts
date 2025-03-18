@@ -28,7 +28,7 @@ import {
   addEventListeners,
   removeEventListeners,
 } from "./events/event-listeners";
-import { cloneDeep } from "lodash";
+import { cloneDeep } from "lodash-es";
 
 interface TimelineOptions extends CanvasOptions {
   bounding?: {

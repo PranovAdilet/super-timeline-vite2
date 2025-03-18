@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 const Volume = ({
   value,
   onChange,
+  onValueCommitChange,
 }: {
   value: number;
-  onChange: (v: number) => void;
+  onChange?: (v: number) => void;
+  onValueCommitChange?: (v: number) => void;
 }) => {
   // Create local state to manage opacity
   const [localValue, setLocalValue] = useState(value);
@@ -34,10 +36,11 @@ const Volume = ({
           id="opacity"
           value={[localValue]} // Use local state for slider value
           onValueChange={(e) => {
-            setLocalValue(e[0]); // Update local state
+            setLocalValue(e[0]);
+            onChange?.(localValue);
           }}
           onValueCommit={() => {
-            onChange(localValue); // Propagate value to parent when user commits change
+            onValueCommitChange?.(localValue);
           }}
           max={100}
           step={1}
@@ -51,7 +54,8 @@ const Volume = ({
             const newValue = Number(e.target.value);
             if (newValue >= 0 && newValue <= 100) {
               setLocalValue(newValue); // Update local state
-              onChange(newValue); // Optionally propagate immediately, or adjust as needed
+              onChange?.(newValue); // Optionally propagate immediately, or adjust as needed
+              onValueCommitChange?.(newValue);
             }
           }}
           value={localValue} // Use local state for input value

@@ -112,12 +112,12 @@ export type ITimelineScaleState = {
 };
 export type ILayerBase = {
     id: string;
-    name: string;
+    name?: string;
     type: ItemType;
     preview?: string;
     position?: IPosition | null;
     details: Record<string, any>;
-    metadata: Record<string, any>;
+    metadata?: Record<string, any>;
     isMain?: boolean;
     animation?: any;
     trim?: {
