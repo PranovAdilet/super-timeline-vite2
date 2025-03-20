@@ -11,7 +11,7 @@ import {
   Sequence,
 } from "remotion";
 
-const calculateFrames = (
+export const calculateFrames = (
   display: { from: number; to: number },
   fps: number
 ) => {
@@ -90,6 +90,9 @@ export const SequenceItem: Record<
       item.details.zoom
     );
 
+    const mirrorX = item.details?.mirror?.x ? "scaleX(-1)" : "";
+    const mirrorY = item.details?.mirror?.y ? "scaleY(-1)" : "";
+
     return (
       <Sequence
         key={item.id}
@@ -129,7 +132,7 @@ export const SequenceItem: Record<
               filter:
                 `brightness(${item.details.brightness}%) blur(${item.details.blur}px)` ||
                 "none",
-              transform: `scale(${zoomScale})`,
+              transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
             }}
             data-id={item.id}
             src={item.details.src}
@@ -163,6 +166,8 @@ export const SequenceItem: Record<
     if (!trim) {
       return <></>;
     }
+    const mirrorX = item.details?.mirror?.x ? "scaleX(-1)" : "";
+    const mirrorY = item.details?.mirror?.y ? "scaleY(-1)" : "";
 
     return (
       <Sequence
@@ -202,7 +207,7 @@ export const SequenceItem: Record<
             style={{
               pointerEvents: "none",
               opacity: (item.details.opacity ?? 100) / 100 || 1,
-              transform: `scale(${zoomScale})`,
+              transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
               // width: item.details.width,
               // height: item.details.height,
             }}
@@ -245,7 +250,7 @@ export const SequenceItem: Record<
   },
 };
 
-const calculateScale = (
+export const calculateScale = (
   frame: number,
   durationInFrames: number,
   zoom?: ZoomType
@@ -264,7 +269,7 @@ const calculateScale = (
   return zoomScale;
 };
 
-const getEasingFunction = (easing?: ZoomType["ease"]) => {
+export const getEasingFunction = (easing?: ZoomType["ease"]) => {
   switch (easing) {
     case "ease-in":
       return Easing.in(Easing.quad);

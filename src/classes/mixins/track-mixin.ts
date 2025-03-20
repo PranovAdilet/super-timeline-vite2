@@ -1,8 +1,13 @@
 import { classRegistry, Rect } from "fabric";
-import type { ITrackItem } from "@/shared/types/timeline";
+import type {
+  ITrack,
+  ITrackItem,
+  TrackSettings,
+} from "@/shared/types/timeline";
 import { HelperObject, TrackObject } from "@/classes/objects";
 import { v4 as uuidv4 } from "uuid";
 import { Timeline } from "../timeline/timeline";
+import { TrackSettingsObject } from "../items/track-settings";
 
 const Oe = {
     text: 32,
@@ -37,7 +42,44 @@ const Oe = {
   };
 
 export class TracksMixin {
-  // Метод для нахождения или создания нового трека
+  renderTrackSettings(this: Timeline, tracks: ITrack[]) {
+    let top = 42;
+    const newSettings: Record<string, TrackSettings> = {};
+
+    const objectsToRemove = this.getObjects().filter(
+      (item) => item.type === "tracksettings"
+    );
+
+    this.remove(...objectsToRemove);
+
+    console.log(this.tracks, this.state.getState());
+
+    tracks.forEach((track) => {
+      const id = uuidv4();
+
+      const rect = new TrackSettingsObject({
+        width: 40,
+        height: 42,
+        left: -50,
+        top,
+        id,
+        trackId: track.id,
+        items: [],
+      });
+      top += 50;
+      this.add(rect);
+
+      newSettings[track.id] = {
+        id,
+        type: "tracksettings",
+        trackId: track.id,
+      };
+    });
+
+    this.tracksSettings = { ...this.tracksSettings, ...newSettings };
+    this.renderAll();
+  }
+
   findOrCreateTrack(
     this: Timeline,
     trackItemData: ITrackItem,
@@ -66,6 +108,7 @@ export class TracksMixin {
       this.tracks.push(newTrack);
     }
     this.renderTracks();
+
     return newTrack.id;
   }
 
@@ -160,6 +203,7 @@ export class TracksMixin {
       metadata: {},
     });
     this.insertAt(0, bottomHelper);
+    this.renderTrackSettings(this.tracks);
   }
 
   // Метод для обновления состояния треков

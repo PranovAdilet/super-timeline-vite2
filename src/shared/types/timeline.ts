@@ -1,6 +1,5 @@
 import { Timeline } from "@/classes";
 import { PlayerRef } from "@remotion/player";
-import type { Canvas } from "fabric";
 
 export type ItemType =
   | "text"
@@ -63,9 +62,29 @@ export type ITrackItem =
     })
   | (ITrackItemBase & {
       type: "template";
+    })
+  | (ITrackItemBase & {
+      type: "track";
+      isShow: boolean;
     });
 
-export type ITransition = {};
+export type ITransition = {
+  id: string;
+  trackId: string;
+  fromId: string;
+  toId: string;
+  type: string;
+  name?: string;
+  duration: number;
+  preview?: string;
+  direction?: any;
+  kind: string;
+};
+
+export interface ITrackItemsMap {
+  [id: string]: ITrackItem;
+}
+
 export type ITrackItemBase = {
   id: string;
   name: string;
@@ -130,6 +149,10 @@ export type IVideoDetails = {
   volume?: number;
   text?: string;
   zoom?: ZoomType;
+  mirror?: {
+    x: boolean;
+    y: boolean;
+  };
 } & ICommonDetails;
 export type ITimelineScaleState = {
   unit: number;
@@ -188,6 +211,10 @@ export type IImage = {
     duration?: number;
     blur?: number;
     brightness?: number;
+    mirror?: {
+      x: boolean;
+      y: boolean;
+    };
   };
 } & ILayerBase;
 export type IVideo = {
@@ -221,6 +248,7 @@ export type ITimelineStore = {
   trackItemIds: string[];
   transitionIds: string[];
   transitionsMap: Record<string, ITransition>;
+  tracksSettings: Record<string, TrackSettings>;
   trackItemsMap: Record<string, ITrackItem>;
   trackItemDetailsMap?: Record<string, any>;
   activeIds: string[];
@@ -273,3 +301,9 @@ export interface Bounding {
   width: number;
   height: number;
 }
+
+export type TrackSettings = {
+  id: string;
+  type: "tracksettings";
+  trackId: string;
+};

@@ -23,7 +23,7 @@ import {
 } from "@/classes/timeline/utils";
 import { v4 as uuidv4 } from "uuid";
 import { cloneDeep } from "lodash-es";
-import { ITrackItem } from "@/shared";
+import { ITrackItem, TrackSettings } from "@/shared";
 
 export function handleActiveItemsStateEvents(
   this: StateManager,
@@ -62,6 +62,12 @@ export function handleActiveItemsStateEvents(
       )
     );
 
+    // const remainingTracksSettings = Object.fromEntries(
+    //   Object.entries(state.tracksSettings).filter(([id]) =>
+    //     remainingTracks.find((track) => track.id === id)
+    //   )
+    // );
+
     const newDuration = calculateDuration(remainingTrackItemsMap);
 
     this.updateState(
@@ -72,6 +78,7 @@ export function handleActiveItemsStateEvents(
         trackItemsMap: remainingTrackItemsMap,
         tracks: remainingTracks,
         duration: newDuration,
+        // tracksSettings: remainingTracksSettings,
       },
       { updateHistory: true, kind: "remove" }
     );
@@ -276,7 +283,7 @@ export async function handleAddRemoveStateEvents(
   const state = cloneDeep(this.getState());
   const trackId = event.value?.options?.trackId;
   const trackIndex = event.value?.options?.trackIndex;
-  let p: any[] = [];
+  let data: any[] = [];
 
   let type: string | undefined;
 
@@ -294,7 +301,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_IMAGE) {
@@ -309,7 +316,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_AUDIO) {
@@ -322,7 +329,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_TEXT) {
@@ -338,11 +345,11 @@ export async function handleAddRemoveStateEvents(
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
 
-    p.push(itemDetails.id);
+    data.push(itemDetails.id);
   }
 
   const trackInfo = findTrack(
-    p,
+    data,
     state.tracks,
     state.trackItemsMap,
     trackId,
@@ -351,14 +358,25 @@ export async function handleAddRemoveStateEvents(
 
   if (trackInfo.trackId) {
     const track = state.tracks.find((t: any) => t.id === trackInfo.trackId);
-    track?.items.push(...p);
+    track?.items.push(...data);
   } else if (trackInfo.trackIndex !== undefined) {
-    const newTrack = createTrack(type, p);
+    const newTrack = createTrack(type, data);
     state.tracks.splice(trackInfo.trackIndex, 0, newTrack);
   } else {
-    const newTrack = createTrack(type, p);
+    const newTrack = createTrack(type, data);
     state.tracks.unshift(newTrack);
   }
+
+  state.tracksSettings = state.tracks?.reduce((acc: any, rec: ITrackItem) => {
+    return {
+      ...acc,
+      [rec.id]: {
+        id: uuidv4(),
+        type: "tracksettings",
+        trackId: rec.id,
+      },
+    };
+  }, {} as Record<string, TrackSettings>);
 
   state.duration = calculateDuration(state.trackItemsMap);
 
@@ -370,6 +388,7 @@ export async function handleAddRemoveStateEvents(
       tracks: state.tracks,
       duration: state.duration,
       structure: state.structure,
+      tracksSettings: state.tracksSettings,
     },
     {
       updateHistory: true,
@@ -379,9 +398,12 @@ export async function handleAddRemoveStateEvents(
 }
 
 function createTrack(type: string | undefined, items: any[]): any {
+  const accepts =
+    type === "image" || type === "video" ? ["image", "video"] : [type];
+
   return {
     id: uuidv4(),
-    accepts: ["text", "audio", "helper", "video", "image"],
+    accepts,
     type,
     items,
     magnetic: false,

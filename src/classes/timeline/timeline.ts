@@ -23,6 +23,7 @@ import {
   ITrackItem,
   ITransition,
   IUpdateStateOptions,
+  TrackSettings,
 } from "@/shared/types";
 import {
   addEventListeners,
@@ -81,6 +82,7 @@ export class Timeline extends Canvas {
   scale?: ITimelineScaleState;
   sizesMap?: Record<string, number>;
   duration: any;
+  tracksSettings: Record<string, TrackSettings> = {};
 
   setupFabricDefaults() {
     FabricObject.ownDefaults.borderColor = "transparent";
@@ -188,6 +190,7 @@ export class Timeline extends Canvas {
       // tScale: this.tScale,
       scale: this.scale,
       duration,
+      tracksSettings: this.tracksSettings,
     };
   }
 

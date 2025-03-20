@@ -384,8 +384,8 @@ export class TrackItemsMixin {
   }
 
   deleteTrackItemById(this: Timeline, itemIds: any[]) {
-    const objectsToRemove = this.getObjects().filter((obj: any) =>
-      itemIds.includes(obj.id)
+    const objectsToRemove = this.getObjects().filter(
+      (obj: any) => itemIds.includes(obj.id) && obj.type !== "track"
     );
 
     this.tracks = removeItemsFromTrack(this.tracks, itemIds);
@@ -399,12 +399,20 @@ export class TrackItemsMixin {
 
     this.trackItemIds = this.trackItemIds.filter((id) => !itemIds.includes(id));
 
+    this.tracksSettings = Object.keys(this.tracksSettings)
+      .filter((key) => !itemIds.includes(key))
+      .reduce((acc, key) => {
+        acc[key] = this.tracksSettings[key];
+        return acc;
+      }, {} as any);
+
     this.discardActiveObject();
     this.remove(...objectsToRemove);
 
     this.renderTracks();
     this.alignItemsToTrack();
     this.calcBounding();
+
     this.duration = calculateDuration(this.trackItemsMap);
   }
 

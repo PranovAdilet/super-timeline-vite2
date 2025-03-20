@@ -14,7 +14,7 @@ type Props = {
   trackItemsMap?: Record<string, ITrackItem>;
   trackItemDetailsMap?: Record<string, any>;
 };
-const Composition = ({
+const TimelinePlayer = ({
   trackItemIds: trackItemIdsProps,
   trackItemsMap: trackItemsMapProps,
   trackItemDetailsMap: trackItemDetailsMapProps,
@@ -35,51 +35,6 @@ const Composition = ({
   const trackItemsMap = trackItemsMapProps ?? trackItemsMapStore;
   const trackItemIds = trackItemIdsProps ?? trackItemIdsStore;
 
-  // const handleChange = () => {
-  //   const updatedObjects = editor?.exportObjects();
-  // };
-
-  // const { handleReady, selectedObjects, editor } = useFabricEditor({
-  //   onChange: handleChange,
-  // });
-
-  // useEffect(() => {
-  //   if (selectedObjects?.length === 0) {
-  //     setState({ activeIds: [] });
-  //     eventBus.dispatch(LAYER_SELECTION, {
-  //       payload: {
-  //         activeIds: [],
-  //       },
-  //     });
-  //     stateManager.updateState(
-  //       {
-  //         activeIds: [],
-  //       },
-  //       {
-  //         updateHistory: false,
-  //         kind: "layer:selection",
-  //       }
-  //     );
-  //   } else if (selectedObjects?.[0] instanceof Textbox) {
-  //     const activeIds = [selectedObjects[0].id];
-  //     setState({ activeIds });
-  //     eventBus.dispatch(LAYER_SELECTION, {
-  //       payload: {
-  //         activeIds,
-  //       },
-  //     });
-  //     stateManager.updateState(
-  //       {
-  //         activeIds: activeIds,
-  //       },
-  //       {
-  //         updateHistory: false,
-  //         kind: "layer:selection",
-  //       }
-  //     );
-  //   }
-  // }, [selectedObjects]);
-
   const mergedTrackItemsDeatilsMap = merge(trackItemsMap, trackItemDetailsMap);
 
   return (
@@ -97,7 +52,6 @@ const Composition = ({
           fps,
           width,
           height,
-          // handleReady,
           currentFrame,
         });
       })}
@@ -105,4 +59,4 @@ const Composition = ({
   );
 };
 
-export default Composition;
+export default TimelinePlayer;

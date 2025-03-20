@@ -6,6 +6,7 @@ import {
   ITrackItem,
   ITrackItemAndDetails,
   IVideo,
+  TrackSettings,
   useLayoutStore,
   useStore,
 } from "@/shared";
@@ -19,16 +20,18 @@ import BasicText from "./basic-text";
 import BasicImage from "./basic-image";
 import BasicVideo from "./basic-video";
 import BasicAudio from "./basic-audio";
+import BasicTrack from "./basis-track";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   const { activeToolboxItem, setActiveToolboxItem } = useLayoutStore();
-  const { activeIds, trackItemsMap, trackItemDetailsMap, transitionsMap } =
+  const { activeIds, trackItemsMap, trackItemDetailsMap, tracksSettings } =
     useStore();
   const [trackItem, setTrackItem] = useState<ITrackItem | null>(null);
   const [displayToolbox, setDisplayToolbox] = useState<boolean>(false);
 
   useEffect(() => {
     if (activeIds.length === 1) {
+      console.log(activeIds);
       const [id] = activeIds;
       const trackItemDetails = trackItemDetailsMap![id];
       const trackItem = {
@@ -36,7 +39,9 @@ const Container = ({ children }: { children: React.ReactNode }) => {
         details: trackItemDetails?.details || {},
       };
       if (trackItemDetails) setTrackItem(trackItem);
-      else console.log(transitionsMap[id]);
+      else if (tracksSettings[id]) {
+        setTrackItem(tracksSettings[id] as any);
+      } else console.log(id);
     } else {
       setTrackItem(null);
       setDisplayToolbox(false);
@@ -104,6 +109,9 @@ const ActiveControlItem = ({
         {
           "basic-text": (
             <BasicText trackItem={trackItem as ITrackItem & IText} />
+          ),
+          "basic-tracksettings": (
+            <BasicTrack trackItem={trackItem as ITrackItem & TrackSettings} />
           ),
           "basic-image": (
             <BasicImage trackItem={trackItem as ITrackItem & IImage} />

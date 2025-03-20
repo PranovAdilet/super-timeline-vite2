@@ -80,9 +80,10 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
     name: "Regular",
   });
 
+  console.log(trackItem);
   useEffect(() => {
     const fontFamily =
-      trackItem.details.fontFamily || DEFAULT_FONT.postScriptName;
+      trackItem.details?.fontFamily || DEFAULT_FONT.postScriptName;
     const currentFont = FONTS.find(
       (font) => font.postScriptName === fontFamily
     )!;

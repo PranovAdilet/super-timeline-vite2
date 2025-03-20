@@ -46,6 +46,7 @@ const defaultState = {
   trackItemsMap: {},
   transitionIds: [],
   transitionsMap: {},
+  tracksSettings: {},
   scale: {
     unit: 1,
     zoom: 1,
@@ -194,6 +195,16 @@ export class StateManager {
     });
   }
 
+  subscribeToUpdateTracksSettings(callback: any) {
+    return this.stateSubject.asObservable().subscribe((currentState: any) => {
+      if (
+        !isEqual(currentState.tracksSettings, this.prevState.tracksSettings)
+      ) {
+        callback({ tracksSettings: currentState.tracksSettings });
+      }
+    });
+  }
+
   subscribeToDuration(callback: any) {
     return this.stateSubject.asObservable().subscribe((currentState: any) => {
       if (currentState.duration !== this.prevState.duration) {
@@ -281,6 +292,7 @@ export class StateManager {
           transitionIds: currentState.transitionIds,
           transitionsMap: currentState.transitionsMap,
           trackItemDetailsMap: currentState.trackItemDetailsMap,
+          tracksSettings: currentState.tracksSettings,
           // structure: currentState.structure,
         });
       }

@@ -1,3 +1,4 @@
+import { ITrack } from "@/shared";
 import { calculateDuration } from "../../utils";
 
 let activeIdsSubscription: any;
@@ -48,11 +49,39 @@ export const addSubscribeStateEvents = (timeline: any) => {
 
   addRemoveItemsSubscription = state.subscribeToAddOrRemoveItems(() => {
     const trackItems = timeline.getTrackItems().map((item: any) => item.id);
-    const { trackItemIds, trackItemsMap, trackItemDetailsMap } =
-      state.getState();
+    const {
+      trackItemIds,
+      trackItemsMap,
+      trackItemDetailsMap,
+      tracksSettings,
+      tracks,
+    } = state.getState();
     const removedItems: any = [];
 
-    // Проверка на добавленные элементы
+    const trackIds = new Set(tracks.map((track) => track.id));
+
+    Object.keys(tracksSettings).forEach((id) => {
+      if (!trackIds.has(id)) {
+        removedItems.push(id);
+      }
+    });
+
+    // if (tracksSettings && Object.keys(tracksSettings).length > 0) {
+    //   const remainingTracksSettings: any = Object.fromEntries(
+    //     Object.entries(tracksSettings)?.filter(([id]) =>
+    //       tracks.find((track: ITrack) => track.id === id)
+    //     )
+    //   );
+    //   const removedId = Object.keys(remainingTracksSettings).filter((key) => {
+    //     return Object.keys(tracksSettings).find((item) => item !== key);
+    //   });
+
+    //   // removedItems.push(removedId)
+    //   // Object.keys(remainingTracksSettings).forEach((item: any) => {
+    //   //   removedItems.push(item);
+    //   // });
+    // }
+
     trackItems.forEach((id: any) => {
       if (!trackItemIds.includes(id)) {
         removedItems.push(id);
@@ -77,6 +106,7 @@ export const addSubscribeStateEvents = (timeline: any) => {
         };
 
         timeline.addTrackItem(updatedItem);
+        timeline.renderTrackSettings(timeline.tracks);
       }
     });
 

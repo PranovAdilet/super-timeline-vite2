@@ -21,7 +21,7 @@ export const Player = ({ stateManager }: { stateManager?: StateManager }) => {
       <RemotionPlayer
         ref={playerRef}
         component={Composition}
-        durationInFrames={Math.round((duration / 1000) * fps) || 5 * 30}
+        durationInFrames={Math.round((duration / 1000) * fps + 30) || 5 * 30}
         compositionWidth={size.width}
         compositionHeight={size.height}
         style={{ width: "100%", height: "100%" }}

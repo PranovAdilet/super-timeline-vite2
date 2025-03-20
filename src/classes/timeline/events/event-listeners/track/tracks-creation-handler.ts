@@ -70,6 +70,7 @@ export function tracksCreationHandler(this: Timeline, data: any) {
   this.renderTracks();
   this.alignItemsToTrack();
   this.updateTrackItemsPosition();
+  this.renderTrackSettings(this.tracks);
 
   this.updateTransitions();
 

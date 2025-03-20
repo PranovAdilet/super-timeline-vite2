@@ -219,6 +219,7 @@ export const DownloadPopover = ({
     trackItemDetailsMap,
     transitionsMap,
     transitionIds,
+    tracksSettings,
     fps,
   } = useStore();
 
@@ -233,6 +234,7 @@ export const DownloadPopover = ({
       transitionsMap,
       trackItemsMap,
       transitionIds,
+      tracksSettings,
     };
     onExport?.(data);
     console.log(data);

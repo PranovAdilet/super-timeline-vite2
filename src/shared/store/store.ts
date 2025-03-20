@@ -37,6 +37,7 @@ export const useStore = create<ITimelineStore>((set) => ({
   transitionsMap: {},
   trackItemDetailsMap: {},
   trackItemsMap: {},
+  tracksSettings: {},
 
   setTimeline: (timeline: Timeline) => {
     set(() => ({

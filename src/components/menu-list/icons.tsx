@@ -41,6 +41,7 @@ import {
   Music,
   VideoIcon,
   Captions,
+  ListVideo,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -61,6 +62,7 @@ export const Icons = {
   dashboard: LayoutPanelLeft,
   ellipsis: MoreVertical,
   folder: FolderClosed,
+  tracksettings: ListVideo,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
