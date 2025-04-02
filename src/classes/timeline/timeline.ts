@@ -30,6 +30,7 @@ import {
   removeEventListeners,
 } from "./events/event-listeners";
 import { cloneDeep } from "lodash-es";
+import { updateTrackSettings } from "../state/events/crud";
 
 interface TimelineOptions extends CanvasOptions {
   bounding?: {
@@ -155,6 +156,7 @@ export class Timeline extends Canvas {
       this.state?.updateState({
         activeIds: cloneDeep(this.activeIds),
       });
+
       eventBus.dispatch(LAYER_SELECTION, {
         payload: {
           activeIds: this.activeIds,
@@ -180,6 +182,10 @@ export class Timeline extends Canvas {
 
   getUpdatedState() {
     const duration = calculateDuration(this.trackItemsMap);
+    const tracksSettings = updateTrackSettings(
+      this.tracks,
+      this.tracksSettings
+    );
 
     return {
       tracks: this.tracks,
@@ -190,7 +196,7 @@ export class Timeline extends Canvas {
       // tScale: this.tScale,
       scale: this.scale,
       duration,
-      tracksSettings: this.tracksSettings,
+      tracksSettings: tracksSettings,
     };
   }
 
@@ -203,6 +209,7 @@ export class Timeline extends Canvas {
       transitionIds: this.transitionIds,
       transitionsMap: this.transitionsMap,
       trackItemDetailsMap: this.trackItemDetailsMap,
+      tracksSettings: this.tracksSettings,
       // tScale: this.tScale,
       scale: this.scale,
       duration,

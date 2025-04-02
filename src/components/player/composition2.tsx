@@ -18,18 +18,20 @@ type Props = {
   trackItemIds?: string[];
   trackItemsMap?: Record<string, ITrackItem>;
   trackItemDetailsMap?: Record<string, any>;
+  transitionsMap?: Record<string, ITransition>;
 };
 const Composition = ({
   trackItemIds: trackItemIdsProps,
   trackItemsMap: trackItemsMapProps,
   trackItemDetailsMap: trackItemDetailsMapProps,
+  transitionsMap: transitionsMapProps,
 }: Props) => {
   const {
     trackItemIds: trackItemIdsStore,
     trackItemsMap: trackItemsMapStore,
     fps,
     trackItemDetailsMap: trackItemDetailsMapStore,
-    transitionsMap,
+    transitionsMap: transitionsMapStore,
     size,
   } = useStore();
 
@@ -41,6 +43,7 @@ const Composition = ({
     trackItemDetailsMapProps ?? trackItemDetailsMapStore;
   const trackItemsMap = trackItemsMapProps ?? trackItemsMapStore;
   const trackItemIds = trackItemIdsProps ?? trackItemIdsStore;
+  const transitionsMap = transitionsMapProps ?? transitionsMapStore;
 
   const mergedTrackItemsDeatilsMap = merge(trackItemsMap, trackItemDetailsMap);
 

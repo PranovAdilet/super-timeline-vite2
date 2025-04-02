@@ -16,6 +16,7 @@ export declare const Icons: {
     dashboard: import("react").ForwardRefExoticComponent<Omit<LucideProps, "ref"> & import("react").RefAttributes<SVGSVGElement>>;
     ellipsis: import("react").ForwardRefExoticComponent<Omit<LucideProps, "ref"> & import("react").RefAttributes<SVGSVGElement>>;
     folder: import("react").ForwardRefExoticComponent<Omit<LucideProps, "ref"> & import("react").RefAttributes<SVGSVGElement>>;
+    tracksettings: import("react").ForwardRefExoticComponent<Omit<LucideProps, "ref"> & import("react").RefAttributes<SVGSVGElement>>;
     gitHub: ({ ...props }: LucideProps) => import("react/jsx-runtime").JSX.Element;
     google: ({ ...props }: LucideProps) => import("react/jsx-runtime").JSX.Element;
     nextjs: ({ ...props }: LucideProps) => import("react/jsx-runtime").JSX.Element;

@@ -9,6 +9,7 @@ import { MirrorMedia } from "./common/mirror";
 
 const BasicImage = ({ trackItem }: { trackItem: ITrackItem & IImage }) => {
   const [properties, setProperties] = useState(trackItem);
+
   useEffect(() => {
     setProperties({
       ...trackItem,

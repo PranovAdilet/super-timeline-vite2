@@ -18,6 +18,8 @@ export function tracksCreationHandler(this: Timeline, data: any) {
   const trackIndex =
     selectedTrackIndex === -1 ? this.tracks.length : selectedTrackIndex;
 
+  if (!primary) return;
+
   const [primaryTrackId] = Object.keys(primary);
   const track = this.tracks.find((track) => track.id == primaryTrackId);
   const primaryTrack = primary[primaryTrackId];

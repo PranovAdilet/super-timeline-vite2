@@ -169,7 +169,10 @@ export type ILayerBase = {
   details: Record<string, any>;
   metadata?: Record<string, any>;
   isMain?: boolean;
-  animation?: any;
+  animations?: {
+    in: IBasicAnimation;
+    out: IBasicAnimation;
+  };
   trim?: {
     from: number;
     to: number;
@@ -237,7 +240,14 @@ export type ITrack = {
   accepts?: ItemType[];
   index?: number;
 };
-type ITrackType = "main" | "text" | "image" | "video" | "audio" | "helper";
+type ITrackType =
+  | "main"
+  | "text"
+  | "image"
+  | "video"
+  | "audio"
+  | "helper"
+  | "tracksettings";
 export type ITimelineStore = {
   duration: number;
   fps: number;
@@ -303,7 +313,20 @@ export interface Bounding {
 }
 
 export type TrackSettings = {
-  id: string;
-  type: "tracksettings";
   trackId: string;
-};
+  details?: Record<string, any>;
+} & ITrack;
+
+export interface IBasicAnimation {
+  name: string;
+  composition: ICompositionAnimation[];
+}
+export interface ICompositionAnimation {
+  property: string;
+  from: number;
+  to: number;
+  durationInFrames: number;
+  ease?: (t: number) => number;
+  easing: string;
+  delay: number;
+}

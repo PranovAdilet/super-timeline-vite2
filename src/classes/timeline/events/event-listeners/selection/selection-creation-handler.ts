@@ -15,6 +15,11 @@ export function selectionCreationHandler(this: Timeline) {
     activeObject.padding = 0;
 
     activeObject.getObjects().forEach((obj: any) => {
+      if (obj.type === "tracksettings") {
+        obj.setSelected(false);
+        this.discardActiveObject();
+        return;
+      }
       obj.setSelected(true);
     });
   } else {

@@ -21,5 +21,6 @@ export function handleSelectionUpdated(this: Timeline, event: any) {
   });
 
   const selectedIds = canvas.getActiveObjects().map((obj: any) => obj.id);
+
   this.setActiveIds(selectedIds);
 }

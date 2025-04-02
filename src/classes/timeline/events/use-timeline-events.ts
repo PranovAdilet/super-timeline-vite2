@@ -19,6 +19,36 @@ import {
 const useTimelineEvents = () => {
   const { playerRef, fps, timeline, setState } = useStore();
 
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (!playerRef?.current) return;
+    const player = playerRef.current;
+
+    switch (e.key) {
+      case " ":
+        e.preventDefault();
+        player.isPlaying() ? player.pause() : player.play();
+        break;
+
+      case "ArrowLeft":
+        e.preventDefault();
+        player.seekTo(player.getCurrentFrame() - (e.shiftKey ? 10 : 1));
+        break;
+
+      case "ArrowRight":
+        e.preventDefault();
+        player.seekTo(player.getCurrentFrame() + (e.shiftKey ? 10 : 1));
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [playerRef]);
+
   useEffect(() => {
     const playerEvents = eventBus.subject.pipe(
       filter(({ key }) => key.startsWith(PLAYER_PREFIX))

@@ -8,6 +8,7 @@ import { HelperObject, TrackObject } from "@/classes/objects";
 import { v4 as uuidv4 } from "uuid";
 import { Timeline } from "../timeline/timeline";
 import { TrackSettingsObject } from "../items/track-settings";
+import { trackSettingsDetailsMap } from "../state/events/crud";
 
 const Oe = {
     text: 32,
@@ -52,31 +53,47 @@ export class TracksMixin {
 
     this.remove(...objectsToRemove);
 
-    console.log(this.tracks, this.state.getState());
-
-    tracks.forEach((track) => {
-      const id = uuidv4();
-
+    tracks.forEach((track, index) => {
       const rect = new TrackSettingsObject({
         width: 40,
         height: 42,
         left: -50,
-        top,
-        id,
+        top: 42 + index * 50,
+        id: track.id,
         trackId: track.id,
         items: [],
       });
       top += 50;
       this.add(rect);
 
+      const trackSettingsDetails = trackSettingsDetailsMap[track.type];
+
+      if (this.tracksSettings[track.id]) {
+        const oldSettings = this.tracksSettings[track.id];
+
+        newSettings[track.id] = {
+          ...oldSettings,
+          details: {
+            trackType: track.type,
+            ...trackSettingsDetails,
+          },
+          items: track.items,
+        };
+        return;
+      }
       newSettings[track.id] = {
-        id,
+        ...track,
+        id: track.id,
         type: "tracksettings",
         trackId: track.id,
+        details: {
+          trackType: track.type,
+          ...trackSettingsDetails,
+        },
       };
     });
 
-    this.tracksSettings = { ...this.tracksSettings, ...newSettings };
+    this.tracksSettings = { ...newSettings, ...this.tracksSettings };
     this.renderAll();
   }
 

@@ -15,6 +15,7 @@ export function trackMovedHandler(this: Timeline, trackData: any) {
   } = trackData;
 
   const { trackId, positions } = primaryPositions;
+
   const trackIndex = this.tracks.findIndex((track) => track.id === trackId);
 
   const secondaryTrackIds = mergeTrackObjects(

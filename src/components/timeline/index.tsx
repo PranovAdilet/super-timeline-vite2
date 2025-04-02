@@ -192,6 +192,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
           trackItemsMap: currentState.trackItemsMap,
           trackItemIds: currentState.trackItemIds,
           tracks: currentState.tracks,
+          tracksSettings: currentState.tracksSettings,
         });
       }
     );

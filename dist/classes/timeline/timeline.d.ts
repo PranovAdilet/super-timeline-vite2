@@ -1,6 +1,6 @@
 import { Canvas, CanvasOptions } from "fabric";
 import { CanvasMixin, TrackItemsMixin, TracksMixin, TransitionsMixin } from "@/classes/mixins";
-import { Bounding, CanvasSpacing, ITimelineScaleState, ITimelineStore, ITrack, ITrackItem, ITransition, IUpdateStateOptions } from "@/shared/types";
+import { Bounding, CanvasSpacing, ITimelineScaleState, ITimelineStore, ITrack, ITrackItem, ITransition, IUpdateStateOptions, TrackSettings } from "@/shared/types";
 interface TimelineOptions extends CanvasOptions {
     bounding?: {
         width: number;
@@ -39,6 +39,7 @@ export declare class Timeline extends Canvas {
     scale?: ITimelineScaleState;
     sizesMap?: Record<string, number>;
     duration: any;
+    tracksSettings: Record<string, TrackSettings>;
     setupFabricDefaults(): void;
     constructor(canvasEl: HTMLCanvasElement, options: Partial<TimelineOptions>);
     createAcceptsItemMap(map?: Record<string, string[]>): Record<string, string[]>;
@@ -64,6 +65,7 @@ export declare class Timeline extends Canvas {
         transitionsMap: Record<string, ITransition>;
         scale: ITimelineScaleState | undefined;
         duration: number;
+        tracksSettings: any;
     };
     getState(): {
         tracks: ITrack[];
@@ -92,6 +94,7 @@ export declare class Timeline extends Canvas {
         }) | (import("@/shared/types").ITrackItemBase & {
             type: "helper";
         })>;
+        tracksSettings: Record<string, TrackSettings>;
         scale: ITimelineScaleState | undefined;
         duration: number;
     };

@@ -93,6 +93,20 @@ const Header = () => {
     };
   }, [playerRef]);
 
+  const handleBack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const player = playerRef?.current;
+    if (!player) return;
+    e.preventDefault();
+    player.seekTo(player.getCurrentFrame() - (e.shiftKey ? 10 : 1));
+  };
+
+  const handleForward = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const player = playerRef?.current;
+    if (!player) return;
+    e.preventDefault();
+    player.seekTo(player.getCurrentFrame() + (e.shiftKey ? 10 : 1));
+  };
+
   return (
     <div
       style={{
@@ -156,7 +170,7 @@ const Header = () => {
           <div className="flex items-center justify-center">
             <div>
               <Button
-                onClick={doActiveDelete}
+                onClick={handleBack}
                 variant={"ghost"}
                 size={"icon"}
               >
@@ -175,7 +189,7 @@ const Header = () => {
                 {playing ? <Pause size={14} /> : <Play size={14} />}
               </Button>
               <Button
-                onClick={doActiveSplit}
+                onClick={handleForward}
                 variant={"ghost"}
                 size={"icon"}
               >

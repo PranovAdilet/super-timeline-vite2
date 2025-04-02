@@ -117,7 +117,7 @@ export default function MenuList() {
         <Icons.audio width={20} />
       </Button>
 
-      <Button
+      {/* <Button
         onClick={() => {
           setActiveMenuItem("transitions");
           setShowMenuItem(true);
@@ -141,7 +141,7 @@ export default function MenuList() {
             fill="currentColor"
           />
         </svg>
-      </Button>
+      </Button> */}
     </div>
   );
 }

@@ -58,7 +58,7 @@ export const addSubscribeStateEvents = (timeline: any) => {
     } = state.getState();
     const removedItems: any = [];
 
-    const trackIds = new Set(tracks.map((track) => track.id));
+    const trackIds = new Set(tracks.map((track: any) => track.id));
 
     Object.keys(tracksSettings).forEach((id) => {
       if (!trackIds.has(id)) {
@@ -66,33 +66,15 @@ export const addSubscribeStateEvents = (timeline: any) => {
       }
     });
 
-    // if (tracksSettings && Object.keys(tracksSettings).length > 0) {
-    //   const remainingTracksSettings: any = Object.fromEntries(
-    //     Object.entries(tracksSettings)?.filter(([id]) =>
-    //       tracks.find((track: ITrack) => track.id === id)
-    //     )
-    //   );
-    //   const removedId = Object.keys(remainingTracksSettings).filter((key) => {
-    //     return Object.keys(tracksSettings).find((item) => item !== key);
-    //   });
-
-    //   // removedItems.push(removedId)
-    //   // Object.keys(remainingTracksSettings).forEach((item: any) => {
-    //   //   removedItems.push(item);
-    //   // });
-    // }
-
     trackItems.forEach((id: any) => {
       if (!trackItemIds.includes(id)) {
         removedItems.push(id);
       }
     });
-
     // Удаление элементов
     timeline.deleteTrackItemById(removedItems);
-
     // Обновление данных
-    timeline.tracks = state.getState().tracks;
+    timeline.tracks = tracks;
     timeline.trackItemsMap = trackItemsMap;
     timeline.trackItemDetailsMap = trackItemDetailsMap;
 

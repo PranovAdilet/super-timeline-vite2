@@ -35,6 +35,7 @@ export class TrackItemsMixin {
     this.updateTrackItemsPosition();
     this.calcBounding();
     this.duration = calculateDuration(this.trackItemsMap);
+
     // this.updateState();
   }
   alignItemsToTrack(this: Timeline): void {
@@ -164,7 +165,6 @@ export class TrackItemsMixin {
       object.set({ left, width, top: trackTop });
       object.setCoords();
     });
-
     this.requestRenderAll();
     this.resumeEventListeners();
   }
@@ -310,6 +310,7 @@ export class TrackItemsMixin {
       ...payload,
       details: updatedDetails,
     } as any;
+
     this.updateState();
   }
 
@@ -346,6 +347,7 @@ export class TrackItemsMixin {
       ...payload,
       details: updatedDetails,
     } as any;
+
     this.updateState();
   }
 
@@ -372,6 +374,7 @@ export class TrackItemsMixin {
         details: updatedDetails,
       } as any;
     });
+
     this.updateState();
   }
 
@@ -406,7 +409,9 @@ export class TrackItemsMixin {
         return acc;
       }, {} as any);
 
-    this.discardActiveObject();
+    if (itemIds.length >= 1) {
+      this.discardActiveObject();
+    }
     this.remove(...objectsToRemove);
 
     this.renderTracks();
