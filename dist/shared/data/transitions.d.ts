@@ -1,10 +1,10 @@
 export declare const TRANSITIONS: ({
     id: string;
     kind: string;
+    name: string;
     duration: number;
     preview: string;
     type: string;
-    name?: undefined;
     direction?: undefined;
 } | {
     id: string;

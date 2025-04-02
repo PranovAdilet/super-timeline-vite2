@@ -1575,6 +1575,11 @@
   dependencies:
     remotion "4.0.229"
 
+"@remotion/paths@4.0.229":
+  version "4.0.229"
+  resolved "https://registry.yarnpkg.com/@remotion/paths/-/paths-4.0.229.tgz#58ac3b43efa5cedee3fe3349d79d75fd0843ed4b"
+  integrity sha512-G0nk8CYAMR7xER3UqdzGwV3pRsU2T5EwPYnWdnM3m7B0k3awIJO8BPj2oEiPebkJ1KxoVGsg3y+ag9ICjpH+tw==
+
 "@remotion/player@4.0.229":
   version "4.0.229"
   resolved "https://registry.yarnpkg.com/@remotion/player/-/player-4.0.229.tgz#d58115c8f5b67d1246061b38246f5c8a39b24f1d"
@@ -1601,6 +1606,13 @@
     "@remotion/compositor-linux-x64-gnu" "4.0.229"
     "@remotion/compositor-linux-x64-musl" "4.0.229"
     "@remotion/compositor-win32-x64-msvc" "4.0.229"
+
+"@remotion/shapes@4.0.229":
+  version "4.0.229"
+  resolved "https://registry.yarnpkg.com/@remotion/shapes/-/shapes-4.0.229.tgz#1867629d11a77571db9e705a20218f7498150652"
+  integrity sha512-OKg1ttveDKCA66GIRavn7t479eFYJ8cn8ILMt4Yd7vFUVWOiTtwYdzKLVtXtetJnDGHzY2fY66hpKi0kjUtv1g==
+  dependencies:
+    "@remotion/paths" "4.0.229"
 
 "@remotion/streaming@4.0.229":
   version "4.0.229"
@@ -1657,6 +1669,15 @@
     postcss-preset-env "^8.3.2"
     style-loader "2.0.0"
     tailwindcss "3.4.13"
+
+"@remotion/transitions@4.0.229":
+  version "4.0.229"
+  resolved "https://registry.yarnpkg.com/@remotion/transitions/-/transitions-4.0.229.tgz#84ee4f1d8128e9db1ee6ab01a2bf5aca1f0a7633"
+  integrity sha512-pzPXW6cPcOUDXIQUu3CCf1oG2NeCoYdddzvrXMrjhqYPLmkoF6/kcwA251/raEo6T0jW4nTflJHlQK4V4rxj0Q==
+  dependencies:
+    "@remotion/paths" "4.0.229"
+    "@remotion/shapes" "4.0.229"
+    remotion "4.0.229"
 
 "@rollup/rollup-android-arm-eabi@4.34.6":
   version "4.34.6"

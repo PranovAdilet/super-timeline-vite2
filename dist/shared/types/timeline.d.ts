@@ -44,8 +44,25 @@ export type ITrackItem = (ITrackItemBase & {
     type: "caption";
 }) | (ITrackItemBase & {
     type: "template";
+}) | (ITrackItemBase & {
+    type: "track";
+    isShow: boolean;
 });
-export type ITransition = {};
+export type ITransition = {
+    id: string;
+    trackId: string;
+    fromId: string;
+    toId: string;
+    type: string;
+    name?: string;
+    duration: number;
+    preview?: string;
+    direction?: any;
+    kind: string;
+};
+export interface ITrackItemsMap {
+    [id: string]: ITrackItem;
+}
 export type ITrackItemBase = {
     id: string;
     name: string;
@@ -103,6 +120,10 @@ export type IVideoDetails = {
     volume?: number;
     text?: string;
     zoom?: ZoomType;
+    mirror?: {
+        x: boolean;
+        y: boolean;
+    };
 } & ICommonDetails;
 export type ITimelineScaleState = {
     unit: number;
@@ -119,7 +140,10 @@ export type ILayerBase = {
     details: Record<string, any>;
     metadata?: Record<string, any>;
     isMain?: boolean;
-    animation?: any;
+    animations?: {
+        in: IBasicAnimation;
+        out: IBasicAnimation;
+    };
     trim?: {
         from: number;
         to: number;
@@ -161,6 +185,10 @@ export type IImage = {
         duration?: number;
         blur?: number;
         brightness?: number;
+        mirror?: {
+            x: boolean;
+            y: boolean;
+        };
     };
 } & ILayerBase;
 export type IVideo = {
@@ -183,7 +211,7 @@ export type ITrack = {
     accepts?: ItemType[];
     index?: number;
 };
-type ITrackType = "main" | "text" | "image" | "video" | "audio" | "helper";
+type ITrackType = "main" | "text" | "image" | "video" | "audio" | "helper" | "tracksettings";
 export type ITimelineStore = {
     duration: number;
     fps: number;
@@ -193,6 +221,7 @@ export type ITimelineStore = {
     trackItemIds: string[];
     transitionIds: string[];
     transitionsMap: Record<string, ITransition>;
+    tracksSettings: Record<string, TrackSettings>;
     trackItemsMap: Record<string, ITrackItem>;
     trackItemDetailsMap?: Record<string, any>;
     activeIds: string[];
@@ -232,5 +261,22 @@ export interface IUpdateStateOptions {
 export interface Bounding {
     width: number;
     height: number;
+}
+export type TrackSettings = {
+    trackId: string;
+    details?: Record<string, any>;
+} & ITrack;
+export interface IBasicAnimation {
+    name: string;
+    composition: ICompositionAnimation[];
+}
+export interface ICompositionAnimation {
+    property: string;
+    from: number;
+    to: number;
+    durationInFrames: number;
+    ease?: (t: number) => number;
+    easing: string;
+    delay: number;
 }
 //# sourceMappingURL=timeline.d.ts.map

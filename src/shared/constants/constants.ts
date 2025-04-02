@@ -95,5 +95,6 @@ export const DEFAULT_MAX_VOLUME = 1;
 export const DEFAULT_VOLUME_STEP = 0.01;
 export const DEFAULT_VOLUME = 1;
 
-export const TIMELINE_OFFSET_CANVAS_LEFT = 16;
+export const TIMELINE_OFFSET_CANVAS_LEFT = 55;
+// export const TIMELINE_OFFSET_CANVAS_LEFT = 16;
 export const TIMELINE_OFFSET_CANVAS_RIGHT = 80;

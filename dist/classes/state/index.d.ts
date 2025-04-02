@@ -27,6 +27,7 @@ export declare class StateManager {
     subscribeToScale(callback: any): any;
     subscribeToUpdateTrackItem(callback: any): any;
     subscribeToUpdateItemDetails(callback: any): any;
+    subscribeToUpdateTracksSettings(callback: any): any;
     subscribeToDuration(callback: any): any;
     subscribeToHistory(callback: any): any;
     subscribeToAddOrRemoveItems(callback: any): any;

@@ -2,6 +2,7 @@ import {
   ACTIVE_CLONE,
   ACTIVE_DELETE,
   ACTIVE_SPLIT,
+  ADD_ANIMATION,
   ADD_AUDIO,
   ADD_IMAGE,
   ADD_TEXT,
@@ -23,7 +24,7 @@ import {
 } from "@/classes/timeline/utils";
 import { v4 as uuidv4 } from "uuid";
 import { cloneDeep } from "lodash-es";
-import { ITrackItem } from "@/shared";
+import { ITrack, ITrackItem, TrackSettings } from "@/shared";
 
 export function handleActiveItemsStateEvents(
   this: StateManager,
@@ -32,6 +33,7 @@ export function handleActiveItemsStateEvents(
   const p = [];
   const value = obj.value;
   const l = [];
+
   if (value?.payload?.trackItemIds) {
     const trackItemIds = value.payload.trackItemIds;
     l.push(trackItemIds);
@@ -62,6 +64,12 @@ export function handleActiveItemsStateEvents(
       )
     );
 
+    // const remainingTracksSettings = Object.fromEntries(
+    //   Object.entries(state.tracksSettings).filter(([id]) =>
+    //     remainingTracks.find((track) => track.id === id)
+    //   )
+    // );
+
     const newDuration = calculateDuration(remainingTrackItemsMap);
 
     this.updateState(
@@ -72,6 +80,7 @@ export function handleActiveItemsStateEvents(
         trackItemsMap: remainingTrackItemsMap,
         tracks: remainingTracks,
         duration: newDuration,
+        // tracksSettings: remainingTracksSettings,
       },
       { updateHistory: true, kind: "remove" }
     );
@@ -83,6 +92,11 @@ export function handleActiveItemsStateEvents(
 
     const activeIds = obj.value?.payload.trackItemIds || state.activeIds;
     if (activeIds.length === 0) return;
+
+    if (!state.trackItemsMap[activeIds[0]]) {
+      this.updateState({ activeIds: [] });
+      return;
+    }
 
     activeIds.forEach((id: any) => {
       const originalTrackItem = state.trackItemsMap[id];
@@ -121,6 +135,7 @@ export function handleActiveItemsStateEvents(
       .filter(Boolean);
 
     state.tracks.unshift(...newTracks);
+    state.tracksSettings = updateTrackSettings(newTracks, state.tracksSettings);
 
     this.updateState(
       {
@@ -128,6 +143,7 @@ export function handleActiveItemsStateEvents(
         tracks: state.tracks,
         trackItemIds: state.trackItemIds,
         trackItemsMap: state.trackItemsMap,
+        tracksSettings: state.tracksSettings,
       },
       {
         updateHistory: true,
@@ -144,6 +160,11 @@ export function handleActiveItemsStateEvents(
 
     const activeItemId = state.activeIds[0];
     const activeItem = state.trackItemsMap[activeItemId];
+
+    if (!activeItem) {
+      this.updateState({ activeIds: [] });
+      return;
+    }
 
     if (
       splitTime <= activeItem.display.from ||
@@ -174,12 +195,18 @@ export function handleActiveItemsStateEvents(
       }
     });
 
+    state.tracksSettings = updateTrackSettings(
+      state.tracks,
+      state.tracksSettings
+    );
+
     this.updateState(
       {
         trackItemsMap: state.trackItemsMap,
         trackItemDetailsMap: state.trackItemDetailsMap,
         trackItemIds: state.trackItemIds,
         tracks: state.tracks,
+        tracksSettings: state.tracksSettings,
       },
       { updateHistory: true, kind: "update" }
     );
@@ -207,6 +234,7 @@ export async function handleSceneStateEvents(this: any, event: EventBusData) {
     const trackItemIds = payload.trackItemIds;
     const trackItemsMap = payload.trackItemsMap;
     const trackItemDetailsMap = payload.trackItemDetailsMap;
+    const tracks = payload.tracks;
 
     if (!trackItemIds) return;
 
@@ -230,10 +258,12 @@ export async function handleSceneStateEvents(this: any, event: EventBusData) {
         return false;
       }
     });
+    const tracksSettings = updateTrackSettings(tracks, {});
     await Promise.all(promises);
     const duration = calculateDuration(trackItemsMap);
     this.updateState({
       ...payload,
+      tracksSettings,
       trackItemsMap,
       duration,
     });
@@ -246,6 +276,18 @@ export function handleEditObject(this: any, event: EventBusData) {
     const state = cloneDeep(this.getState());
     const trackItemDetailsMap = state.trackItemDetailsMap;
     const trackItemsMap = state.trackItemsMap;
+    const tracksSettings = state.tracksSettings;
+
+    const track = Object.entries(payload)[0]?.[1];
+    const trackId = track?.trackId;
+    const details = track?.details;
+
+    if (tracksSettings[trackId]) {
+      tracksSettings[trackId].details = {
+        ...tracksSettings[trackId].details,
+        ...details,
+      };
+    }
 
     for (const value of Object.entries(payload)) {
       const id = value[0];
@@ -265,7 +307,8 @@ export function handleEditObject(this: any, event: EventBusData) {
         };
       }
     }
-    this.updateState({ trackItemDetailsMap, trackItemsMap });
+
+    this.updateState({ trackItemDetailsMap, trackItemsMap, tracksSettings });
   }
 }
 
@@ -276,9 +319,24 @@ export async function handleAddRemoveStateEvents(
   const state = cloneDeep(this.getState());
   const trackId = event.value?.options?.trackId;
   const trackIndex = event.value?.options?.trackIndex;
-  let p: any[] = [];
+  let data: any[] = [];
 
   let type: string | undefined;
+
+  if (event.key === ADD_ANIMATION) {
+    const payload = event.value?.payload;
+    let animations = state.trackItemsMap[payload.id].animations;
+    animations
+      ? animations.in && payload.animations.in
+        ? (animations.in = payload.animations.in)
+        : (animations.out && payload.animations.out) ||
+          (!animations.out && payload.animations.out)
+        ? (animations.out = payload.animations.out)
+        : !animations.in && payload.animations.in
+        ? (animations.in = payload.animations.in)
+        : (animations = payload.animations)
+      : (state.trackItemsMap[payload.id].animations = payload.animations);
+  }
 
   if (event.key === ADD_VIDEO) {
     type = "video";
@@ -294,7 +352,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_IMAGE) {
@@ -309,7 +367,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_AUDIO) {
@@ -322,7 +380,7 @@ export async function handleAddRemoveStateEvents(
     };
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
-    p = [itemDetails.id];
+    data = [itemDetails.id];
   }
 
   if (event.key === ADD_TEXT) {
@@ -338,11 +396,11 @@ export async function handleAddRemoveStateEvents(
     state.trackItemsMap[itemDetails.id] = itemDetails;
     state.trackItemIds.push(itemDetails.id);
 
-    p.push(itemDetails.id);
+    data.push(itemDetails.id);
   }
 
   const trackInfo = findTrack(
-    p,
+    data,
     state.tracks,
     state.trackItemsMap,
     trackId,
@@ -351,14 +409,19 @@ export async function handleAddRemoveStateEvents(
 
   if (trackInfo.trackId) {
     const track = state.tracks.find((t: any) => t.id === trackInfo.trackId);
-    track?.items.push(...p);
+    track?.items.push(...data);
   } else if (trackInfo.trackIndex !== undefined) {
-    const newTrack = createTrack(type, p);
+    const newTrack = createTrack(type, data);
     state.tracks.splice(trackInfo.trackIndex, 0, newTrack);
   } else {
-    const newTrack = createTrack(type, p);
+    const newTrack = createTrack(type, data);
     state.tracks.unshift(newTrack);
   }
+
+  state.tracksSettings = updateTrackSettings(
+    state.tracks,
+    state.tracksSettings
+  );
 
   state.duration = calculateDuration(state.trackItemsMap);
 
@@ -370,6 +433,7 @@ export async function handleAddRemoveStateEvents(
       tracks: state.tracks,
       duration: state.duration,
       structure: state.structure,
+      tracksSettings: state.tracksSettings,
     },
     {
       updateHistory: true,
@@ -379,9 +443,12 @@ export async function handleAddRemoveStateEvents(
 }
 
 function createTrack(type: string | undefined, items: any[]): any {
+  const accepts =
+    type === "image" || type === "video" ? ["image", "video"] : [type];
+
   return {
     id: uuidv4(),
-    accepts: ["text", "audio", "helper", "video", "image"],
+    accepts,
     type,
     items,
     magnetic: false,
@@ -440,4 +507,82 @@ const findTrack = (
     trackId: selectedTrack.id,
     trackIndex: tracks.indexOf(selectedTrack),
   };
+};
+
+export const trackSettingsDetailsMap: Record<string, any> = {
+  text: {
+    color: "#ffffff",
+    colorDisplay: "#000000",
+    fontSize: 120,
+    fontSizeDisplay: "12px",
+    fontFamily: "Roboto-Bold",
+    fontFamilyDisplay: "Roboto",
+    opacity: 100,
+    opacityDisplay: "100%",
+    textAlign: "center",
+    textDecoration: "none",
+    borderWidth: 0,
+    borderColor: "#000000",
+    boxShadow: {
+      color: "#000000",
+      x: 0,
+      y: 0,
+      blur: 0,
+    },
+    backgroundColor: "#00000090",
+  },
+  audio: {
+    volume: 100,
+  },
+  video: {
+    volume: 100,
+    opacity: 100,
+    zoom: { type: "none", ease: "linear" },
+    mirror: {
+      x: false,
+      y: false,
+    },
+  },
+  image: {
+    brightness: 100,
+    opacity: 100,
+    blur: 0,
+    zoom: { type: "none", ease: "linear" },
+    mirror: {
+      x: false,
+      y: false,
+    },
+  },
+  helper: {},
+  caption: {},
+  element: {},
+  main: {},
+};
+
+export const updateTrackSettings = (
+  tracks: ITrack[],
+  tracksSettings: Record<string, TrackSettings>
+) => {
+  return tracks?.reduce((acc: any, rec) => {
+    const newTrackSettingsDetails = trackSettingsDetailsMap[rec.type];
+
+    const trackSettingsDetails = tracksSettings[rec.id]
+      ? tracksSettings[rec.id].details
+      : newTrackSettingsDetails;
+
+    return {
+      ...acc,
+      [rec.id]: {
+        ...rec,
+        id: rec.id,
+        type: "tracksettings",
+        trackId: rec.id,
+        details: {
+          trackType: rec.type,
+          ...trackSettingsDetails,
+        },
+        items: rec.items,
+      },
+    };
+  }, {} as Record<string, TrackSettings>);
 };

@@ -2,9 +2,8 @@
 
 import { Flex } from "@radix-ui/themes";
 import { Player } from "../player";
-import { StateManager } from "@/classes";
 
-export const Scene = ({}: { stateManager?: StateManager }) => {
+export const Scene = () => {
   return (
     <Flex
       flexGrow="1"

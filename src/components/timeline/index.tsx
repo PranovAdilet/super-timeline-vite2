@@ -65,6 +65,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
     timeline,
   } = useStore();
   const { setTimeline } = useStore();
+  const store = useStore((state) => state);
   const currentFrame = useCurrentPlayerFrame(playerRef ?? undefined);
 
   const onScroll = (v: { scrollTop: number; scrollLeft: number }) => {
@@ -120,7 +121,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
       selectionBorderColor: "rgba(0, 216, 214,1.0)",
       onScroll,
       // tScale: scale.zoom,
-      // store,
+      store,
       state: stateManager,
       scale,
       spacing: {
@@ -172,6 +173,16 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
       });
     });
 
+    const updateTracksSettings = stateManager.subscribeToUpdateTracksSettings(
+      () => {
+        const currentState = stateManager.getState();
+
+        setState({
+          tracksSettings: currentState.tracksSettings,
+        });
+      }
+    );
+
     const itemsDetailsSubscription = stateManager.subscribeToAddOrRemoveItems(
       () => {
         const currentState = stateManager.getState();
@@ -181,6 +192,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
           trackItemsMap: currentState.trackItemsMap,
           trackItemIds: currentState.trackItemIds,
           tracks: currentState.tracks,
+          tracksSettings: currentState.tracksSettings,
         });
       }
     );
@@ -204,6 +216,7 @@ const Timeline = ({ stateManager }: { stateManager: StateManager }) => {
       updateTrackItemsMap.unsubscribe();
       updateItemDetailsSubscription.unsubscribe();
       resizeDesignSubscription.unsubscribe();
+      updateTracksSettings.unsubscribe();
     };
   }, []);
 

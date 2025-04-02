@@ -1,3 +1,4 @@
+import { ITransition } from "@/shared";
 import { Transition } from "../objects";
 import { Timeline } from "../timeline/timeline";
 
@@ -100,7 +101,7 @@ export class TransitionsMixin {
 
     this.removeTransitions();
 
-    const newTransitionsMap: Record<string, string> = {};
+    const newTransitionsMap: Record<string, ITransition> = {};
     const newTransitionIds: string[] = [];
 
     tracks.forEach((track: any) => {

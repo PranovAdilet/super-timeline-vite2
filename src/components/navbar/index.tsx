@@ -11,7 +11,7 @@ import { useStore } from "@/shared";
 import { v4 as uuid } from "uuid";
 import { ChevronDown, Download } from "lucide-react";
 import { Label } from "@radix-ui/themes/dist/cjs/components/context-menu";
-import { Progress } from "@radix-ui/themes";
+import { Progress, Spinner } from "@radix-ui/themes";
 
 export default function Navbar() {
   const handleUndo = () => {
@@ -203,8 +203,10 @@ interface IDownloadState {
 }
 export const DownloadPopover = ({
   onExport,
+  isPending,
 }: {
   onExport?: (data: any) => void;
+  isPending?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
   const [downloadState, setDownloadState] = useState<IDownloadState>({
@@ -219,6 +221,7 @@ export const DownloadPopover = ({
     trackItemDetailsMap,
     transitionsMap,
     transitionIds,
+    tracksSettings,
     fps,
   } = useStore();
 
@@ -233,6 +236,7 @@ export const DownloadPopover = ({
       transitionsMap,
       trackItemsMap,
       transitionIds,
+      tracksSettings,
     };
     onExport?.(data);
     console.log(data);
@@ -315,7 +319,7 @@ export const DownloadPopover = ({
               onClick={handleExport}
               className="w-full"
             >
-              Export
+              {isPending ? <Spinner /> : "Export"}
             </Button>
           </div>
         </div>

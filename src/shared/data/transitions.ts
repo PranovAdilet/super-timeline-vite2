@@ -3,6 +3,7 @@ export const TRANSITIONS = [
   {
     id: "1",
     kind: "none",
+    name: "none",
     duration: 0,
     preview: "https://ik.imagekit.io/wombo/transitions-v2/transition-none.png",
     type: "transition",
@@ -10,6 +11,7 @@ export const TRANSITIONS = [
   {
     id: "2",
     kind: "fade",
+    name: "fade",
     duration: 0.5,
     preview: "https://ik.imagekit.io/wombo/transitions-v2/fade.webp",
     type: "transition",
@@ -89,6 +91,7 @@ export const TRANSITIONS = [
   {
     id: "11",
     kind: "flip",
+    name: "flip",
     duration: 0.5,
     preview: "https://ik.imagekit.io/wombo/transitions-v2/flip.webp",
     type: "transition",
@@ -96,29 +99,30 @@ export const TRANSITIONS = [
   {
     id: "12",
     kind: "clockWipe",
+    name: "clockWipe",
     duration: 0.5,
     preview: "https://ik.imagekit.io/wombo/transitions-v2/clock-wipe.webp",
     type: "transition",
   },
-  {
-    id: "13",
-    kind: "star",
-    duration: 0.5,
-    preview: "https://ik.imagekit.io/wombo/transitions-v2/star.webp",
-    type: "transition",
-  },
-  {
-    id: "14",
-    kind: "circle",
-    duration: 0.5,
-    preview: "https://ik.imagekit.io/wombo/transitions-v2/circle.webp",
-    type: "transition",
-  },
-  {
-    id: "15",
-    kind: "rectangle",
-    duration: 0.5,
-    preview: "https://ik.imagekit.io/wombo/transitions-v2/rectangle.webp",
-    type: "transition",
-  },
+  // {
+  //   id: "13",
+  //   kind: "star",
+  //   duration: 0.5,
+  //   preview: "https://ik.imagekit.io/wombo/transitions-v2/star.webp",
+  //   type: "transition",
+  // },
+  // {
+  //   id: "14",
+  //   kind: "circle",
+  //   duration: 0.5,
+  //   preview: "https://ik.imagekit.io/wombo/transitions-v2/circle.webp",
+  //   type: "transition",
+  // },
+  // {
+  //   id: "15",
+  //   kind: "rectangle",
+  //   duration: 0.5,
+  //   preview: "https://ik.imagekit.io/wombo/transitions-v2/rectangle.webp",
+  //   type: "transition",
+  // },
 ];

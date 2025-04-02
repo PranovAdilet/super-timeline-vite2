@@ -69,6 +69,6 @@ export declare const DEFAULT_MIN_VOLUME = 0;
 export declare const DEFAULT_MAX_VOLUME = 1;
 export declare const DEFAULT_VOLUME_STEP = 0.01;
 export declare const DEFAULT_VOLUME = 1;
-export declare const TIMELINE_OFFSET_CANVAS_LEFT = 16;
+export declare const TIMELINE_OFFSET_CANVAS_LEFT = 55;
 export declare const TIMELINE_OFFSET_CANVAS_RIGHT = 80;
 //# sourceMappingURL=constants.d.ts.map

@@ -3,14 +3,14 @@ import { Button, ItemType, useLayoutStore, useStore } from "@/shared";
 import { Icons } from "../menu-list/icons";
 
 export default function ControlList() {
-  const { activeIds, trackItemsMap } = useStore();
+  const { activeIds, trackItemsMap, tracksSettings } = useStore();
   const [controlType, setControlType] = useState<ItemType | null>(null);
   const { setShowToolboxItem, setActiveToolboxItem } = useLayoutStore();
 
   useEffect(() => {
     if (activeIds.length === 1) {
       const [id] = activeIds;
-      const trackItem = trackItemsMap[id];
+      const trackItem = trackItemsMap[id] ?? tracksSettings[id];
       if (trackItem) {
         setShowToolboxItem(true);
         setActiveToolboxItem(`basic-${trackItem.type}`);
@@ -78,6 +78,13 @@ function ControlMenu({ controlType }: { controlType: ItemType }) {
               openToolboxItem={openToolboxItem}
             />
           ),
+          tracksettings: (
+            <TrackMenuList
+              activeToolboxItem={activeToolboxItem!}
+              type={controlType}
+              openToolboxItem={openToolboxItem}
+            />
+          ),
         }[controlType as "image"]
       }
     </div>
@@ -103,6 +110,26 @@ const ImageMenuList = ({
       <AnimationMenuListItem
         activeToolboxItem={activeToolboxItem}
         openToolboxItem={openToolboxItem}
+      />
+    </div>
+  );
+};
+
+const TrackMenuList = ({
+  openToolboxItem,
+  type,
+  activeToolboxItem,
+}: {
+  openToolboxItem: (type: string) => void;
+  type: ItemType;
+  activeToolboxItem: string;
+}) => {
+  return (
+    <div className="flex flex-col items-center">
+      <BasicMenuListItem
+        activeToolboxItem={activeToolboxItem}
+        openToolboxItem={openToolboxItem}
+        type={type}
       />
     </div>
   );
@@ -215,6 +242,7 @@ const BasicMenuListItem = ({
   activeToolboxItem: string;
 }) => {
   const Icon = Icons[type as "image"];
+
   return (
     <Button
       size="icon"

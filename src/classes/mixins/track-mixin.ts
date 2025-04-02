@@ -1,8 +1,14 @@
 import { classRegistry, Rect } from "fabric";
-import type { ITrackItem } from "@/shared/types/timeline";
+import type {
+  ITrack,
+  ITrackItem,
+  TrackSettings,
+} from "@/shared/types/timeline";
 import { HelperObject, TrackObject } from "@/classes/objects";
 import { v4 as uuidv4 } from "uuid";
 import { Timeline } from "../timeline/timeline";
+import { TrackSettingsObject } from "../items/track-settings";
+import { trackSettingsDetailsMap } from "../state/events/crud";
 
 const Oe = {
     text: 32,
@@ -37,7 +43,60 @@ const Oe = {
   };
 
 export class TracksMixin {
-  // Метод для нахождения или создания нового трека
+  renderTrackSettings(this: Timeline, tracks: ITrack[]) {
+    let top = 42;
+    const newSettings: Record<string, TrackSettings> = {};
+
+    const objectsToRemove = this.getObjects().filter(
+      (item) => item.type === "tracksettings"
+    );
+
+    this.remove(...objectsToRemove);
+
+    tracks.forEach((track, index) => {
+      const rect = new TrackSettingsObject({
+        width: 40,
+        height: 42,
+        left: -50,
+        top: 42 + index * 50,
+        id: track.id,
+        trackId: track.id,
+        items: [],
+      });
+      top += 50;
+      this.add(rect);
+
+      const trackSettingsDetails = trackSettingsDetailsMap[track.type];
+
+      if (this.tracksSettings[track.id]) {
+        const oldSettings = this.tracksSettings[track.id];
+
+        newSettings[track.id] = {
+          ...oldSettings,
+          details: {
+            trackType: track.type,
+            ...trackSettingsDetails,
+          },
+          items: track.items,
+        };
+        return;
+      }
+      newSettings[track.id] = {
+        ...track,
+        id: track.id,
+        type: "tracksettings",
+        trackId: track.id,
+        details: {
+          trackType: track.type,
+          ...trackSettingsDetails,
+        },
+      };
+    });
+
+    this.tracksSettings = { ...newSettings, ...this.tracksSettings };
+    this.renderAll();
+  }
+
   findOrCreateTrack(
     this: Timeline,
     trackItemData: ITrackItem,
@@ -66,6 +125,7 @@ export class TracksMixin {
       this.tracks.push(newTrack);
     }
     this.renderTracks();
+
     return newTrack.id;
   }
 
@@ -160,6 +220,7 @@ export class TracksMixin {
       metadata: {},
     });
     this.insertAt(0, bottomHelper);
+    this.renderTrackSettings(this.tracks);
   }
 
   // Метод для обновления состояния треков

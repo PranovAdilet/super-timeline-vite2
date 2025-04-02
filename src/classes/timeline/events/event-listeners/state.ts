@@ -1,3 +1,4 @@
+import { ITrack } from "@/shared";
 import { calculateDuration } from "../../utils";
 
 let activeIdsSubscription: any;
@@ -48,22 +49,32 @@ export const addSubscribeStateEvents = (timeline: any) => {
 
   addRemoveItemsSubscription = state.subscribeToAddOrRemoveItems(() => {
     const trackItems = timeline.getTrackItems().map((item: any) => item.id);
-    const { trackItemIds, trackItemsMap, trackItemDetailsMap } =
-      state.getState();
+    const {
+      trackItemIds,
+      trackItemsMap,
+      trackItemDetailsMap,
+      tracksSettings,
+      tracks,
+    } = state.getState();
     const removedItems: any = [];
 
-    // Проверка на добавленные элементы
+    const trackIds = new Set(tracks.map((track: any) => track.id));
+
+    Object.keys(tracksSettings).forEach((id) => {
+      if (!trackIds.has(id)) {
+        removedItems.push(id);
+      }
+    });
+
     trackItems.forEach((id: any) => {
       if (!trackItemIds.includes(id)) {
         removedItems.push(id);
       }
     });
-
     // Удаление элементов
     timeline.deleteTrackItemById(removedItems);
-
     // Обновление данных
-    timeline.tracks = state.getState().tracks;
+    timeline.tracks = tracks;
     timeline.trackItemsMap = trackItemsMap;
     timeline.trackItemDetailsMap = trackItemDetailsMap;
 
@@ -77,6 +88,7 @@ export const addSubscribeStateEvents = (timeline: any) => {
         };
 
         timeline.addTrackItem(updatedItem);
+        timeline.renderTrackSettings(timeline.tracks);
       }
     });
 

@@ -23,6 +23,7 @@ import {
   handleAddRemoveStateEvents,
   handleEditObject,
   handleSceneStateEvents,
+  updateTrackSettings,
 } from "./events/crud";
 import { IKindHistory } from "@/shared/types";
 import { calculateDuration } from "../timeline/utils";
@@ -46,6 +47,7 @@ const defaultState = {
   trackItemsMap: {},
   transitionIds: [],
   transitionsMap: {},
+  tracksSettings: {},
   scale: {
     unit: 1,
     zoom: 1,
@@ -176,7 +178,10 @@ export class StateManager {
   subscribeToUpdateTrackItem(callback: any) {
     return this.stateSubject.asObservable().subscribe((currentState: any) => {
       if (!isEqual(currentState.trackItemsMap, this.prevState.trackItemsMap)) {
-        callback({ trackItemsMap: currentState.trackItemsMap });
+        callback({
+          trackItemsMap: currentState.trackItemsMap,
+          tracksSettings: currentState.tracksSettings,
+        });
       }
     });
   }
@@ -190,6 +195,16 @@ export class StateManager {
         )
       ) {
         callback({ trackItemDetailsMap: currentState.trackItemDetailsMap });
+      }
+    });
+  }
+
+  subscribeToUpdateTracksSettings(callback: any) {
+    return this.stateSubject.asObservable().subscribe((currentState: any) => {
+      if (
+        !isEqual(currentState.tracksSettings, this.prevState.tracksSettings)
+      ) {
+        callback({ tracksSettings: currentState.tracksSettings });
       }
     });
   }
@@ -240,7 +255,9 @@ export class StateManager {
         ) ||
         !isEqual(currentState.tracks, this.prevState.tracks)
       ) {
-        callback({ trackItemIds: currentState.trackItemIds });
+        callback({
+          trackItemIds: currentState.trackItemIds,
+        });
       }
       // if (
       //   !isEqual(currentState.trackItemIds, this.prevState.trackItemIds) ||
@@ -270,7 +287,8 @@ export class StateManager {
         !isEqual(
           currentState.trackItemDetailsMap,
           this.prevState.trackItemDetailsMap
-        );
+        ) ||
+        !isEqual(currentState.tracksSettings, this.prevState.tracksSettings);
       // !isEqual(currentState.structure, this.prevState.structure);
 
       if (hasChanges) {
@@ -281,6 +299,7 @@ export class StateManager {
           transitionIds: currentState.transitionIds,
           transitionsMap: currentState.transitionsMap,
           trackItemDetailsMap: currentState.trackItemDetailsMap,
+          tracksSettings: currentState.tracksSettings,
           // structure: currentState.structure,
         });
       }

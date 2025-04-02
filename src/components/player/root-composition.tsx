@@ -2,6 +2,7 @@
 
 import { Composition, getInputProps } from "remotion";
 import CompositionPlayer from "./composition";
+import CompositionPlayerWithTransitions from "./composition2";
 import { Flex, Theme } from "@radix-ui/themes";
 import { ITrackItem } from "@/shared";
 
@@ -9,16 +10,22 @@ type Props = {
   trackItemIds?: string[];
   trackItemsMap?: Record<string, ITrackItem>;
   trackItemDetailsMap?: Record<string, any>;
+  transitionsMap?: Record<string, any>;
   width: number;
   height: number;
   fps: number;
 };
 
 export const RootComposition = () => {
-  const { trackItemDetailsMap, trackItemIds, trackItemsMap, ...props } =
-    getInputProps<Props>();
+  const {
+    trackItemDetailsMap,
+    trackItemIds,
+    trackItemsMap,
+    transitionsMap,
+    ...props
+  } = getInputProps<Props>();
 
-  const duration = calculateDuration(trackItemsMap!);
+  const durationInFrames = calculateDuration(trackItemsMap!);
 
   return (
     <Flex
@@ -28,7 +35,7 @@ export const RootComposition = () => {
       <Composition
         id="Timeline"
         {...props}
-        durationInFrames={duration || 5 * 30}
+        durationInFrames={durationInFrames || 5 * 30}
         component={() => (
           <Theme
             accentColor="lime"
@@ -37,10 +44,11 @@ export const RootComposition = () => {
             radius="large"
             appearance="dark"
           >
-            <CompositionPlayer
+            <CompositionPlayerWithTransitions
               trackItemDetailsMap={trackItemDetailsMap}
               trackItemIds={trackItemIds}
               trackItemsMap={trackItemsMap}
+              transitionsMap={transitionsMap}
             />
           </Theme>
         )}

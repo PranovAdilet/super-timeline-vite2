@@ -27,8 +27,9 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Opacity from "./common/opacity";
+import { Label } from "@radix-ui/themes/dist/cjs/components/context-menu";
 
-interface ITextControlProps {
+export interface ITextControlProps {
   color: string;
   colorDisplay: string;
   fontSize: number;
@@ -42,9 +43,10 @@ interface ITextControlProps {
   borderColor: string;
   opacity: number;
   boxShadow: IBoxShadow;
+  backgroundColor?: string;
 }
 
-const getStyleNameFromFontName = (fontName: string) => {
+export const getStyleNameFromFontName = (fontName: string) => {
   const fontFamilyEnd = fontName.lastIndexOf("-");
   const styleName = fontName
     .substring(fontFamilyEnd + 1)
@@ -72,6 +74,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
       y: 0,
       blur: 0,
     },
+    backgroundColor: "#00000090",
   });
   const [selectedFont, setSelectedFont] = useState<ICompactFont>({
     family: "Open Sans",
@@ -82,7 +85,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
 
   useEffect(() => {
     const fontFamily =
-      trackItem.details.fontFamily || DEFAULT_FONT.postScriptName;
+      trackItem.details?.fontFamily || DEFAULT_FONT.postScriptName;
     const currentFont = FONTS.find(
       (font) => font.postScriptName === fontFamily
     )!;
@@ -120,6 +123,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
         y: 0,
         blur: 0,
       },
+      backgroundColor: trackItem.details.backgroundColor || "#00000090",
     });
   }, [trackItem.id]);
 
@@ -196,7 +200,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
     setProperties((prev) => {
       return {
         ...prev,
-        color: color,
+        color,
       } as ITextControlProps;
     });
 
@@ -204,7 +208,26 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
       payload: {
         [trackItem.id]: {
           details: {
-            color: color,
+            color,
+          },
+        },
+      },
+    });
+  };
+
+  const handleBackgroundChange = (backgroundColor: string) => {
+    setProperties((prev) => {
+      return {
+        ...prev,
+        backgroundColor,
+      } as ITextControlProps;
+    });
+
+    eventBus.dispatch(EDIT_OBJECT, {
+      payload: {
+        [trackItem.id]: {
+          details: {
+            backgroundColor,
           },
         },
       },
@@ -290,6 +313,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
               value={properties.color}
               handleColorChange={handleColorChange}
             />
+
             <div className="grid grid-cols-2 gap-2">
               <Alignment
                 value={properties.textAlign}
@@ -305,6 +329,11 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
           <Opacity
             onChange={(v: number) => handleChangeOpacity(v)}
             value={properties.opacity!}
+          />
+
+          <BackgroundColor
+            value={properties.backgroundColor || "#ffffff"}
+            handleBackgroundChange={handleBackgroundChange}
           />
 
           {/* <FontCase id={trackItem.id} />
@@ -332,7 +361,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
 
 export default BasicText;
 
-const FontFamily = ({
+export const FontFamily = ({
   handleChangeFont,
   fontFamilyDisplay,
 }: {
@@ -382,7 +411,7 @@ const FontFamily = ({
   );
 };
 
-const FontSize = ({
+export const FontSize = ({
   value,
   onChange,
 }: {
@@ -436,7 +465,7 @@ const FontSize = ({
   );
 };
 
-const FontStyle = ({
+export const FontStyle = ({
   selectedFont,
   handleChangeFontStyle,
 }: {
@@ -480,7 +509,7 @@ const FontStyle = ({
   );
 };
 
-const FontColor = ({
+export const FontColor = ({
   value,
   handleColorChange,
 }: {
@@ -531,7 +560,66 @@ const FontColor = ({
   );
 };
 
-const TextDecoration = ({
+export const BackgroundColor = ({
+  value,
+  handleBackgroundChange,
+}: {
+  value: string;
+  handleBackgroundChange: (color: string) => void;
+}) => {
+  const [localValue, setLocalValue] = useState<string>(value);
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+  return (
+    // <div className="flex gap-2">
+    //
+    // </div>
+    <div className="flex flex-col gap-2 pb-4">
+      <Label className="font-sans text-xs font-semibold text-muted-foreground">
+        Background
+      </Label>
+      <div className="flex gap-2">
+        <Popover
+          trigger={
+            <div
+              style={{ background: localValue || "#ffffff" }}
+              className="h-9 w-9 flex-none cursor-pointer rounded-md border border-border"
+            ></div>
+          }
+        >
+          <ColorPicker
+            color={localValue}
+            onChange={(v: string) => {
+              setLocalValue(v);
+              handleBackgroundChange(v);
+            }}
+          />
+        </Popover>
+        <div className="relative">
+          <Input
+            variant="secondary"
+            className="h-9"
+            value={localValue}
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setLocalValue(newValue); // Update local state
+              // Only propagate if it's not empty
+              if (newValue !== "") {
+                handleBackgroundChange(newValue); // Propagate the value
+              }
+            }}
+          />
+          <div className="absolute right-2.5 top-1/2 -translate-y-1/2 transform text-sm text-muted-foreground">
+            hex
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const TextDecoration = ({
   value,
   onChange,
 }: {
@@ -589,7 +677,7 @@ const TextDecoration = ({
   );
 };
 
-const Alignment = ({
+export const Alignment = ({
   value,
   onChange,
 }: {

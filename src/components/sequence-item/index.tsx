@@ -1,6 +1,13 @@
 "use client";
 
-import type { ITrackItem, ZoomType } from "../../";
+import type {
+  IImage,
+  IItem,
+  IText,
+  ITrackItem,
+  IVideo,
+  ZoomType,
+} from "../../";
 import {
   AbsoluteFill,
   Audio,
@@ -10,8 +17,11 @@ import {
   OffthreadVideo,
   Sequence,
 } from "remotion";
+import { Animated } from "../player/animation";
+import { getAnimations } from "@/shared/utils/get-animations";
+import { calculateContainerStyles } from "@/shared/utils/styles";
 
-const calculateFrames = (
+export const calculateFrames = (
   display: { from: number; to: number },
   fps: number
 ) => {
@@ -36,7 +46,12 @@ export const SequenceItem: Record<
 > = {
   text: (item: ITrackItem, options: SequenceItemOptions) => {
     const { fps } = options;
+    const { details, animations } = item as IText;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
+    const { animationIn, animationOut } = getAnimations(
+      animations!,
+      item as IItem
+    );
     return (
       <Sequence
         key={item.id}
@@ -65,21 +80,27 @@ export const SequenceItem: Record<
           wordWrap: item.details.wordWrap || "normal", //'break-word'
           wordBreak: item.details.wordBreak || "normal", //'break-all',
           pointerEvents: "auto",
+          // background: item.details?.background || undefined,
         }}
       >
-        <div
-          style={{
-            textAlign: item.details.textAlign || "left",
-            width: "100%",
-          }}
+        <Animated
+          style={calculateContainerStyles(
+            details,
+            {},
+            { textAlign: item.details.textAlign || "left", width: "100%" }
+          )}
+          animationIn={animationIn}
+          animationOut={animationOut}
+          durationInFrames={durationInFrames}
         >
           {item.details.text}
-        </div>
+        </Animated>
       </Sequence>
     );
   },
-  image: (item: ITrackItem, options: SequenceItemOptions) => {
+  image: (item, options: SequenceItemOptions) => {
     const { fps, currentFrame } = options;
+    const { details, animations } = item as IImage;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
 
     const adjustedFrame = currentFrame - from;
@@ -88,6 +109,14 @@ export const SequenceItem: Record<
       adjustedFrame,
       durationInFrames,
       item.details.zoom
+    );
+
+    const mirrorX = item.details?.mirror?.x ? "scaleX(-1)" : "";
+    const mirrorY = item.details?.mirror?.y ? "scaleY(-1)" : "";
+
+    const { animationIn, animationOut } = getAnimations(
+      animations!,
+      item as IItem
     );
 
     return (
@@ -119,28 +148,49 @@ export const SequenceItem: Record<
             justifyContent: "center",
           }}
         >
-          <Img
-            style={{
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none",
-              objectFit: "contain",
-              opacity: item.details.opacity || 1,
-              filter:
-                `brightness(${item.details.brightness}%) blur(${item.details.blur}px)` ||
-                "none",
-              transform: `scale(${zoomScale})`,
-            }}
-            data-id={item.id}
-            src={item.details.src}
-          />
+          <Animated
+            style={calculateContainerStyles(
+              details,
+              {},
+              {
+                overflow: "hidden",
+                pointerEvents: "none",
+                display: "flex",
+                justifyContent: "center",
+              }
+            )}
+            animationIn={animationIn!}
+            animationOut={animationOut!}
+            durationInFrames={durationInFrames}
+          >
+            <Img
+              style={{
+                width: "100%",
+                height: "100%",
+                pointerEvents: "none",
+                objectFit: "contain",
+                opacity: item.details.opacity || 1,
+                filter:
+                  `brightness(${item.details.brightness}%) blur(${item.details.blur}px)` ||
+                  "none",
+                transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
+              }}
+              data-id={item.id}
+              src={item.details.src}
+            />
+          </Animated>
         </AbsoluteFill>
       </Sequence>
     );
   },
   video: (item: ITrackItem, options: SequenceItemOptions) => {
     const { fps, currentFrame } = options;
+    const { details, animations } = item as IVideo;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
+    const { animationIn, animationOut } = getAnimations(
+      animations!,
+      item as IItem
+    );
     const trim = item.trim;
 
     const crop = item.details.crop || {
@@ -163,6 +213,8 @@ export const SequenceItem: Record<
     if (!trim) {
       return <></>;
     }
+    const mirrorX = item.details?.mirror?.x ? "scaleX(-1)" : "";
+    const mirrorY = item.details?.mirror?.y ? "scaleY(-1)" : "";
 
     return (
       <Sequence
@@ -194,20 +246,29 @@ export const SequenceItem: Record<
           }}
           className="size-full"
         >
-          <OffthreadVideo
-            startFrom={(trim.from / 1000) * fps}
-            endAt={(trim.to / 1000) * fps}
-            src={item.details.src}
-            volume={(item.details.volume ?? 100) / 100}
-            style={{
-              pointerEvents: "none",
-              opacity: (item.details.opacity ?? 100) / 100 || 1,
-              transform: `scale(${zoomScale})`,
-              // width: item.details.width,
-              // height: item.details.height,
-            }}
-            className="size-full"
-          />
+          <Animated
+            style={calculateContainerStyles(details, crop, {
+              overflow: "hidden",
+            })}
+            animationIn={animationIn}
+            animationOut={animationOut}
+            durationInFrames={durationInFrames}
+          >
+            <OffthreadVideo
+              startFrom={(trim.from / 1000) * fps}
+              endAt={(trim.to / 1000) * fps}
+              src={item.details.src}
+              volume={(item.details.volume ?? 100) / 100}
+              style={{
+                pointerEvents: "none",
+                opacity: (item.details.opacity ?? 100) / 100 || 1,
+                transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
+                // width: item.details.width,
+                // height: item.details.height,
+              }}
+              className="size-full"
+            />
+          </Animated>
         </AbsoluteFill>
       </Sequence>
     );
@@ -245,7 +306,7 @@ export const SequenceItem: Record<
   },
 };
 
-const calculateScale = (
+export const calculateScale = (
   frame: number,
   durationInFrames: number,
   zoom?: ZoomType
@@ -264,7 +325,7 @@ const calculateScale = (
   return zoomScale;
 };
 
-const getEasingFunction = (easing?: ZoomType["ease"]) => {
+export const getEasingFunction = (easing?: ZoomType["ease"]) => {
   switch (easing) {
     case "ease-in":
       return Easing.in(Easing.quad);
@@ -275,4 +336,29 @@ const getEasingFunction = (easing?: ZoomType["ease"]) => {
     default:
       return Easing.linear;
   }
+};
+
+const relativeTextPositions = (
+  item: IText,
+  canvasWidth: number,
+  canvasHeight: number
+) => {
+  const left = Number(item.details.left);
+  const top = Number(item.details.top);
+  const width = item.details.width;
+  const height = item.details.height;
+  const fontSize = item.details.fontSize;
+
+  const canvasSquare = canvasWidth * canvasHeight;
+  const canvasSqrt = Math.round(Math.sqrt(canvasSquare) * 100) / 100;
+
+  return {
+    left: left * canvasWidth,
+    top: top * canvasHeight,
+    width: width * canvasWidth,
+    height: height * canvasHeight,
+    fontSize: fontSize
+      ? Math.round((canvasSqrt / fontSize) * 100) / 100
+      : undefined,
+  };
 };

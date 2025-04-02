@@ -35,6 +35,7 @@ export class TrackItemsMixin {
     this.updateTrackItemsPosition();
     this.calcBounding();
     this.duration = calculateDuration(this.trackItemsMap);
+
     // this.updateState();
   }
   alignItemsToTrack(this: Timeline): void {
@@ -164,7 +165,6 @@ export class TrackItemsMixin {
       object.set({ left, width, top: trackTop });
       object.setCoords();
     });
-
     this.requestRenderAll();
     this.resumeEventListeners();
   }
@@ -310,6 +310,7 @@ export class TrackItemsMixin {
       ...payload,
       details: updatedDetails,
     } as any;
+
     this.updateState();
   }
 
@@ -346,6 +347,7 @@ export class TrackItemsMixin {
       ...payload,
       details: updatedDetails,
     } as any;
+
     this.updateState();
   }
 
@@ -372,6 +374,7 @@ export class TrackItemsMixin {
         details: updatedDetails,
       } as any;
     });
+
     this.updateState();
   }
 
@@ -384,8 +387,8 @@ export class TrackItemsMixin {
   }
 
   deleteTrackItemById(this: Timeline, itemIds: any[]) {
-    const objectsToRemove = this.getObjects().filter((obj: any) =>
-      itemIds.includes(obj.id)
+    const objectsToRemove = this.getObjects().filter(
+      (obj: any) => itemIds.includes(obj.id) && obj.type !== "track"
     );
 
     this.tracks = removeItemsFromTrack(this.tracks, itemIds);
@@ -399,12 +402,22 @@ export class TrackItemsMixin {
 
     this.trackItemIds = this.trackItemIds.filter((id) => !itemIds.includes(id));
 
-    this.discardActiveObject();
+    this.tracksSettings = Object.keys(this.tracksSettings)
+      .filter((key) => !itemIds.includes(key))
+      .reduce((acc, key) => {
+        acc[key] = this.tracksSettings[key];
+        return acc;
+      }, {} as any);
+
+    if (itemIds.length >= 1) {
+      this.discardActiveObject();
+    }
     this.remove(...objectsToRemove);
 
     this.renderTracks();
     this.alignItemsToTrack();
     this.calcBounding();
+
     this.duration = calculateDuration(this.trackItemsMap);
   }
 

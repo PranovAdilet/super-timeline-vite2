@@ -3,9 +3,11 @@ import {
   IAudio,
   IImage,
   IText,
+  ITrack,
   ITrackItem,
   ITrackItemAndDetails,
   IVideo,
+  TrackSettings,
   useLayoutStore,
   useStore,
 } from "@/shared";
@@ -19,10 +21,12 @@ import BasicText from "./basic-text";
 import BasicImage from "./basic-image";
 import BasicVideo from "./basic-video";
 import BasicAudio from "./basic-audio";
+import BasicTrack from "./basis-track";
+import { ACTIVE_DELETE, eventBus } from "@/classes";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   const { activeToolboxItem, setActiveToolboxItem } = useLayoutStore();
-  const { activeIds, trackItemsMap, trackItemDetailsMap, transitionsMap } =
+  const { activeIds, trackItemsMap, trackItemDetailsMap, tracksSettings } =
     useStore();
   const [trackItem, setTrackItem] = useState<ITrackItem | null>(null);
   const [displayToolbox, setDisplayToolbox] = useState<boolean>(false);
@@ -35,13 +39,31 @@ const Container = ({ children }: { children: React.ReactNode }) => {
         ...trackItemsMap[id],
         details: trackItemDetails?.details || {},
       };
-      if (trackItemDetails) setTrackItem(trackItem);
-      else console.log(transitionsMap[id]);
+
+      if (trackItemDetails) {
+        setTrackItem(trackItem);
+      } else if (tracksSettings[id]) {
+        setTrackItem(tracksSettings[id] as any);
+      } else console.log(id);
     } else {
       setTrackItem(null);
       setDisplayToolbox(false);
     }
-  }, [activeIds, trackItemsMap]);
+  }, [activeIds, trackItemsMap, tracksSettings]);
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Delete" || e.key === "Backspace") {
+      e.preventDefault();
+      eventBus.dispatch(ACTIVE_DELETE);
+    }
+  };
+
+  useEffect(() => {
+    if (activeIds.length === 1) {
+      window.addEventListener("keydown", onKeyDown);
+    }
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeIds]);
 
   useEffect(() => {
     if (activeToolboxItem) {
@@ -104,6 +126,11 @@ const ActiveControlItem = ({
         {
           "basic-text": (
             <BasicText trackItem={trackItem as ITrackItem & IText} />
+          ),
+          "basic-tracksettings": (
+            <BasicTrack
+              trackItem={trackItem as ITrackItem & TrackSettings & any}
+            />
           ),
           "basic-image": (
             <BasicImage trackItem={trackItem as ITrackItem & IImage} />
