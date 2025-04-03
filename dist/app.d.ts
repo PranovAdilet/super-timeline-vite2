@@ -346,8 +346,6 @@ export declare const data2: {
         "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
             type: string;
             details: {
-                width: number;
-                height: number;
                 top: number;
                 left: number;
                 src: string;

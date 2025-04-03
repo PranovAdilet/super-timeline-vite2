@@ -1523,8 +1523,6 @@ export const data2 = {
     "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
       type: "image",
       details: {
-        width: 1920,
-        height: 1080,
         top: 0,
         left: 0,
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\EgP4j9Pm8ERMSxEu8BGUJa.webp",

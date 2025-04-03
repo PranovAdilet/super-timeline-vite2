@@ -65,9 +65,10 @@ const getSlideAnimation = (
   const scaleMatch = /scale\(([^,]+), ([^)]+)\)/.exec(transformString);
   const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
 
+  const width = item.details.width ?? 1920;
+  const height = item.details.height ?? 1080;
   if (type === "slideInRight" || type === "slideOutLeft") {
-    const commonValue =
-      -parseFloat(item.details.left ?? 0) - item.details.width / scale;
+    const commonValue = -parseFloat(item.details.left ?? 0) - width / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
 
@@ -79,8 +80,7 @@ const getSlideAnimation = (
       ease: Easing[anim.easing as keyof typeof Easing],
     };
   } else if (type === "slideInLeft" || type === "slideOutRight") {
-    const commonValue =
-      parseFloat(item.details.left ?? 0) + item.details.width / scale;
+    const commonValue = parseFloat(item.details.left ?? 0) + width / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
     return {
@@ -91,8 +91,7 @@ const getSlideAnimation = (
       ease: Easing[anim.easing as keyof typeof Easing],
     };
   } else if (type === "slideInBottom" || type === "slideOutTop") {
-    const commonValue =
-      -parseFloat(item.details.top ?? 0) - item.details.height / scale;
+    const commonValue = -parseFloat(item.details.top ?? 0) - height / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
     return {
@@ -103,8 +102,7 @@ const getSlideAnimation = (
       ease: Easing[anim.easing as keyof typeof Easing],
     };
   } else if (type === "slideInTop" || type === "slideOutBottom") {
-    const commonValue =
-      parseFloat(item.details.top ?? 0) + item.details.height / scale;
+    const commonValue = parseFloat(item.details.top ?? 0) + height / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
 

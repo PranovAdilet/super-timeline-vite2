@@ -37525,40 +37525,40 @@ const w0e = [
     animationOut: a
   };
 }, l5 = (e, t, r) => {
-  const a = r.details.transform, o = /scale\(([^,]+), ([^)]+)\)/.exec(a), n = o ? parseFloat(o[1]) : 1;
+  const a = r.details.transform, o = /scale\(([^,]+), ([^)]+)\)/.exec(a), n = o ? parseFloat(o[1]) : 1, s = r.details.width ?? 1920, i = r.details.height ?? 1080;
   if (e === "slideInRight" || e === "slideOutLeft") {
-    const s = -parseFloat(r.details.left ?? 0) - r.details.width / n, i = e.includes("In") ? s : t.from, l = e.includes("In") ? t.to : s;
+    const l = -parseFloat(r.details.left ?? 0) - s / n, c = e.includes("In") ? l : t.from, u = e.includes("In") ? t.to : l;
     return {
       property: t.property,
-      from: i,
-      to: l,
+      from: c,
+      to: u,
       durationInFrames: t.durationInFrames,
       ease: Te[t.easing]
     };
   } else if (e === "slideInLeft" || e === "slideOutRight") {
-    const s = parseFloat(r.details.left ?? 0) + r.details.width / n, i = e.includes("In") ? s : t.from, l = e.includes("In") ? t.to : s;
+    const l = parseFloat(r.details.left ?? 0) + s / n, c = e.includes("In") ? l : t.from, u = e.includes("In") ? t.to : l;
     return {
       property: t.property,
-      from: i,
-      to: l,
+      from: c,
+      to: u,
       durationInFrames: t.durationInFrames,
       ease: Te[t.easing]
     };
   } else if (e === "slideInBottom" || e === "slideOutTop") {
-    const s = -parseFloat(r.details.top ?? 0) - r.details.height / n, i = e.includes("In") ? s : t.from, l = e.includes("In") ? t.to : s;
+    const l = -parseFloat(r.details.top ?? 0) - i / n, c = e.includes("In") ? l : t.from, u = e.includes("In") ? t.to : l;
     return {
       property: t.property,
-      from: i,
-      to: l,
+      from: c,
+      to: u,
       durationInFrames: t.durationInFrames,
       ease: Te[t.easing]
     };
   } else if (e === "slideInTop" || e === "slideOutBottom") {
-    const s = parseFloat(r.details.top ?? 0) + r.details.height / n, i = e.includes("In") ? s : t.from, l = e.includes("In") ? t.to : s;
+    const l = parseFloat(r.details.top ?? 0) + i / n, c = e.includes("In") ? l : t.from, u = e.includes("In") ? t.to : l;
     return {
       property: t.property,
-      from: i,
-      to: l,
+      from: c,
+      to: u,
       durationInFrames: t.durationInFrames,
       ease: Te[t.easing]
     };
@@ -45418,8 +45418,6 @@ const gge = ({
     "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
       type: "image",
       details: {
-        width: 1920,
-        height: 1080,
         top: 0,
         left: 0,
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\EgP4j9Pm8ERMSxEu8BGUJa.webp",
