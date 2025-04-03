@@ -169,7 +169,8 @@ const Ruler = (props: Props) => {
     const clickX = event.clientX - rect.left;
 
     // Calculate total x position, including scrollPos
-    const totalX = clickX + scrollPos - TIMELINE_OFFSET_X;
+    // const totalX = clickX + scrollPos - TIMELINE_OFFSET_X
+    const totalX = clickX + scrollPos - TIMELINE_OFFSET_X - 50;
 
     onClick?.(totalX);
     // Here you can handle the result as needed

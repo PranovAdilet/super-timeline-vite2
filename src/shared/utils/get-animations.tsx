@@ -67,7 +67,7 @@ const getSlideAnimation = (
 
   if (type === "slideInRight" || type === "slideOutLeft") {
     const commonValue =
-      -parseFloat(item.details.left) - item.details.width / scale;
+      -parseFloat(item.details.left ?? 0) - item.details.width / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
 
@@ -80,7 +80,7 @@ const getSlideAnimation = (
     };
   } else if (type === "slideInLeft" || type === "slideOutRight") {
     const commonValue =
-      parseFloat(item.details.left) + item.details.width / scale;
+      parseFloat(item.details.left ?? 0) + item.details.width / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
     return {
@@ -92,7 +92,7 @@ const getSlideAnimation = (
     };
   } else if (type === "slideInBottom" || type === "slideOutTop") {
     const commonValue =
-      -parseFloat(item.details.top) - item.details.height / scale;
+      -parseFloat(item.details.top ?? 0) - item.details.height / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
     return {
@@ -104,7 +104,7 @@ const getSlideAnimation = (
     };
   } else if (type === "slideInTop" || type === "slideOutBottom") {
     const commonValue =
-      parseFloat(item.details.top) + item.details.height / scale;
+      parseFloat(item.details.top ?? 0) + item.details.height / scale;
     const from = type.includes("In") ? commonValue : anim.from;
     const to = type.includes("In") ? anim.to : commonValue;
 

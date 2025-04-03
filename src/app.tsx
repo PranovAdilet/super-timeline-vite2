@@ -11,7 +11,14 @@ import "./index.css";
 import { eventBus, SCENE_LOAD } from "./classes";
 import ControlList from "./components/control-list";
 import { ControlItem } from "./components/control-item";
-import { AUDIOS, IMAGES, useDataStore, VIDEOS } from "./shared";
+import {
+  AUDIOS,
+  IMAGES,
+  useDataStore,
+  useItemsHotkeys,
+  useTimelineHotkeys,
+  VIDEOS,
+} from "./shared";
 
 const stateManager = new StateManager();
 
@@ -20,6 +27,8 @@ export const App = () => {
   const setState = useDataStore((state) => state.setState);
 
   useTimelineEvents();
+  useTimelineHotkeys();
+  useItemsHotkeys();
 
   const [data, setData] = useState<any>([]);
   // const [isVisible, setIsVisible] = useState(true);
@@ -1462,11 +1471,14 @@ export const data2 = {
       type: "image",
       details: {
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\XfxCjwPq2iHWLPnnsTBp6m.webp",
+        width: 1920,
+        height: 1080,
+        top: 0,
+        left: 0,
         opacity: 100,
         border: "none",
         borderRadius: "0",
         boxShadow: "none",
-        top: "0px",
       },
     },
     "85f4157e-dc83-4d9d-89df-1a9b422d0f76": {
@@ -1511,12 +1523,15 @@ export const data2 = {
     "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
       type: "image",
       details: {
+        width: 1920,
+        height: 1080,
+        top: 0,
+        left: 0,
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\EgP4j9Pm8ERMSxEu8BGUJa.webp",
         opacity: 100,
         border: "none",
         borderRadius: "0",
         boxShadow: "none",
-        top: "0px",
       },
     },
     "3400f41c-d2b0-4987-9eb7-63bf9e7c10d1": {
@@ -1561,12 +1576,15 @@ export const data2 = {
     "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240": {
       type: "image",
       details: {
+        width: 1920,
+        height: 1080,
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\8dKB6RVmt9QQC8GwXDy3U8.webp",
         opacity: 100,
         border: "none",
         borderRadius: "0",
         boxShadow: "none",
-        top: "0px",
+        top: 0,
+        left: 0,
       },
     },
     "251574f7-350d-4c36-8cec-bb1c18c263b8": {

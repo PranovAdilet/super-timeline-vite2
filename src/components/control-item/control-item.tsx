@@ -3,7 +3,6 @@ import {
   IAudio,
   IImage,
   IText,
-  ITrack,
   ITrackItem,
   ITrackItemAndDetails,
   IVideo,
@@ -22,7 +21,6 @@ import BasicImage from "./basic-image";
 import BasicVideo from "./basic-video";
 import BasicAudio from "./basic-audio";
 import BasicTrack from "./basis-track";
-import { ACTIVE_DELETE, eventBus } from "@/classes";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   const { activeToolboxItem, setActiveToolboxItem } = useLayoutStore();
@@ -50,20 +48,6 @@ const Container = ({ children }: { children: React.ReactNode }) => {
       setDisplayToolbox(false);
     }
   }, [activeIds, trackItemsMap, tracksSettings]);
-
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Delete" || e.key === "Backspace") {
-      e.preventDefault();
-      eventBus.dispatch(ACTIVE_DELETE);
-    }
-  };
-
-  useEffect(() => {
-    if (activeIds.length === 1) {
-      window.addEventListener("keydown", onKeyDown);
-    }
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeIds]);
 
   useEffect(() => {
     if (activeToolboxItem) {

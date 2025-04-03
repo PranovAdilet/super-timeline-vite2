@@ -144,6 +144,7 @@ export const HistoryButtons = () => {
   const handleRedo = () => {
     eventBus.dispatch(HISTORY_REDO);
   };
+
   return (
     <div className="flex h-12 items-center bg-background px-1.5">
       <Button

@@ -12,42 +12,10 @@ import {
   PLAYER_SEEK,
   PLAYER_SEEK_BY,
   PLAYER_TOGGLE_PLAY,
-  STATE_CHANGED,
-  STATE_PREFIX,
 } from "./constants-events";
 
 const useTimelineEvents = () => {
   const { playerRef, fps, timeline, setState } = useStore();
-
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (!playerRef?.current) return;
-    const player = playerRef.current;
-
-    switch (e.key) {
-      case " ":
-        e.preventDefault();
-        player.isPlaying() ? player.pause() : player.play();
-        break;
-
-      case "ArrowLeft":
-        e.preventDefault();
-        player.seekTo(player.getCurrentFrame() - (e.shiftKey ? 10 : 1));
-        break;
-
-      case "ArrowRight":
-        e.preventDefault();
-        player.seekTo(player.getCurrentFrame() + (e.shiftKey ? 10 : 1));
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [playerRef]);
 
   useEffect(() => {
     const playerEvents = eventBus.subject.pipe(

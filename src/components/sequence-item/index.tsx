@@ -136,7 +136,6 @@ export const SequenceItem: Record<
             `brightness(${item.details.brightness ?? 100}%) blur(${
               item.details.blur ?? 0
             }px)` || "none",
-
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
         }}
