@@ -295,11 +295,14 @@ export declare const data2: {
             type: string;
             details: {
                 src: string;
+                width: number;
+                height: number;
+                top: number;
+                left: number;
                 opacity: number;
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
             };
         };
         "85f4157e-dc83-4d9d-89df-1a9b422d0f76": {
@@ -343,12 +346,15 @@ export declare const data2: {
         "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
             type: string;
             details: {
+                width: number;
+                height: number;
+                top: number;
+                left: number;
                 src: string;
                 opacity: number;
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
             };
         };
         "3400f41c-d2b0-4987-9eb7-63bf9e7c10d1": {
@@ -391,12 +397,15 @@ export declare const data2: {
         "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240": {
             type: string;
             details: {
+                width: number;
+                height: number;
                 src: string;
                 opacity: number;
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
+                top: number;
+                left: number;
             };
         };
         "251574f7-350d-4c36-8cec-bb1c18c263b8": {
