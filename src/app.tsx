@@ -1471,10 +1471,7 @@ export const data2 = {
       type: "image",
       details: {
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\XfxCjwPq2iHWLPnnsTBp6m.webp",
-        width: 1920,
-        height: 1080,
-        top: 0,
-        left: 0,
+
         opacity: 100,
         border: "none",
         borderRadius: "0",
@@ -1574,15 +1571,11 @@ export const data2 = {
     "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240": {
       type: "image",
       details: {
-        width: 1920,
-        height: 1080,
         src: "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\8dKB6RVmt9QQC8GwXDy3U8.webp",
         opacity: 100,
         border: "none",
         borderRadius: "0",
         boxShadow: "none",
-        top: 0,
-        left: 0,
       },
     },
     "251574f7-350d-4c36-8cec-bb1c18c263b8": {

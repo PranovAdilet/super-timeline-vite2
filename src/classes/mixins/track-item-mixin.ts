@@ -409,7 +409,7 @@ export class TrackItemsMixin {
         return acc;
       }, {} as any);
 
-    if (itemIds.length >= 1) {
+    if (itemIds.length >= 1 || this.activeIds.length > 1) {
       this.discardActiveObject();
     }
     this.remove(...objectsToRemove);

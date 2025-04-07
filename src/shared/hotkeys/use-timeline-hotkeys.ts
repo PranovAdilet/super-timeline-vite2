@@ -1,63 +1,57 @@
 import { eventBus, HISTORY_REDO, HISTORY_UNDO } from "@/classes";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useStore } from "../store";
 
 export const useTimelineHotkeys = () => {
   const playerRef = useStore((state) => state.playerRef);
 
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (!playerRef?.current) return;
-    const player = playerRef.current;
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      const activeElement = document.activeElement;
 
-    switch (e.key) {
-      case " ":
+      const isTyping =
+        activeElement instanceof HTMLInputElement ||
+        activeElement instanceof HTMLTextAreaElement ||
+        (activeElement && "isContentEditable" in activeElement
+          ? activeElement.isContentEditable
+          : false);
+
+      if (isTyping) return;
+
+      if (e.ctrlKey || e.metaKey) {
+        switch (e.code) {
+          case "KeyZ":
+            e.preventDefault();
+            eventBus.dispatch(HISTORY_UNDO);
+            break;
+
+          case "KeyX":
+            e.preventDefault();
+            eventBus.dispatch(HISTORY_REDO);
+            break;
+        }
+        return;
+      }
+
+      if (!playerRef?.current) return;
+      const player = playerRef.current;
+
+      if (e.key === " ") {
         e.preventDefault();
         player.isPlaying() ? player.pause() : player.play();
-        break;
-
-      case "ArrowLeft":
+      } else if (e.key === "ArrowLeft") {
         e.preventDefault();
         player.seekTo(player.getCurrentFrame() - (e.shiftKey ? 10 : 1));
-        break;
-
-      case "ArrowRight":
+      } else if (e.key === "ArrowRight") {
         e.preventDefault();
         player.seekTo(player.getCurrentFrame() + (e.shiftKey ? 10 : 1));
-        break;
-
-      default:
-        break;
-    }
-
-    const activeElement = document.activeElement;
-
-    const isTyping =
-      activeElement instanceof HTMLInputElement ||
-      activeElement instanceof HTMLTextAreaElement ||
-      (activeElement && "isContentEditable" in activeElement
-        ? activeElement.isContentEditable
-        : false);
-
-    if (isTyping) return;
-
-    if (e.ctrlKey || e.metaKey) {
-      const key = e.key.toLowerCase();
-      switch (key) {
-        case "z":
-          e.preventDefault();
-          eventBus.dispatch(HISTORY_UNDO);
-          break;
-
-        case "x":
-          e.preventDefault();
-          eventBus.dispatch(HISTORY_REDO);
-          break;
       }
-    }
-  };
+    },
+    [playerRef]
+  );
 
   useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [playerRef]);
+  }, [onKeyDown]);
 };
