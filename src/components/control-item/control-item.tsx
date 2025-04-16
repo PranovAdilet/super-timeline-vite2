@@ -1,4 +1,10 @@
-import React from "react";
+import {
+  useEffect,
+  useState,
+  ReactNode,
+  cloneElement,
+  ReactElement,
+} from "react";
 import {
   IAudio,
   IImage,
@@ -10,7 +16,6 @@ import {
   useLayoutStore,
   useStore,
 } from "@/shared";
-import { useEffect, useState } from "react";
 import { Button } from "@/shared";
 import { X } from "lucide-react";
 import Presets from "./presets";
@@ -22,7 +27,7 @@ import BasicVideo from "./basic-video";
 import BasicAudio from "./basic-audio";
 import BasicTrack from "./basis-track";
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+const Container = ({ children }: { children: ReactNode }) => {
   const { activeToolboxItem, setActiveToolboxItem } = useLayoutStore();
   const { activeIds, trackItemsMap, trackItemDetailsMap, tracksSettings } =
     useStore();
@@ -84,7 +89,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
             }}
           />
         </Button>
-        {React.cloneElement(children as React.ReactElement<any>, {
+        {cloneElement(children as ReactElement<any>, {
           trackItem,
           activeToolboxItem,
         })}
