@@ -15,7 +15,8 @@
     "./components/*": "./dist/components/*",
     "./classes/*": "./dist/classes/*",
     "./shared/*": "./dist/shared/*",
-    "./lib/utils/*": "./dist/lib/utils/*"
+    "./lib/utils/*": "./dist/lib/utils/*",
+     "./style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",
