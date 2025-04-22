@@ -37756,8 +37756,8 @@ const Ide = [
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
           overflow: "hidden",
-          width: "100%",
-          height: "100%"
+          width: o,
+          height: s
         },
         children: /* @__PURE__ */ f.jsx(
           _i,
@@ -37796,8 +37796,8 @@ const Ide = [
                       transform: `scale(${g}) ${y} ${S}`,
                       // width: item.details.width,
                       // height: item.details.height,
-                      width: "100%",
-                      height: "100%",
+                      width: o,
+                      height: s,
                       objectFit: "contain"
                     }
                   }

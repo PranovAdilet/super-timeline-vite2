@@ -207,8 +207,6 @@ export const SequenceItem: Record<
       item.details.zoom
     );
 
-    // console.log(zoomScale, item);
-
     if (!trim) {
       return <></>;
     }
@@ -232,8 +230,8 @@ export const SequenceItem: Record<
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
           overflow: "hidden",
-          width: "100%",
-          height: "100%",
+          width,
+          height,
         }}
       >
         <AbsoluteFill
@@ -269,8 +267,8 @@ export const SequenceItem: Record<
                 transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
                 // width: item.details.width,
                 // height: item.details.height,
-                width: "100%",
-                height: "100%",
+                width,
+                height,
                 objectFit: "contain",
               }}
             />
