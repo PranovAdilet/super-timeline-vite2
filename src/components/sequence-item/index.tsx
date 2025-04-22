@@ -232,8 +232,9 @@ export const SequenceItem: Record<
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
           overflow: "hidden",
+          width: "100%",
+          height: "100%",
         }}
-        className="size-full"
       >
         <AbsoluteFill
           style={{
@@ -242,8 +243,9 @@ export const SequenceItem: Record<
             // height: item.details.height,
             top: -crop.y,
             left: -crop.x,
+            width: "100%",
+            height: "100%",
           }}
-          className="size-full"
         >
           <Animated
             style={calculateContainerStyles(details, crop, {
@@ -264,8 +266,10 @@ export const SequenceItem: Record<
                 transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
                 // width: item.details.width,
                 // height: item.details.height,
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
               }}
-              className="size-full"
             />
           </Animated>
         </AbsoluteFill>

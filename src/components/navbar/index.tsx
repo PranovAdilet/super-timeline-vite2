@@ -240,7 +240,7 @@ export const DownloadPopover = ({
       tracksSettings,
     };
     onExport?.(data);
-    console.log(data);
+    console.log(JSON.stringify(data));
   };
 
   useEffect(() => {

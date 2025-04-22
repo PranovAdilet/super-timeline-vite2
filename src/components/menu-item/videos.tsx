@@ -60,7 +60,10 @@ const VideoItem = ({
       width: "80px",
       height: "80px",
     }),
-    [video.preview]
+    [
+      video.preview ??
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNvVU_Uc6RScIpe9F-I5Z1_gxWrnWgR-YbPA&s",
+    ]
   );
 
   return (
