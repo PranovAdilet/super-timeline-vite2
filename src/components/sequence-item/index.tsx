@@ -183,7 +183,7 @@ export const SequenceItem: Record<
     );
   },
   video: (item: ITrackItem, options: SequenceItemOptions) => {
-    const { fps, currentFrame } = options;
+    const { fps, currentFrame, width, height } = options;
     const { details, animations } = item as IVideo;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
     const { animationIn, animationOut } = getAnimations(
@@ -243,8 +243,8 @@ export const SequenceItem: Record<
             // height: item.details.height,
             top: -crop.y,
             left: -crop.x,
-            width: "100%",
-            height: "100%",
+            width,
+            height,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
