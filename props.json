@@ -1,9 +1,684 @@
 {
-    "fileName": "Timeline2",
+  "projectId": "e50f952b-02bf-4655-bea2-bc46406c1618",
+  "fileName": "e50f952b-02bf-4655-bea2-bc46406c1618",
     "id": "Timeline",
-    "fps": 30,
-  "tracks":[{"id":"3891c94f-1b4f-4d65-b969-0bec5461514d","items":["5923c95e-9996-4fef-ac4d-f538413d90d7","b9e5723f-205c-42bf-87bd-e909d3c98337","cffd1b0e-6b4a-46f5-948d-15a93a0afc1e"],"type":"text","accepts":["text","audio","helper","video","image"]},{"id":"11234daf-bdde-484c-9930-9bb75e9f4731","accepts":["image","video"],"type":"video","items":["2179de67-9d7a-45b3-8006-29897f5f4c56","d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9"],"magnetic":false,"static":false},{"id":"3","accepts":["text","audio","helper","video","image"],"type":"audio","items":["85f4157e-dc83-4d9d-89df-1a9b422d0f76","3400f41c-d2b0-4987-9eb7-63bf9e7c10d1","251574f7-350d-4c36-8cec-bb1c18c263b8"],"magnetic":false,"static":false},{"id":"5","accepts":["text","audio","helper","video","image"],"type":"audio","items":["b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7"],"magnetic":false,"static":false}],"trackItemDetailsMap":{"5923c95e-9996-4fef-ac4d-f538413d90d7":{"type":"text","details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":1.16,"letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"Every soul begins with a spark...","opacity":100,"width":921.5999999999999,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"781.6281951219511px","left":"115.20000000000005px","height":49.54360975609757,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"85f4157e-dc83-4d9d-89df-1a9b422d0f76":{"type":"audio","details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\PurbUrrToHzVj53dyNfpSu.mpeg","duration":2136,"volume":100,"text":"Every soul begins with a spark..."}},"b9e5723f-205c-42bf-87bd-e909d3c98337":{"type":"text","details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":1.16,"letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"Your destiny lies within these ancient whispers.","opacity":100,"width":921.5999999999999,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"781.6281951219511px","left":"115.20000000000005px","height":116,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"3400f41c-d2b0-4987-9eb7-63bf9e7c10d1":{"type":"audio","details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\fXcY6buvk6fXBDcbiRqhGF.mpeg","duration":2880,"volume":100,"text":"Your destiny lies within these ancient whispers."}},"cffd1b0e-6b4a-46f5-948d-15a93a0afc1e":{"type":"text","details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":"normal","letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"I will harness this fire and rise beyond!","opacity":100,"width":921.6,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"707.8399999999999px","left":"115.19999999999999px","height":59.5556,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"251574f7-350d-4c36-8cec-bb1c18c263b8":{"type":"audio","details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\8FZgKk7c8ds5gbZanBXMA5.mpeg","duration":2544,"volume":100,"text":"I will harness this fire and rise beyond!"}},"b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7":{"type":"audio","details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/music/2025/3/10/13\\5uArfrWTAWdLw6ECfjFhCM.mpeg","duration":126093.061,"volume":100,"text":"music"}},"2179de67-9d7a-45b3-8006-29897f5f4c56":{"type":"video","details":{"width":1080,"height":1920,"duration":7593.3330000000005,"src":"https://cdn.designcombo.dev/videos/demo-video-7.mp4","volume":100,"top":"-420px","left":"420px","zoom":{"type":"none","ease":"linear"}}},"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6":{"type":"video","details":{"width":800,"height":608,"duration":6050,"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\fdcKLDioCK6fNMFSaV9no9.mp4","volume":100,"top":"236px","left":"560px","text":"Video","zoom":{"type":"none","ease":"linear"}}},"d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9":{"type":"video","details":{"width":800,"height":608,"duration":6050,"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\LUB9JnQSSeVJdzRrq8PnAr.mp4","volume":100,"top":"236px","left":"560px","text":"Video","zoom":{"type":"none","ease":"linear"}}}},"trackItemIds":["b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7","251574f7-350d-4c36-8cec-bb1c18c263b8","3400f41c-d2b0-4987-9eb7-63bf9e7c10d1","85f4157e-dc83-4d9d-89df-1a9b422d0f76","d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9","d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","2179de67-9d7a-45b3-8006-29897f5f4c56","cffd1b0e-6b4a-46f5-948d-15a93a0afc1e","b9e5723f-205c-42bf-87bd-e909d3c98337","5923c95e-9996-4fef-ac4d-f538413d90d7"],"transitionsMap":{"2179de67-9d7a-45b3-8006-29897f5f4c56-d39bb6d3-6dcf-444d-ada9-fff6c0780dd6":{"id":"2179de67-9d7a-45b3-8006-29897f5f4c56-d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","duration":1500,"fromId":"2179de67-9d7a-45b3-8006-29897f5f4c56","toId":"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","kind":"none","trackId":"11234daf-bdde-484c-9930-9bb75e9f4731","type":"transition"},"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6-d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9":{"id":"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6-d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9","duration":1500,"fromId":"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","toId":"d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9","kind":"none","trackId":"11234daf-bdde-484c-9930-9bb75e9f4731","type":"transition"}},"trackItemsMap":{"85f4157e-dc83-4d9d-89df-1a9b422d0f76":{"id":"85f4157e-dc83-4d9d-89df-1a9b422d0f76","name":"","type":"audio","display":{"from":0,"to":2136},"trim":{"from":0,"to":2136},"isMain":false,"details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\PurbUrrToHzVj53dyNfpSu.mpeg","duration":2136,"volume":100,"text":"Every soul begins with a spark..."}},"3400f41c-d2b0-4987-9eb7-63bf9e7c10d1":{"id":"3400f41c-d2b0-4987-9eb7-63bf9e7c10d1","name":"","type":"audio","display":{"from":5000,"to":7880},"trim":{"from":0,"to":2880},"isMain":false,"details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\fXcY6buvk6fXBDcbiRqhGF.mpeg","duration":2880,"volume":100,"text":"Your destiny lies within these ancient whispers."}},"251574f7-350d-4c36-8cec-bb1c18c263b8":{"id":"251574f7-350d-4c36-8cec-bb1c18c263b8","name":"","type":"audio","display":{"from":10000,"to":12544},"trim":{"from":0,"to":2544},"isMain":false,"details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\8FZgKk7c8ds5gbZanBXMA5.mpeg","duration":2544,"volume":100,"text":"I will harness this fire and rise beyond!"}},"b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7":{"id":"b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7","name":"","type":"audio","display":{"from":0,"to":15000.00000000001},"trim":{"from":0,"to":15000},"isMain":false,"details":{"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/music/2025/3/10/13\\5uArfrWTAWdLw6ECfjFhCM.mpeg","duration":126093.061,"volume":100,"text":"music"}},"5923c95e-9996-4fef-ac4d-f538413d90d7":{"id":"5923c95e-9996-4fef-ac4d-f538413d90d7","name":"","type":"text","display":{"from":0,"to":5000},"metadata":{},"isMain":false,"details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":1.16,"letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"Every soul begins with a spark...","opacity":100,"width":921.5999999999999,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"781.6281951219511px","left":"115.20000000000005px","height":49.54360975609757,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"b9e5723f-205c-42bf-87bd-e909d3c98337":{"id":"b9e5723f-205c-42bf-87bd-e909d3c98337","name":"","type":"text","display":{"from":5000,"to":10000},"metadata":{},"isMain":false,"details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":1.16,"letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"Your destiny lies within these ancient whispers.","opacity":100,"width":921.5999999999999,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"781.6281951219511px","left":"115.20000000000005px","height":116,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"cffd1b0e-6b4a-46f5-948d-15a93a0afc1e":{"id":"cffd1b0e-6b4a-46f5-948d-15a93a0afc1e","name":"","type":"text","display":{"from":10000,"to":15000},"metadata":{},"isMain":false,"details":{"fontFamily":"Roboto-Bold","fontSize":50,"fontWeight":"normal","fontStyle":"normal","textDecoration":"none","textAlign":"center","lineHeight":"normal","letterSpacing":"normal","wordSpacing":"normal","color":"#ffffff","backgroundColor":"#00000090","border":"none","textShadow":"none","text":"I will harness this fire and rise beyond!","opacity":100,"width":921.6,"wordWrap":"break-word","wordBreak":"normal","WebkitTextStrokeColor":"#ffffff","WebkitTextStrokeWidth":"0px","top":"707.8399999999999px","left":"115.19999999999999px","height":59.5556,"fontUrl":"https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf"}},"2179de67-9d7a-45b3-8006-29897f5f4c56":{"id":"2179de67-9d7a-45b3-8006-29897f5f4c56","type":"video","preview":"https://cdn.designcombo.dev/thumbnails/demo-video-s-7.png","duration":12000,"trim":{"from":0,"to":5079.7872340425565},"display":{"from":0,"to":5079.787234042553},"isMain":false,"details":{"width":1080,"height":1920,"duration":7593.3330000000005,"src":"https://cdn.designcombo.dev/videos/demo-video-7.mp4","volume":100,"top":"-420px","left":"420px","zoom":{"type":"none","ease":"linear"}}},"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6":{"id":"d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","type":"video","preview":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/image/2025/2/20/19\\MjU9BA9oBAcasKPWW89oAq.webp","display":{"from":5079.787234042553,"to":11129.787234042553},"trim":{"from":0,"to":6050},"isMain":false,"details":{"width":800,"height":608,"duration":6050,"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\fdcKLDioCK6fNMFSaV9no9.mp4","volume":100,"top":"236px","left":"560px","text":"Video","zoom":{"type":"none","ease":"linear"}}},"d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9":{"id":"d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9","type":"video","preview":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/image/2025/2/20/19\\N8SF2nTVffFxn8fwA7VZZM.webp","display":{"from":11129.787234042555,"to":17179.787234042553},"trim":{"from":0,"to":6050},"isMain":false,"details":{"width":800,"height":608,"duration":6050,"src":"https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/video/2025/2/20/19\\LUB9JnQSSeVJdzRrq8PnAr.mp4","volume":100,"top":"236px","left":"560px","text":"Video","zoom":{"type":"none","ease":"linear"}}}},"transitionIds":["2179de67-9d7a-45b3-8006-29897f5f4c56-d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","d39bb6d3-6dcf-444d-ada9-fff6c0780dd6-d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9"],"tracksSettings":{"3":{"id":"3","accepts":["text","audio","helper","video","image"],"type":"tracksettings","items":["85f4157e-dc83-4d9d-89df-1a9b422d0f76","3400f41c-d2b0-4987-9eb7-63bf9e7c10d1","251574f7-350d-4c36-8cec-bb1c18c263b8"],"magnetic":false,"static":false,"trackId":"3","details":{"trackType":"audio","volume":100}},"5":{"id":"5","accepts":["text","audio","helper","video","image"],"type":"tracksettings","items":["b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7"],"magnetic":false,"static":false,"trackId":"5","details":{"trackType":"audio","volume":100}},"3891c94f-1b4f-4d65-b969-0bec5461514d":{"id":"3891c94f-1b4f-4d65-b969-0bec5461514d","items":["5923c95e-9996-4fef-ac4d-f538413d90d7","b9e5723f-205c-42bf-87bd-e909d3c98337","cffd1b0e-6b4a-46f5-948d-15a93a0afc1e"],"type":"tracksettings","accepts":["text","audio","helper","video","image"],"trackId":"3891c94f-1b4f-4d65-b969-0bec5461514d","details":{"trackType":"text","color":"#ffffff","colorDisplay":"#000000","fontSize":120,"fontSizeDisplay":"12px","fontFamily":"Roboto-Bold","fontFamilyDisplay":"Roboto","opacity":100,"opacityDisplay":"100%","textAlign":"center","textDecoration":"none","borderWidth":0,"borderColor":"#000000","boxShadow":{"color":"#000000","x":0,"y":0,"blur":0},"backgroundColor":"#00000090"}},"11234daf-bdde-484c-9930-9bb75e9f4731":{"id":"11234daf-bdde-484c-9930-9bb75e9f4731","accepts":["image","video"],"type":"tracksettings","items":["2179de67-9d7a-45b3-8006-29897f5f4c56","d39bb6d3-6dcf-444d-ada9-fff6c0780dd6","d2f5a66b-1a72-41f4-9b39-b1ee8bc579f9"],"magnetic":false,"static":false,"trackId":"11234daf-bdde-484c-9930-9bb75e9f4731","details":{"trackType":"video","volume":100,"opacity":100,"zoom":{"type":"none","ease":"linear"},"mirror":{"x":false,"y":false}}}},
-    "width": 1920, "height": 1080,
-    "size": { "width": 1920, "height": 1080 }
-    
+    "size": {
+      "width": 960,
+      "height": 720
+    },
+    "trackItemDetailsMap": {
+      "fb663357-04d2-4dd0-9e44-cd4000995e20": {
+        "type": "text",
+        "details": {
+          "type": "Textbox",
+          "originX": "center",
+          "originY": "bottom",
+          "left": "96.0px",
+          "top": "628.1209064039408px",
+          "width": 768,
+          "height": 39.75818719211823,
+          "text": "I am the master of my fate!",
+          "fill": "#ffffffff",
+          "fontSize": 30.61,
+          "fontWeight": "normal",
+          "fontFamily": "TecnicaStencil2Rg",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "charSpacing": 0,
+          "textAlign": "center",
+          "styles": [],
+          "pathStartOffset": 0,
+          "pathSide": "left",
+          "pathAlign": "baseline",
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textBackgroundColor": "",
+          "direction": "ltr",
+          "minWidth": 20,
+          "splitByGrapheme": false,
+          "version": "6.6.4",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "miter",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 100,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "#00000090",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "wordWrap": "break-word",
+          "wordBreak": "normal",
+          "WebkitTextStrokeColor": "#ffffff",
+          "WebkitTextStrokeWidth": "0px",
+          "fontUrl": "/fonts/TecnicaStencil2Rg.woff2",
+          "color": "#00DD21"
+        }
+      },
+      "6d479031-5637-4fc0-a721-ef4b01bcd48f": {
+        "type": "image",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\FRrAf53EreXpPo8uZwF6Bd.webp",
+          "duration": null,
+          "volume": 100,
+          "opacity": 100,
+          "border": "none",
+          "borderRadius": "0",
+          "boxShadow": "none",
+          "top": "0px"
+        }
+      },
+      "595fa32b-ec90-480d-a243-2911c93c1f3c": {
+        "type": "audio",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\T3yr6NMN8uj8MvDJsddM2D.mpeg",
+          "duration": 1680,
+          "volume": 100,
+          "text": "I am the master of my fate!"
+        }
+      },
+      "332e7786-d45f-4812-93a3-f80fa5f0d97a": {
+        "type": "text",
+        "details": {
+          "type": "Textbox",
+          "originX": "center",
+          "originY": "bottom",
+          "left": "96.00000000000006px",
+          "top": "628.0940853658535px",
+          "width": 767.9999999999999,
+          "height": 39.81182926829269,
+          "text": "I will harness this fire and rise beyond!",
+          "fill": "#ffffffff",
+          "fontSize": 30.61,
+          "fontWeight": "normal",
+          "fontFamily": "TecnicaStencil2Rg",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "charSpacing": 0,
+          "textAlign": "center",
+          "styles": [],
+          "pathStartOffset": 0,
+          "pathSide": "left",
+          "pathAlign": "baseline",
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textBackgroundColor": "",
+          "direction": "ltr",
+          "minWidth": 20,
+          "splitByGrapheme": false,
+          "version": "6.6.4",
+          "stroke": null,
+          "strokeWidth": 0,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "miter",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 100,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "#00000090",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "wordWrap": "break-word",
+          "wordBreak": "normal",
+          "WebkitTextStrokeColor": "#ffffff",
+          "WebkitTextStrokeWidth": "0px",
+          "fontUrl": "/fonts/TecnicaStencil2Rg.woff2",
+          "color": "#00DD21"
+        }
+      },
+      "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240": {
+        "type": "image",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\8dKB6RVmt9QQC8GwXDy3U8.webp",
+          "duration": null,
+          "volume": 100,
+          "opacity": 100,
+          "border": "none",
+          "borderRadius": "0",
+          "boxShadow": "none",
+          "top": "0px"
+        }
+      },
+      "251574f7-350d-4c36-8cec-bb1c18c263b8": {
+        "type": "audio",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\8FZgKk7c8ds5gbZanBXMA5.mpeg",
+          "duration": 2544,
+          "volume": 100,
+          "text": "I will harness this fire and rise beyond!"
+        }
+      },
+      "e1307381-62cd-4f79-9c2a-a168ec700b6c": {
+        "type": "text",
+        "details": {
+          "type": "Textbox",
+          "originX": "center",
+          "originY": "bottom",
+          "left": "96.00000000000006px",
+          "top": "628.0940853658535px",
+          "width": 767.9999999999999,
+          "height": 39.81182926829269,
+          "text": "Can I truly overcome the darkness within?",
+          "fill": "#ffffffff",
+          "fontSize": 30.61,
+          "fontWeight": "normal",
+          "fontFamily": "TecnicaStencil2Rg",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "charSpacing": 0,
+          "textAlign": "center",
+          "styles": [],
+          "pathStartOffset": 0,
+          "pathSide": "left",
+          "pathAlign": "baseline",
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textBackgroundColor": "",
+          "direction": "ltr",
+          "minWidth": 20,
+          "splitByGrapheme": false,
+          "version": "6.4.2",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "miter",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 100,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "#00000090",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "wordWrap": "break-word",
+          "wordBreak": "normal",
+          "WebkitTextStrokeColor": "#ffffff",
+          "WebkitTextStrokeWidth": "0px",
+          "fontUrl": "/fonts/TecnicaStencil2Rg.woff2",
+          "color": "#00DD21"
+        }
+      },
+      "91097b5f-1567-46f0-bedf-e46e9b87e47b": {
+        "type": "image",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\9hFs8fdPpLrq3t3XKNnmok.webp",
+          "duration": null,
+          "volume": 100,
+          "opacity": 100,
+          "border": "none",
+          "borderRadius": "0",
+          "boxShadow": "none",
+          "top": "0px"
+        }
+      },
+      "195c28d9-2416-4c7e-ac63-0a8e940c8ad3": {
+        "type": "audio",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\H3KTDfK9ozxrv2svc9WQG7.mpeg",
+          "duration": 2544,
+          "volume": 100,
+          "text": "Can I truly overcome the darkness within?"
+        }
+      },
+      "e1a55904-7206-4cba-86e6-1dc4041fc274": {
+        "type": "text",
+        "details": {
+          "type": "Textbox",
+          "originX": "center",
+          "originY": "bottom",
+          "left": "96.00000000000006px",
+          "top": "628.0940853658535px",
+          "width": 767.9999999999999,
+          "height": 39.81182926829269,
+          "text": "Embrace the storm within, and your soul will flourish.",
+          "fill": "#ffffffff",
+          "fontSize": 30.61,
+          "fontWeight": "normal",
+          "fontFamily": "TecnicaStencil2Rg",
+          "fontStyle": "normal",
+          "lineHeight": 1.16,
+          "charSpacing": 0,
+          "textAlign": "center",
+          "styles": [],
+          "pathStartOffset": 0,
+          "pathSide": "left",
+          "pathAlign": "baseline",
+          "underline": false,
+          "overline": false,
+          "linethrough": false,
+          "textBackgroundColor": "",
+          "direction": "ltr",
+          "minWidth": 20,
+          "splitByGrapheme": false,
+          "version": "6.4.2",
+          "stroke": null,
+          "strokeWidth": 1,
+          "strokeDashArray": null,
+          "strokeLineCap": "butt",
+          "strokeDashOffset": 0,
+          "strokeLineJoin": "miter",
+          "strokeUniform": false,
+          "strokeMiterLimit": 4,
+          "scaleX": 1,
+          "scaleY": 1,
+          "angle": 0,
+          "flipX": false,
+          "flipY": false,
+          "opacity": 100,
+          "shadow": null,
+          "visible": true,
+          "backgroundColor": "#00000090",
+          "fillRule": "nonzero",
+          "paintFirst": "fill",
+          "globalCompositeOperation": "source-over",
+          "skewX": 0,
+          "skewY": 0,
+          "wordWrap": "break-word",
+          "wordBreak": "normal",
+          "WebkitTextStrokeColor": "#ffffff",
+          "WebkitTextStrokeWidth": "0px",
+          "fontUrl": "/fonts/TecnicaStencil2Rg.woff2",
+          "color": "#00DD21"
+        }
+      },
+      "3a4095a3-8915-48a0-adcf-2f3a4b5cb2fe": {
+        "type": "image",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\7ChLoMwR4Lo9eDVjyQko3G.webp",
+          "duration": null,
+          "volume": 100,
+          "opacity": 100,
+          "border": "none",
+          "borderRadius": "0",
+          "boxShadow": "none",
+          "top": "0px"
+        }
+      },
+      "54ad174c-c09b-46d4-9181-f1f72fe84818": {
+        "type": "audio",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\ELfhv8h747PJAVqr9YRUud.mpeg",
+          "duration": 3240,
+          "volume": 100,
+          "text": "Embrace the storm within, and your soul will flourish."
+        }
+      },
+      "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7": {
+        "type": "audio",
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/music/2025/3/10/13\\5uArfrWTAWdLw6ECfjFhCM.mpeg",
+          "duration": null,
+          "volume": 100
+        }
+      }
+    },
+    "trackItemsMap": {
+      "fb663357-04d2-4dd0-9e44-cd4000995e20": {
+        "id": "fb663357-04d2-4dd0-9e44-cd4000995e20",
+        "name": "",
+        "type": "text",
+        "display": {
+          "from": 0,
+          "to": 5000
+        },
+        "metadata": {},
+        "isMain": false
+      },
+      "6d479031-5637-4fc0-a721-ef4b01bcd48f": {
+        "id": "6d479031-5637-4fc0-a721-ef4b01bcd48f",
+        "name": "",
+        "type": "image",
+        "display": {
+          "from": 0,
+          "to": 5000
+        },
+        "trim": {
+          "from": 0,
+          "to": 5000
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\FRrAf53EreXpPo8uZwF6Bd.webp",
+          "duration": 5000,
+          "volume": 100
+        }
+      },
+      "595fa32b-ec90-480d-a243-2911c93c1f3c": {
+        "id": "595fa32b-ec90-480d-a243-2911c93c1f3c",
+        "name": "",
+        "type": "audio",
+        "display": {
+          "from": 0,
+          "to": 1680
+        },
+        "trim": {
+          "from": 0,
+          "to": 1680
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\T3yr6NMN8uj8MvDJsddM2D.mpeg",
+          "duration": 1680,
+          "volume": 100
+        }
+      },
+      "332e7786-d45f-4812-93a3-f80fa5f0d97a": {
+        "id": "332e7786-d45f-4812-93a3-f80fa5f0d97a",
+        "name": "",
+        "type": "text",
+        "display": {
+          "from": 5000,
+          "to": 10000
+        },
+        "metadata": {},
+        "isMain": false
+      },
+      "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240": {
+        "id": "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240",
+        "name": "",
+        "type": "image",
+        "display": {
+          "from": 5000,
+          "to": 10000
+        },
+        "trim": {
+          "from": 0,
+          "to": 5000
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\8dKB6RVmt9QQC8GwXDy3U8.webp",
+          "duration": 5000,
+          "volume": 100
+        }
+      },
+      "251574f7-350d-4c36-8cec-bb1c18c263b8": {
+        "id": "251574f7-350d-4c36-8cec-bb1c18c263b8",
+        "name": "",
+        "type": "audio",
+        "display": {
+          "from": 5000,
+          "to": 7544
+        },
+        "trim": {
+          "from": 0,
+          "to": 2544
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\8FZgKk7c8ds5gbZanBXMA5.mpeg",
+          "duration": 2544,
+          "volume": 100
+        }
+      },
+      "e1307381-62cd-4f79-9c2a-a168ec700b6c": {
+        "id": "e1307381-62cd-4f79-9c2a-a168ec700b6c",
+        "name": "",
+        "type": "text",
+        "display": {
+          "from": 10000,
+          "to": 15000
+        },
+        "metadata": {},
+        "isMain": false
+      },
+      "91097b5f-1567-46f0-bedf-e46e9b87e47b": {
+        "id": "91097b5f-1567-46f0-bedf-e46e9b87e47b",
+        "name": "",
+        "type": "image",
+        "display": {
+          "from": 10000,
+          "to": 15000
+        },
+        "trim": {
+          "from": 0,
+          "to": 5000
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\9hFs8fdPpLrq3t3XKNnmok.webp",
+          "duration": 5000,
+          "volume": 100
+        }
+      },
+      "195c28d9-2416-4c7e-ac63-0a8e940c8ad3": {
+        "id": "195c28d9-2416-4c7e-ac63-0a8e940c8ad3",
+        "name": "",
+        "type": "audio",
+        "display": {
+          "from": 10000,
+          "to": 12544
+        },
+        "trim": {
+          "from": 0,
+          "to": 2544
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\H3KTDfK9ozxrv2svc9WQG7.mpeg",
+          "duration": 2544,
+          "volume": 100
+        }
+      },
+      "e1a55904-7206-4cba-86e6-1dc4041fc274": {
+        "id": "e1a55904-7206-4cba-86e6-1dc4041fc274",
+        "name": "",
+        "type": "text",
+        "display": {
+          "from": 15000,
+          "to": 20000
+        },
+        "metadata": {},
+        "isMain": false
+      },
+      "3a4095a3-8915-48a0-adcf-2f3a4b5cb2fe": {
+        "id": "3a4095a3-8915-48a0-adcf-2f3a4b5cb2fe",
+        "name": "",
+        "type": "image",
+        "display": {
+          "from": 15000,
+          "to": 20000
+        },
+        "trim": {
+          "from": 0,
+          "to": 5000
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/image/2025/3/14/13\\7ChLoMwR4Lo9eDVjyQko3G.webp",
+          "duration": 5000,
+          "volume": 100
+        }
+      },
+      "54ad174c-c09b-46d4-9181-f1f72fe84818": {
+        "id": "54ad174c-c09b-46d4-9181-f1f72fe84818",
+        "name": "",
+        "type": "audio",
+        "display": {
+          "from": 15000,
+          "to": 18240
+        },
+        "trim": {
+          "from": 0,
+          "to": 3240
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/generated/voiceover/2025/3/14/13\\ELfhv8h747PJAVqr9YRUud.mpeg",
+          "duration": 3240,
+          "volume": 100
+        }
+      },
+      "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7": {
+        "id": "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7",
+        "name": "",
+        "type": "audio",
+        "display": {
+          "from": 0,
+          "to": 20000
+        },
+        "trim": {
+          "from": 0,
+          "to": 20000
+        },
+        "isMain": false,
+        "details": {
+          "src": "https://superduper-acdagaa3e2h7chh0.z02.azurefd.net/uploaded/music/2025/3/10/13\\5uArfrWTAWdLw6ECfjFhCM.mpeg",
+          "duration": 20000,
+          "volume": 100
+        }
+      }
+    },
+    "tracks": [
+      {
+        "id": "1",
+        "accepts": [
+          "text",
+          "audio",
+          "helper",
+          "video",
+          "image"
+        ],
+        "type": "text",
+        "items": [
+          "fb663357-04d2-4dd0-9e44-cd4000995e20",
+          "332e7786-d45f-4812-93a3-f80fa5f0d97a",
+          "e1307381-62cd-4f79-9c2a-a168ec700b6c",
+          "e1a55904-7206-4cba-86e6-1dc4041fc274"
+        ],
+        "magnetic": false,
+        "static": false
+      },
+      {
+        "id": "2",
+        "accepts": [
+          "text",
+          "audio",
+          "helper",
+          "video",
+          "image"
+        ],
+        "type": "image",
+        "items": [
+          "6d479031-5637-4fc0-a721-ef4b01bcd48f",
+          "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240",
+          "91097b5f-1567-46f0-bedf-e46e9b87e47b",
+          "3a4095a3-8915-48a0-adcf-2f3a4b5cb2fe"
+        ],
+        "magnetic": false,
+        "static": false
+      },
+      {
+        "id": "3",
+        "accepts": [
+          "text",
+          "audio",
+          "helper",
+          "video",
+          "image"
+        ],
+        "type": "audio",
+        "items": [
+          "595fa32b-ec90-480d-a243-2911c93c1f3c",
+          "251574f7-350d-4c36-8cec-bb1c18c263b8",
+          "195c28d9-2416-4c7e-ac63-0a8e940c8ad3",
+          "54ad174c-c09b-46d4-9181-f1f72fe84818"
+        ],
+        "magnetic": false,
+        "static": false
+      },
+      {
+        "id": "5",
+        "accepts": [
+          "text",
+          "audio",
+          "helper",
+          "video",
+          "image"
+        ],
+        "type": "audio",
+        "items": [
+          "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7"
+        ],
+        "magnetic": false,
+        "static": false
+      }
+    ],
+    "trackItemIds": [
+      "b3e6a71a-6b4c-4d2c-bcd9-acf3732a50b7",
+      "54ad174c-c09b-46d4-9181-f1f72fe84818",
+      "3a4095a3-8915-48a0-adcf-2f3a4b5cb2fe",
+      "195c28d9-2416-4c7e-ac63-0a8e940c8ad3",
+      "91097b5f-1567-46f0-bedf-e46e9b87e47b",
+      "251574f7-350d-4c36-8cec-bb1c18c263b8",
+      "8a1421e6-b47f-44c3-9ef5-1cb8a9ab3240",
+      "595fa32b-ec90-480d-a243-2911c93c1f3c",
+      "6d479031-5637-4fc0-a721-ef4b01bcd48f",
+      "fb663357-04d2-4dd0-9e44-cd4000995e20",
+      "332e7786-d45f-4812-93a3-f80fa5f0d97a",
+      "e1307381-62cd-4f79-9c2a-a168ec700b6c",
+      "e1a55904-7206-4cba-86e6-1dc4041fc274"
+    ],
+    "transitionsMap": {},
+    "transitionIds": [],
+  "config": {
+    "prompt": "tell me about anime douluo dalu",
+    "dynamic": 1,
+    "aspect_ratio": "4:3",
+    "image_model_type": "flux",
+    "quality": "hd",
+    "seed": 40879370767,
+    "voiceover_volume": 1,
+    "music_volume": 0.71,
+    "sound_effect_volume": 1,
+    "transition": {
+      "type": "clockWipe",
+      "direction": "from-right"
+    },
+    "zoom": null,
+    "auto_mode": true,
+    "entity_ids": [],
+    "watermark": true,
+    "subtitles": true,
+    "voiceover": true
+  },
+  "fps": 30,
+  "width": 960,
+  "height": 720
 }
