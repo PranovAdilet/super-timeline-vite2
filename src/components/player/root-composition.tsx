@@ -4,6 +4,7 @@ import { Composition, getInputProps } from "remotion";
 import CompositionPlayer from "./composition";
 import { Flex, Theme } from "@radix-ui/themes";
 import { ITrackItem } from "@/shared";
+import "./styles.css";
 
 type Props = {
   trackItemIds?: string[];
