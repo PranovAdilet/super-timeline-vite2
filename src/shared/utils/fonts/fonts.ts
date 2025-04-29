@@ -1,4 +1,5 @@
 import TecnicaStencil2Rg from "../../../assets/TecnicaStencil2Rg.png";
+import tecnicaStencilFont from "../../../assets/fonts/TecnicaStencil2Rg.woff2";
 
 export const DEFAULT_FONT = {
   id: "font_UwdNKSyVq2iiMiuHSRRsUIOu",
@@ -12883,6 +12884,6 @@ export const FONTS = [
     createdAt: "2023-06-20T04:42:55.909Z",
     updatedAt: "2023-06-20T04:42:55.909Z",
     userId: null,
-    url: "../../../assets/fonts/TecnicaStencil2Rg.woff2",
+    url: tecnicaStencilFont,
   },
 ];
