@@ -92,6 +92,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
     const selectedFont = getCompactFontData(FONTS).find(
       (font) => font.family === currentFont?.family
     )!;
+
     if (!selectedFont) return;
 
     setSelectedFont({

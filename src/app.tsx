@@ -19,6 +19,7 @@ import {
   useTimelineHotkeys,
   VIDEOS,
 } from "./shared";
+import tecnicaStencilFont from "./assets/fonts/TecnicaStencil2Rg.woff2";
 
 const stateManager = new StateManager();
 
@@ -1336,10 +1337,10 @@ const data3 = {
     "b2589ca9-4abd-4ca3-97da-6ad5600df94f": {
       type: "text",
       details: {
-        fontFamily: "Roboto-Bold",
+        fontFamily: "TecnicaStencil2Rg",
         fontSize: 53.01,
         fontWeight: "normal",
-        fontStyle: "normal",
+        fontStyle: "regular",
         textDecoration: "none",
         textAlign: "center",
         lineHeight: 1.16,
@@ -1359,8 +1360,7 @@ const data3 = {
         top: "937.5444349514563px",
         left: "192.0000000000001px",
         height: 68.91113009708738,
-        fontUrl:
-          "https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf",
+        fontUrl: "../../../assets/fonts/TecnicaStencil2Rg.woff2",
       },
     },
     "5be43e31-9de8-4f6e-b00a-c4377cc20f61": {
@@ -2180,10 +2180,10 @@ const data3 = {
       metadata: {},
       isMain: false,
       details: {
-        fontFamily: "Roboto-Bold",
+        fontFamily: "TecnicaStencil2Rg",
         fontSize: 53.01,
         fontWeight: "normal",
-        fontStyle: "normal",
+        fontStyle: "regular",
         textDecoration: "none",
         textAlign: "center",
         lineHeight: 1.16,
@@ -2203,8 +2203,7 @@ const data3 = {
         top: "937.5444349514563px",
         left: "192.0000000000001px",
         height: 68.91113009708738,
-        fontUrl:
-          "https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmWUlvAx05IsDqlA.ttf",
+        fontUrl: tecnicaStencilFont,
       },
     },
   },
