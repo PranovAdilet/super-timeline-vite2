@@ -47,3 +47,14 @@ export const getCompactFontData = (fonts: IFont[]): ICompactFont[] => {
 
   return Object.values(compactFontsMap);
 };
+
+export async function ensureFontLoaded(fontFamily: string, fontUrl: string) {
+  // Проверяем, не загружен ли уже шрифт
+  if (document.fonts.check(`1em ${fontFamily}`)) return;
+
+  const font = new FontFace(fontFamily, `url('${fontUrl}') format('woff2')`);
+  await font.load();
+  (document as any).fonts.add(font);
+  // Ждём, пока шрифт станет доступен
+  await (document as any).fonts.ready;
+}

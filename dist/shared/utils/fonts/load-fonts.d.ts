@@ -4,4 +4,5 @@ export declare const loadFonts: (fonts: {
     url: string;
 }[]) => Promise<unknown>;
 export declare const getCompactFontData: (fonts: IFont[]) => ICompactFont[];
+export declare function ensureFontLoaded(fontFamily: string, fontUrl: string): Promise<void>;
 //# sourceMappingURL=load-fonts.d.ts.map

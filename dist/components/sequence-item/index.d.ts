@@ -1,4 +1,4 @@
-import type { ITrackItem, ZoomType } from "../../";
+import { type ITrackItem, type ZoomType } from "../../";
 import { Easing } from "remotion";
 export declare const calculateFrames: (display: {
     from: number;

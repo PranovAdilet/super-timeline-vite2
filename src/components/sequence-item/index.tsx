@@ -1,12 +1,13 @@
 "use client";
 
-import type {
-  IImage,
-  IItem,
-  IText,
-  ITrackItem,
-  IVideo,
-  ZoomType,
+import {
+  ensureFontLoaded,
+  type IImage,
+  type IItem,
+  type IText,
+  type ITrackItem,
+  type IVideo,
+  type ZoomType,
 } from "../../";
 import {
   AbsoluteFill,
@@ -16,6 +17,7 @@ import {
   interpolate,
   OffthreadVideo,
   Sequence,
+  staticFile,
 } from "remotion";
 import { Animated } from "../player/animation";
 import { getAnimations } from "@/shared/utils/get-animations";
@@ -52,6 +54,13 @@ export const SequenceItem: Record<
       animations!,
       item as IItem
     );
+
+    if (item.details.fontFamily === "TecnicaStencil2Rg") {
+      ensureFontLoaded(
+        "TecnicaStencil2Rg",
+        staticFile("fonts/TecnicaStencil2Rg.woff2")
+      );
+    }
     return (
       <Sequence
         key={item.id}
