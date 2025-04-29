@@ -1,3 +1,4 @@
+import "./styles.css";
 import { ITrackItem } from "@/shared";
 type Props = {
     trackItemIds?: string[];

@@ -1,4 +1,5 @@
 import { ITrackItem, ITransition } from "@/shared";
+import "./styles.css";
 type Props = {
     trackItemIds?: string[];
     trackItemsMap?: Record<string, ITrackItem>;

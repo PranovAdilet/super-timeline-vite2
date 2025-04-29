@@ -11,6 +11,7 @@ import { TransitionSeries } from "@remotion/transitions";
 import { populateTransitionIds } from "@/shared/utils/scene";
 import { TransitionSequenceItem } from "../transition-sequence-item";
 import { Transitions } from "./transitions";
+import "./styles.css";
 
 type ItemType = "text" | "image" | "video" | "audio";
 
