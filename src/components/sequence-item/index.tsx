@@ -136,7 +136,6 @@ export const SequenceItem: Record<
             `brightness(${item.details.brightness ?? 100}%) blur(${
               item.details.blur ?? 0
             }px)` || "none",
-
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
         }}
@@ -184,7 +183,7 @@ export const SequenceItem: Record<
     );
   },
   video: (item: ITrackItem, options: SequenceItemOptions) => {
-    const { fps, currentFrame } = options;
+    const { fps, currentFrame, width, height } = options;
     const { details, animations } = item as IVideo;
     const { from, durationInFrames } = calculateFrames(item.display, fps);
     const { animationIn, animationOut } = getAnimations(
@@ -207,8 +206,6 @@ export const SequenceItem: Record<
       durationInFrames,
       item.details.zoom
     );
-
-    // console.log(zoomScale, item);
 
     if (!trim) {
       return <></>;
@@ -233,8 +230,9 @@ export const SequenceItem: Record<
           // top: item.details.top ?? 0,
           // left: item.details.left ?? 0,
           overflow: "hidden",
+          width,
+          height,
         }}
-        className="size-full"
       >
         <AbsoluteFill
           style={{
@@ -243,8 +241,12 @@ export const SequenceItem: Record<
             // height: item.details.height,
             top: -crop.y,
             left: -crop.x,
+            width,
+            height,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          className="size-full"
         >
           <Animated
             style={calculateContainerStyles(details, crop, {
@@ -265,8 +267,10 @@ export const SequenceItem: Record<
                 transform: `scale(${zoomScale}) ${mirrorX} ${mirrorY}`,
                 // width: item.details.width,
                 // height: item.details.height,
+                width,
+                height,
+                objectFit: "contain",
               }}
-              className="size-full"
             />
           </Animated>
         </AbsoluteFill>

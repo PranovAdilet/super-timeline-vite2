@@ -2,7 +2,6 @@
 
 import { Composition, getInputProps } from "remotion";
 import CompositionPlayer from "./composition";
-import CompositionPlayerWithTransitions from "./composition2";
 import { Flex, Theme } from "@radix-ui/themes";
 import { ITrackItem } from "@/shared";
 
@@ -44,11 +43,11 @@ export const RootComposition = () => {
             radius="large"
             appearance="dark"
           >
-            <CompositionPlayerWithTransitions
+            <CompositionPlayer
               trackItemDetailsMap={trackItemDetailsMap}
               trackItemIds={trackItemIds}
               trackItemsMap={trackItemsMap}
-              transitionsMap={transitionsMap}
+              // transitionsMap={transitionsMap}
             />
           </Theme>
         )}

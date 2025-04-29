@@ -1,5 +1,5 @@
 {
-  "name": "super-timeline-vite2",
+  "name": "super-timeline",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,8 @@
     "./components/*": "./dist/components/*",
     "./classes/*": "./dist/classes/*",
     "./shared/*": "./dist/shared/*",
-    "./lib/utils/*": "./dist/lib/utils/*"
+    "./lib/utils/*": "./dist/lib/utils/*",
+     "./style.css": "./dist/style.css"
   },
   "scripts": {
     "dev": "vite",

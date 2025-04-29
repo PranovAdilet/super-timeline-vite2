@@ -89,7 +89,7 @@ await renderMedia({
     codec: "h264",
     composition,
     serveUrl: bundled,
-    outputLocation: `/tmp/${props.fileName ?? "Video"}.mp4`,
+    outputLocation: `/tmp/${props.fileName ?? "Video1"}.mp4`,
     chromiumOptions: {
         enableMultiProcessOnLinux: true,
         viewport: {

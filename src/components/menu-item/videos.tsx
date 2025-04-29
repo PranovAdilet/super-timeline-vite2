@@ -53,14 +53,18 @@ const VideoItem = ({
   video: Partial<IVideo>;
   shouldDisplayPreview: boolean;
 }) => {
+  const preview =
+    video.preview ??
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNvVU_Uc6RScIpe9F-I5Z1_gxWrnWgR-YbPA&s";
+
   const style = React.useMemo(
     () => ({
-      backgroundImage: `url(${video.preview})`,
+      backgroundImage: `url(${preview})`,
       backgroundSize: "cover",
       width: "80px",
       height: "80px",
     }),
-    [video.preview]
+    [preview]
   );
 
   return (
@@ -89,7 +93,7 @@ const VideoItem = ({
       >
         <img
           draggable={false}
-          src={video.preview}
+          src={preview}
           className="h-full w-full rounded-md object-cover"
           alt="image"
         />

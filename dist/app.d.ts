@@ -299,7 +299,6 @@ export declare const data2: {
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
             };
         };
         "85f4157e-dc83-4d9d-89df-1a9b422d0f76": {
@@ -343,12 +342,13 @@ export declare const data2: {
         "695c748b-4027-4ddf-ba04-f3929b9a1afa": {
             type: string;
             details: {
+                top: number;
+                left: number;
                 src: string;
                 opacity: number;
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
             };
         };
         "3400f41c-d2b0-4987-9eb7-63bf9e7c10d1": {
@@ -396,7 +396,6 @@ export declare const data2: {
                 border: string;
                 borderRadius: string;
                 boxShadow: string;
-                top: string;
             };
         };
         "251574f7-350d-4c36-8cec-bb1c18c263b8": {

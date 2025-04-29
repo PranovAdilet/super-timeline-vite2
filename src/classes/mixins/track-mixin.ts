@@ -226,7 +226,7 @@ export class TracksMixin {
   // Метод для обновления состояния треков
   updateTracksState(this: Timeline): void {
     const nonEmptyTracks = this.tracks.filter(
-      (track) => track.items.length || track.type === "main"
+      (track) => track?.items.length || track?.type === "main"
     );
     const uniqueTracks = new Map<string, (typeof nonEmptyTracks)[0]>();
     nonEmptyTracks.forEach((track) => uniqueTracks.set(track.id, track));

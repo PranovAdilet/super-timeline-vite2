@@ -258,9 +258,14 @@ export async function handleSceneStateEvents(this: any, event: EventBusData) {
         return false;
       }
     });
+
     const tracksSettings = updateTrackSettings(tracks, {});
     await Promise.all(promises);
     const duration = calculateDuration(trackItemsMap);
+
+    this.undos = [];
+    this.redos = [];
+
     this.updateState({
       ...payload,
       tracksSettings,

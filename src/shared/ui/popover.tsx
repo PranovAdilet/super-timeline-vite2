@@ -19,7 +19,7 @@ export const Popover = ({ trigger, children, ...props }: PopoverProps) => {
       )}
       <PopoverRadix.Content
         style={{ minHeight: "auto" }}
-        className="!min-h-[auto] min-h-[auto]"
+        className="!min-h-[auto] "
       >
         {children}
       </PopoverRadix.Content>

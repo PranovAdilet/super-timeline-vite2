@@ -24,6 +24,8 @@ export function tracksCreationHandler(this: Timeline, data: any) {
   const track = this.tracks.find((track) => track.id == primaryTrackId);
   const primaryTrack = primary[primaryTrackId];
 
+  if (!primaryTrack) return;
+
   const trackData = {
     id: uuidv4(),
     items: primaryTrack.objects.map((object: any) => object.id),

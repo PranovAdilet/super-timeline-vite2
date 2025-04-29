@@ -42,8 +42,7 @@ export const Uploads = () => {
         payload: {
           id: uuidv4(),
           display: {
-            from: 2000,
-            to: 7000,
+            from: 0,
           },
           details: {
             src: URL.createObjectURL(files[0]),
@@ -84,10 +83,10 @@ export const Uploads = () => {
             defaultValue="projects"
             className="w-full"
           >
-            <TabsList className="grid w-full grid-cols-2">
+            {/* <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="projects">Project</TabsTrigger>
               <TabsTrigger value="workspace">Workspace</TabsTrigger>
-            </TabsList>
+            </TabsList> */}
             <TabsContent value="projects">
               <Button
                 onClick={() => {

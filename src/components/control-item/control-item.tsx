@@ -1,9 +1,14 @@
-import React from "react";
+import {
+  useEffect,
+  useState,
+  ReactNode,
+  cloneElement,
+  ReactElement,
+} from "react";
 import {
   IAudio,
   IImage,
   IText,
-  ITrack,
   ITrackItem,
   ITrackItemAndDetails,
   IVideo,
@@ -11,7 +16,6 @@ import {
   useLayoutStore,
   useStore,
 } from "@/shared";
-import { useEffect, useState } from "react";
 import { Button } from "@/shared";
 import { X } from "lucide-react";
 import Presets from "./presets";
@@ -22,9 +26,8 @@ import BasicImage from "./basic-image";
 import BasicVideo from "./basic-video";
 import BasicAudio from "./basic-audio";
 import BasicTrack from "./basis-track";
-import { ACTIVE_DELETE, eventBus } from "@/classes";
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+const Container = ({ children }: { children: ReactNode }) => {
   const { activeToolboxItem, setActiveToolboxItem } = useLayoutStore();
   const { activeIds, trackItemsMap, trackItemDetailsMap, tracksSettings } =
     useStore();
@@ -50,20 +53,6 @@ const Container = ({ children }: { children: React.ReactNode }) => {
       setDisplayToolbox(false);
     }
   }, [activeIds, trackItemsMap, tracksSettings]);
-
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Delete" || e.key === "Backspace") {
-      e.preventDefault();
-      eventBus.dispatch(ACTIVE_DELETE);
-    }
-  };
-
-  useEffect(() => {
-    if (activeIds.length === 1) {
-      window.addEventListener("keydown", onKeyDown);
-    }
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeIds]);
 
   useEffect(() => {
     if (activeToolboxItem) {
@@ -100,7 +89,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
             }}
           />
         </Button>
-        {React.cloneElement(children as React.ReactElement<any>, {
+        {cloneElement(children as ReactElement<any>, {
           trackItem,
           activeToolboxItem,
         })}

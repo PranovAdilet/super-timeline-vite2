@@ -97,6 +97,7 @@ const emitTrackItemsMoved = (n: any) => {
 
 function checkSecondaryOverlap() {
   const transformedPositions = calculateTransformedPositions();
+  if (!transformedPositions) return;
   return Object.keys(transformedPositions).some((trackId) => {
     const trackItems = movingState.trackToItemsMap[trackId];
     const transformedObjects = transformedPositions[trackId].objects;
@@ -115,6 +116,10 @@ function checkSecondaryOverlap() {
 
 function calculateTransformedPositions() {
   const [firstObject]: any = movingState.primaryMovingObjects;
+
+  if (!firstObject?.id) {
+    return;
+  }
 
   const firstObjectId = firstObject.id;
   const transformedPosition =
