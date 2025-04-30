@@ -34,4 +34,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      "/fonts": {
+        target: "https://cdn.superduperai.co",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/fonts/, "/fonts"),
+      },
+    },
+  },
 });

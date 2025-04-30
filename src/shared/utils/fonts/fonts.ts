@@ -1,5 +1,4 @@
 import TecnicaStencil2Rg from "../../../assets/TecnicaStencil2Rg.png";
-import tecnicaStencilFont from "../../../assets/fonts/TecnicaStencil2Rg.woff2";
 
 export const DEFAULT_FONT = {
   id: "font_UwdNKSyVq2iiMiuHSRRsUIOu",
@@ -12884,6 +12883,19 @@ export const FONTS = [
     createdAt: "2023-06-20T04:42:55.909Z",
     updatedAt: "2023-06-20T04:42:55.909Z",
     userId: null,
-    url: tecnicaStencilFont,
+    url: "/fonts/TecnicaStencil2Rg.woff2",
+  },
+  {
+    id: "font_n23KxuTNynAlBkw_y0GLEBdc_TecnicaStencil2Rg2",
+    family: "TecnicaStencil2Rg2",
+    fullName: "TecnicaStencil2Rg Regular2",
+    postScriptName: "TecnicaStencil2Rg2",
+    preview: TecnicaStencil2Rg,
+    style: "TecnicaStencil2Rg2",
+    category: "serif",
+    createdAt: "2023-06-20T04:42:55.909Z",
+    updatedAt: "2023-06-20T04:42:55.909Z",
+    userId: null,
+    url: "https://cdn.superduperai.co/fonts/TecnicaStencil2Rg.woff2",
   },
 ];

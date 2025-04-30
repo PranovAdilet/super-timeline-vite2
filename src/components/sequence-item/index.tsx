@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ensureFontLoaded,
   type IImage,
   type IItem,
   type IText,
@@ -55,12 +54,6 @@ export const SequenceItem: Record<
       item as IItem
     );
 
-    if (item.details.fontFamily === "TecnicaStencil2Rg") {
-      ensureFontLoaded(
-        "TecnicaStencil2Rg",
-        staticFile("fonts/TecnicaStencil2Rg.woff2")
-      );
-    }
     return (
       <Sequence
         key={item.id}

@@ -19,7 +19,6 @@ import {
   useTimelineHotkeys,
   VIDEOS,
 } from "./shared";
-import tecnicaStencilFont from "./assets/fonts/TecnicaStencil2Rg.woff2";
 
 const stateManager = new StateManager();
 
@@ -1360,7 +1359,7 @@ const data3 = {
         top: "937.5444349514563px",
         left: "192.0000000000001px",
         height: 68.91113009708738,
-        fontUrl: "../../../assets/fonts/TecnicaStencil2Rg.woff2",
+        fontUrl: "/fonts/TecnicaStencil2Rg.woff2",
       },
     },
     "5be43e31-9de8-4f6e-b00a-c4377cc20f61": {
@@ -2203,7 +2202,7 @@ const data3 = {
         top: "937.5444349514563px",
         left: "192.0000000000001px",
         height: 68.91113009708738,
-        fontUrl: tecnicaStencilFont,
+        fontUrl: "/fonts/TecnicaStencil2Rg.woff2",
       },
     },
   },

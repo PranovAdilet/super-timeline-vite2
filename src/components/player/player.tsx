@@ -7,7 +7,6 @@ import Composition from "./composition";
 // import Composition2 from "./composition2";
 import useStore from "../../shared/store/store";
 import { Flex } from "@radix-ui/themes";
-import "./styles.css";
 
 export const Player = () => {
   const playerRef = useRef<PlayerRef>(null);
