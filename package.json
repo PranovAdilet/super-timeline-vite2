@@ -16,10 +16,10 @@
     "./classes/*": "./dist/classes/*",
     "./shared/*": "./dist/shared/*",
     "./lib/utils/*": "./dist/lib/utils/*",
-     "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3000",
     "build": "vite build && tsc -p tsconfig.app.json --emitDeclarationOnly --outDir dist",
     "lint": "eslint .",
     "preview": "vite preview"

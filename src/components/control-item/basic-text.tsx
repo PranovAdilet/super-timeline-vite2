@@ -112,7 +112,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
       fontSizeDisplay: (trackItem.details.fontSize || 62) + "px",
       fontFamily: selectedFont?.family || "Open Sans",
       fontFamilyDisplay: selectedFont?.family || "Open Sans",
-      opacity: trackItem.details.opacity || 1,
+      opacity: trackItem.details.opacity || 100,
       opacityDisplay: (trackItem.details.opacity?.toString() || "100") + "%",
       textAlign: trackItem.details.textAlign || "left",
       textDecoration: trackItem.details.textDecoration || "none",
@@ -275,7 +275,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem & IText }) => {
       payload: {
         [trackItem.id]: {
           details: {
-            opacity: v / 100,
+            opacity: v,
           },
         },
       },

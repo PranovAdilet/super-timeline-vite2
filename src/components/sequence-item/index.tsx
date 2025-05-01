@@ -54,6 +54,31 @@ export const SequenceItem: Record<
       item as IItem
     );
 
+    const fontStyles = {
+      fontFamily: `"${item.details.fontFamily || "Arial"}", sans-serif`,
+      fontSize: item.details.fontSize || "16px",
+      fontWeight: item.details.fontWeight || "normal",
+      fontStyle: item.details.fontStyle || "normal",
+      textAlign: item.details.textAlign || "left",
+      color: item.details.color || "#000000",
+      backgroundColor: item.details.backgroundColor || "transparent",
+      lineHeight: item.details.lineHeight || "normal",
+      letterSpacing: item.details.letterSpacing || "normal",
+      wordSpacing: item.details.wordSpacing || "normal",
+      textDecoration: item.details.textDecoration || "none",
+    };
+
+    // Добавляем @font-face для каждого шрифта
+    const fontFaceStyle = item.details.fontUrl
+      ? `
+      @font-face {
+        font-family: "${item.details.fontFamily}";
+        src: url("${item.details.fontUrl}") format("woff2");
+        font-display: swap;
+      }
+    `
+      : "";
+
     return (
       <Sequence
         key={item.id}
@@ -65,26 +90,14 @@ export const SequenceItem: Record<
           width: item.details.width ?? 300,
           height: item.details.height ?? 400,
           transform: item.details.transform ?? "none",
-          fontSize: item.details.fontSize || "16px", // Updated default font size
-          textAlign: item.details.textAlign || "left", // Updated default text alignment
           top: item.details.top ?? 300,
           left: item.details.left ?? 600,
-          color: item.details.color || "#000000", // Updated text color (fill)
-          backgroundColor: item.details.backgroundColor || "transparent", // Updated background color
-          border: item.details.border ?? "none", // Updated border
           opacity: item.details.opacity ?? 100 / 100,
-          fontFamily: item.details.fontFamily || "Arial", // Updated default font family
-          textDecoration: item.details.textDecoration || "none",
-          fontWeight: item.details.fontWeight || "normal",
-          lineHeight: item.details.lineHeight || "normal", // Added line height
-          letterSpacing: item.details.letterSpacing || "normal", // Added letter spacing
-          wordSpacing: item.details.wordSpacing || "normal", // Added word spacing
-          wordWrap: item.details.wordWrap || "normal", //'break-word'
-          wordBreak: item.details.wordBreak || "normal", //'break-all',
-          pointerEvents: "auto",
-          // background: item.details?.background || undefined,
+          border: item.details.border ?? "none",
+          ...fontStyles,
         }}
       >
+        <style>{fontFaceStyle}</style>
         <Animated
           style={calculateContainerStyles(
             details,

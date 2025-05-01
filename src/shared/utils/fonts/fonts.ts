@@ -12883,6 +12883,6 @@ export const FONTS = [
     createdAt: "2023-06-20T04:42:55.909Z",
     updatedAt: "2023-06-20T04:42:55.909Z",
     userId: null,
-    url: "https://cdn.superduperai.co/fonts/TecnicaStencil2Rg.woff2",
+    url: "https://pub-080bd850f72849898902fc3867a487f6.r2.dev/fonts/TecnicaStencil2Rg.woff2",
   },
 ];
