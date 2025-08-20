@@ -1,4 +1,5 @@
 export * from "./player";
 export * from "./root-composition";
-export * from "./composition";
+import Composition from "./composition";
+export { Composition };
 //# sourceMappingURL=index.d.ts.map

@@ -41861,6 +41861,7 @@ export {
   ye as Button,
   bae as CanvasMixin,
   yS as ColorPicker,
+  Qk as Composition,
   Pue as ControlItem,
   due as ControlList,
   Ppe as DEFAULT_AUDIO_BITRATE,
